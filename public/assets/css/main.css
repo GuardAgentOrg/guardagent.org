@@ -1,0 +1,941 @@
+/* ==========================================================================
+   GuardAgent — Enterprise AI Agent Security Platform Design System
+   Brand Foundation: Directly derived from the official GuardAgent Logo.
+   Colors: Deep Navy (#051329), Brand Surgical Teal (#00A3A6), Highlight Cyan (#00C4B4).
+   Aesthetic: Pristine Enterprise Security, Precision Micro-Interactions,
+   Grounded in the Formal Laws of UI/UX (Fitts, Hick, Miller, Gestalt, Jakob).
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ========================================================================
+     1. Brand Logo Colors (Exact Extraction)
+     ======================================================================== */
+  --brand-navy: #051329;
+  --brand-navy-light: #0B2042;
+  --brand-navy-surface: #0E274F;
+  --brand-navy-hover: #16366C;
+  --brand-navy-deep: #030A14;
+
+  --brand-teal: #00A3A6;
+  --brand-teal-light: #00C4B4;
+  --brand-teal-bright: #00E5BE;
+  --brand-teal-dark: #007D80;
+  --brand-teal-subtle: rgba(0, 163, 166, 0.08);
+  --brand-teal-glow: rgba(0, 196, 180, 0.28);
+  --brand-teal-border: rgba(0, 163, 166, 0.25);
+
+  /* ========================================================================
+     2. Surface Hierarchy (Clean, High-Trust Enterprise Light)
+     ======================================================================== */
+  --bg-canvas: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #FFFFFF;
+  --bg-surface-subtle: #F1F5F9;
+  --bg-surface-alt: #F8FAFC;
+  --bg-surface-hover: #F8FAFC;
+
+  /* ========================================================================
+     3. Hairline Dividers & Borders
+     ======================================================================== */
+  --border-subtle: #E2E8F0;
+  --border-default: #CBD5E1;
+  --border-strong: #94A3B8;
+  --border-focus: var(--brand-teal);
+
+  /* ========================================================================
+     4. Typography Hierarchy
+     ======================================================================== */
+  --text-primary: #051329;       /* Deep Navy text matching "Guard" */
+  --text-secondary: #475569;     /* Slate body */
+  --text-muted: #64748B;         /* Secondary captions */
+  --text-subtle: #94A3B8;        /* Subtle placeholders */
+  --text-inverse: #FFFFFF;
+
+  /* ========================================================================
+     5. High-Tech Terminal / Workbench Tokens (Deep Navy Dark Mode Component)
+     ======================================================================== */
+  --terminal-bg: #051329;
+  --terminal-pane: #081B3A;
+  --terminal-border: rgba(0, 196, 180, 0.22);
+  --terminal-text: #F1F5F9;
+  --terminal-code: #00E5BE;
+  --terminal-muted: #8EA0B8;
+
+  /* ========================================================================
+     6. Decision Status Verdicts (WCAG AA High Contrast)
+     ======================================================================== */
+  --status-allow: #059669;
+  --status-allow-bg: rgba(5, 150, 105, 0.10);
+  --status-allow-border: rgba(5, 150, 105, 0.30);
+
+  --status-block: #DC2626;
+  --status-block-bg: rgba(220, 38, 38, 0.10);
+  --status-block-border: rgba(220, 38, 38, 0.30);
+
+  --status-approval: #D97706;
+  --status-approval-bg: rgba(217, 119, 6, 0.10);
+  --status-approval-border: rgba(217, 119, 6, 0.30);
+
+  /* ========================================================================
+     7. Fonts & Corner Radii
+     ======================================================================== */
+  --font-display: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Elevation Shadows */
+  --shadow-xs: 0 1px 2px rgba(5, 19, 41, 0.05);
+  --shadow-sm: 0 2px 6px rgba(5, 19, 41, 0.06);
+  --shadow-md: 0 8px 24px -4px rgba(5, 19, 41, 0.09);
+  --shadow-lg: 0 16px 40px -8px rgba(5, 19, 41, 0.14);
+  --shadow-teal: 0 8px 30px -4px rgba(0, 163, 166, 0.35);
+
+  --container-max: 1240px;
+}
+
+/* ==========================================================================
+   Base Reset & Body Architecture
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: -0.012em;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-canvas);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Subtle Enterprise Mesh Glow (Logo Colors) */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1200px;
+  height: 600px;
+  background: radial-gradient(ellipse 60% 45% at 50% 10%, rgba(0, 163, 166, 0.09), rgba(5, 19, 41, 0.04), transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Typography Scale */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+code, .mono {
+  font-family: var(--font-mono);
+}
+
+code {
+  font-size: 0.85em;
+  padding: 0.15em 0.45em;
+  border-radius: var(--radius-xs);
+  background: #F1F5F9;
+  color: var(--brand-teal);
+  border: 1px solid var(--border-subtle);
+  font-weight: 600;
+}
+
+/* Brand Highlights */
+.text-teal {
+  color: var(--brand-teal);
+}
+
+.gradient-teal {
+  background: linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-teal) 65%, var(--brand-teal-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   Header & Navigation (Clean Frosted Glass Matching White Logo Canvas)
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: 0 1px 3px rgba(5, 19, 41, 0.04);
+  transition: all 0.3s ease;
+}
+
+.header-inner {
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+}
+
+/* The Official Logo - renders seamlessly on the crisp white canvas! */
+.brand-logo {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.25s ease;
+}
+
+.brand-link:hover .brand-logo {
+  transform: scale(1.03);
+}
+
+.brand-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+  background: var(--brand-teal-subtle);
+  color: var(--brand-teal);
+  border: 1px solid var(--brand-teal-border);
+  letter-spacing: 0.05em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.85rem;
+  list-style: none;
+}
+
+.nav-link {
+  font-size: 0.925rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--brand-navy);
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  background: var(--brand-teal);
+  border-radius: 2px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.mobile-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border-default);
+  color: var(--brand-navy);
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Buttons (Fitts's Law Optimized Touch Targets)
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1;
+  padding: 0.75rem 1.45rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.825rem;
+  border-radius: var(--radius-sm);
+}
+
+.btn-lg {
+  padding: 0.95rem 1.95rem;
+  font-size: 1.025rem;
+  border-radius: var(--radius-md);
+}
+
+/* Primary Brand Teal Action Button */
+.btn-teal {
+  background: linear-gradient(135deg, var(--brand-teal) 0%, var(--brand-teal-light) 100%);
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(0, 163, 166, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-teal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 163, 166, 0.45);
+  filter: brightness(1.04);
+}
+
+/* Authoritative Deep Navy Button */
+.btn-navy {
+  background: var(--brand-navy);
+  color: #FFFFFF;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(5, 19, 41, 0.2);
+}
+
+.btn-navy:hover {
+  background: var(--brand-navy-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(5, 19, 41, 0.3);
+}
+
+.btn-outline {
+  background: #FFFFFF;
+  border: 1px solid var(--border-default);
+  color: var(--brand-navy);
+  box-shadow: var(--shadow-xs);
+}
+
+.btn-outline:hover {
+  background: #F8FAFC;
+  border-color: var(--border-strong);
+  color: var(--brand-navy);
+  transform: translateY(-1px);
+}
+
+/* CLI Copy Pill */
+.cli-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  background: #FFFFFF;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--brand-navy);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-xs);
+  user-select: none;
+}
+
+.cli-pill:hover {
+  border-color: var(--brand-teal);
+  background: var(--brand-teal-subtle);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 163, 166, 0.15);
+}
+
+.cli-pill svg {
+  color: var(--brand-teal);
+  transition: transform 0.2s ease;
+}
+
+.cli-pill:hover svg {
+  transform: scale(1.15);
+}
+
+/* ==========================================================================
+   Badges & Metric Status Indicators
+   ========================================================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.badge-allow {
+  background: var(--status-allow-bg);
+  color: var(--status-allow);
+  border: 1px solid var(--status-allow-border);
+}
+.badge-allow .badge-dot { background: var(--status-allow); }
+
+.badge-block {
+  background: var(--status-block-bg);
+  color: var(--status-block);
+  border: 1px solid var(--status-block-border);
+}
+.badge-block .badge-dot { background: var(--status-block); }
+
+.badge-approval {
+  background: var(--status-approval-bg);
+  color: var(--status-approval);
+  border: 1px solid var(--status-approval-border);
+}
+.badge-approval .badge-dot { background: var(--status-approval); }
+
+.badge-teal {
+  background: var(--brand-teal-subtle);
+  color: var(--brand-teal);
+  border: 1px solid var(--brand-teal-border);
+}
+
+.badge-neutral {
+  background: #F1F5F9;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero {
+  padding: 4.5rem 0 3rem;
+  position: relative;
+  text-align: center;
+}
+
+.hero-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.4rem 1.15rem;
+  border-radius: var(--radius-full);
+  background: #FFFFFF;
+  border: 1px solid var(--brand-teal-border);
+  box-shadow: 0 4px 16px rgba(0, 163, 166, 0.12);
+  font-family: var(--font-mono);
+  font-size: 0.775rem;
+  color: var(--brand-navy);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  max-width: 980px;
+  margin: 0 auto 1.5rem;
+}
+
+.hero .lead {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 740px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3.5rem;
+}
+
+/* Metrics Ribbon Under Hero */
+.metrics-ribbon {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  max-width: 1040px;
+  margin: 0 auto 3.5rem;
+}
+
+.metric-ribbon-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.35rem 1rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+}
+
+.metric-ribbon-card:hover {
+  border-color: var(--brand-teal);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.metric-ribbon-val {
+  font-family: var(--font-mono);
+  font-size: 2.15rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--brand-navy);
+}
+
+.metric-ribbon-label {
+  font-size: 0.825rem;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Developer Interactive Simulator Workbench (Deep Navy Component)
+   ========================================================================== */
+.workbench-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  background: var(--terminal-bg);
+  border: 1px solid var(--terminal-border);
+  box-shadow: 0 20px 50px -10px rgba(5, 19, 41, 0.45), 0 0 30px -5px rgba(0, 163, 166, 0.2);
+  overflow: hidden;
+  text-align: left;
+}
+
+.workbench-topbar {
+  background: var(--brand-navy-deep);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.workbench-window-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.window-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.window-dot.red { background: #FF5F56; }
+.window-dot.yellow { background: #FFBD2E; }
+.window-dot.green { background: #27C93F; }
+
+.workbench-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--terminal-muted);
+}
+
+.workbench-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brand-teal-light);
+  box-shadow: 0 0 8px var(--brand-teal-light);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.9); }
+}
+
+.workbench-presets {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.preset-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #CBD5E1;
+  font-family: var(--font-mono);
+  font-size: 0.725rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.preset-chip:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.preset-chip.active {
+  background: rgba(0, 163, 166, 0.25);
+  color: #00E5BE;
+  border-color: var(--brand-teal-light);
+  font-weight: 600;
+  box-shadow: 0 0 12px rgba(0, 196, 180, 0.3);
+}
+
+.workbench-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.workbench-pane {
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.workbench-pane:first-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  background: #061630;
+}
+
+.pane-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pane-code-area {
+  width: 100%;
+  background: var(--brand-navy-deep);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  color: #38BDF8;
+  font-family: var(--font-mono);
+  font-size: 0.825rem;
+  line-height: 1.5;
+  padding: 1rem;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.pane-code-area:focus {
+  border-color: var(--brand-teal-light);
+  box-shadow: 0 0 15px rgba(0, 196, 180, 0.25);
+}
+
+/* ==========================================================================
+   Sections, Cards & Grids
+   ========================================================================== */
+.section {
+  padding: 5.5rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.section-alt {
+  background: #F1F5F9;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.section-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3.5rem;
+}
+
+.section-head h2 {
+  margin-bottom: 0.85rem;
+}
+
+.section-head p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Feature Cards */
+.card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand-teal);
+  box-shadow: var(--shadow-lg), 0 0 20px -5px rgba(0, 163, 166, 0.15);
+}
+
+.card-icon-wrap {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-md);
+  background: var(--brand-teal-subtle);
+  border: 1px solid var(--brand-teal-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-teal);
+  margin-bottom: 1.25rem;
+  transition: transform 0.25s ease;
+}
+
+.card:hover .card-icon-wrap {
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(0, 163, 166, 0.25);
+}
+
+/* ==========================================================================
+   Table & Threat Matrix
+   ========================================================================== */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  background: #FFFFFF;
+  box-shadow: var(--shadow-sm);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.table th {
+  padding: 1.1rem 1.25rem;
+  background: #F8FAFC;
+  color: var(--brand-navy);
+  font-family: var(--font-mono);
+  font-size: 0.775rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.table td {
+  padding: 1.15rem 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  vertical-align: middle;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table tr:hover td {
+  background: #F8FAFC;
+}
+
+.cell-highlight {
+  color: var(--brand-navy) !important;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Final Call To Action Box (Brand Navy Deep Tone)
+   ========================================================================== */
+.final-cta-box {
+  background: radial-gradient(ellipse 70% 60% at 50% -10%, rgba(0, 196, 180, 0.25), transparent 70%), var(--brand-navy);
+  border: 1px solid rgba(0, 196, 180, 0.35);
+  border-radius: var(--radius-xl);
+  padding: 4.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 24px 60px -12px rgba(5, 19, 41, 0.45);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Footer (Deep Brand Navy)
+   ========================================================================== */
+.site-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--brand-navy-deep);
+  color: #CBD5E1;
+  padding: 4.5rem 0 2.5rem;
+  margin-top: auto;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3.5rem;
+}
+
+.footer-col-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-link {
+  color: #94A3B8;
+  font-size: 0.85rem;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: var(--brand-teal-light);
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 2rem;
+  font-size: 0.8rem;
+  color: #64748B;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ==========================================================================
+   Responsive UI/UX Adaptations
+   ========================================================================== */
+@media (max-width: 992px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(1, 1fr); }
+  .metrics-ribbon { grid-template-columns: repeat(2, 1fr); }
+  .workbench-grid { grid-template-columns: 1fr; }
+  .workbench-pane:first-child { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav-links, .header-actions { display: none; }
+  .mobile-toggle { display: block; }
+  .grid-2, .grid-4 { grid-template-columns: 1fr; }
+  .metrics-ribbon { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}

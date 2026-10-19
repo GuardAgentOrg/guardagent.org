@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Policies — GuardAgent Beta</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Sidebar -->
+    <aside class="app-sidebar">
+      <div class="sidebar-header">
+        <a href="/" class="sidebar-brand">
+          <img src="/assets/images/logo.png" alt="GuardAgent Logo">
+          <span>GuardAgent</span>
+        </a>
+        <div class="workspace-badge">
+          <div class="workspace-dot"></div>
+          <span>Production Core SOC</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Security Gateway</div>
+        <a href="/app/" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+          Overview
+        </a>
+        <a href="/app/agents.html" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+          AI Agents
+        </a>
+        <a href="/app/policies.html" class="app-nav-item active">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+          Security Policies
+        </a>
+        <a href="/app/risk-analysis.html" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+          Risk Analysis
+        </a>
+        <a href="/app/approvals.html" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+          Approval Requests
+        </a>
+
+        <div class="nav-section-title" style="margin-top: 1rem;">Governance &amp; Observability</div>
+        <a href="/app/audit-logs.html" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          Audit Logs
+        </a>
+        <a href="/app/alerts.html" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+          Alerts
+        </a>
+        <a href="/app/settings.html" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile-summary">
+          <div class="user-avatar">S</div>
+          <div class="user-meta">
+            <span class="user-name">Sarah Chen</span>
+            <span class="user-role">SOC ARCHITECT</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="app-main">
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <div class="topbar-title-group">
+            <h1>Security Guardrail Policies</h1>
+            <p>Rules enforced by the security engine before tools are dispatched.</p>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button class="btn btn-primary btn-sm" onclick="window.app.openModal('createPolicyModal')">
+            + New Security Policy
+          </button>
+        </div>
+      </header>
+
+      <main class="app-content">
+
+        <!-- Critical Security Notice -->
+        <div class="alert-banner alert-banner-info">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <div>
+            <strong>Server-Side Enforcement Notice:</strong> All policy evaluations and threshold triggers occur strictly within the backend Node.js security pipeline. Disabling a rule immediately reflects in the live gateway evaluator.
+          </div>
+        </div>
+
+        <!-- Policy Table -->
+        <div class="card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+            <div>
+              <h3 style="font-size: 1.05rem;">Active Policies Ledger</h3>
+              <small>Policies determine whether actions are Allowed, Blocked, or Escalated for human review.</small>
+            </div>
+            <span id="policyCountBadge" class="badge badge-teal">6 Rules Configured</span>
+          </div>
+
+          <div class="table-wrapper">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Policy Name</th>
+                  <th>Identifier</th>
+                  <th>Severity</th>
+                  <th>Target Scope</th>
+                  <th>Risk Threshold</th>
+                  <th>Enforcement Action</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="policiesTableBody">
+                <tr><td colspan="8" class="text-center" style="padding: 2rem;">Loading policies...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+  </div>
+
+  <!-- Create Policy Modal -->
+  <div class="modal-overlay" id="createPolicyModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Define New Security Policy</h3>
+        <button onclick="window.app.closeModal('createPolicyModal')" style="background: none; border: none; font-size: 1.25rem; cursor: pointer;">&times;</button>
+      </div>
+      <form id="createPolicyForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="policyName">Policy Title</label>
+            <input type="text" id="policyName" class="form-input" placeholder="e.g. S3 Storage Bucket Lockdown" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="policyDesc">Description &amp; Threat Model</label>
+            <textarea id="policyDesc" class="form-textarea" rows="2" placeholder="e.g. Prevents agents from accessing private client backups or deleting objects."></textarea>
+          </div>
+
+          <div class="grid grid-2 gap-4">
+            <div class="form-group">
+              <label class="form-label" for="policyTarget">Target Tool Scope</label>
+              <select id="policyTarget" class="form-select">
+                <option value="all">All Tools (Global)</option>
+                <option value="db_read_query">db_read_query</option>
+                <option value="db_write_record">db_write_record</option>
+                <option value="external_api_call">external_api_call</option>
+                <option value="exec_code_sandbox">exec_code_sandbox</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="policySeverity">Severity</label>
+              <select id="policySeverity" class="form-select">
+                <option value="CRITICAL">CRITICAL</option>
+                <option value="HIGH" selected>HIGH</option>
+                <option value="MEDIUM">MEDIUM</option>
+                <option value="LOW">LOW</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-2 gap-4">
+            <div class="form-group">
+              <label class="form-label" for="policyThreshold">Risk Score Threshold (0–100)</label>
+              <input type="number" id="policyThreshold" class="form-input" value="70" min="1" max="100" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="policyEnforce">Enforcement Outcome</label>
+              <select id="policyEnforce" class="form-select">
+                <option value="REQUIRE_APPROVAL">REQUIRE_APPROVAL</option>
+                <option value="BLOCK">BLOCK</option>
+                <option value="ALERT">ALERT</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="window.app.closeModal('createPolicyModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create Policy Rule</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/app.js"></script>
+  <script>
+    async function loadPolicies() {
+      try {
+        const res = await window.api.getPolicies();
+        document.getElementById('policyCountBadge').textContent = `${res.count} Rules Configured`;
+        
+        const tbody = document.getElementById('policiesTableBody');
+        tbody.innerHTML = res.policies.map(pol => {
+          let sevBadge = 'badge-neutral';
+          if (pol.severity === 'CRITICAL') sevBadge = 'badge-block';
+          else if (pol.severity === 'HIGH') sevBadge = 'badge-approval';
+          else if (pol.severity === 'MEDIUM') sevBadge = 'badge-info';
+
+          return `
+            <tr>
+              <td>
+                <div style="font-weight: 600; color: #FFFFFF;">${pol.name}</div>
+                <small style="color: var(--text-muted);">${pol.description}</small>
+              </td>
+              <td class="mono" style="font-size: 0.775rem; color: #38BDF8;">${pol.policy_id}</td>
+              <td><span class="badge ${sevBadge}">${pol.severity}</span></td>
+              <td class="mono" style="font-size: 0.8rem; color: #E2E8F0;">${pol.target_tool}</td>
+              <td style="font-weight: 600; font-family: var(--font-mono); color: #FFFFFF;">&ge; ${pol.risk_threshold}</td>
+              <td>${window.app.renderDecisionBadge(pol.enforcement_action)}</td>
+              <td>
+                <span class="badge ${pol.status === 'active' ? 'badge-allow' : 'badge-neutral'}">
+                  <span class="badge-dot"></span>${pol.status.toUpperCase()}
+                </span>
+              </td>
+              <td>
+                <div style="display: flex; gap: 0.5rem;">
+                  <button class="btn btn-outline btn-sm" onclick="togglePolicy('${pol.id}', '${pol.status === 'active' ? 'disabled' : 'active'}')">
+                    ${pol.status === 'active' ? 'Disable' : 'Enable'}
+                  </button>
+                  <button class="btn btn-outline btn-sm" style="color: #EF4444;" onclick="deletePolicy('${pol.id}', '${pol.name}')">
+                    Delete
+                  </button>
+                </div>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      } catch (err) {
+        console.error('Failed to load policies:', err);
+      }
+    }
+
+    async function togglePolicy(id, newStatus) {
+      try {
+        await window.api.updatePolicy(id, { status: newStatus });
+        window.app.showToast(`Policy status updated to ${newStatus}`, 'success');
+        loadPolicies();
+      } catch (err) {
+        window.app.showToast(err.message, 'error');
+      }
+    }
+
+    async function deletePolicy(id, name) {
+      if (confirm(`Delete policy '${name}'? Actions matching this rule will no longer be intercepted.`)) {
+        try {
+          await window.api.deletePolicy(id);
+          window.app.showToast(`Policy deleted`, 'success');
+          loadPolicies();
+        } catch (err) {
+          window.app.showToast(err.message, 'error');
+        }
+      }
+    }
+
+    document.getElementById('createPolicyForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const payload = {
+        name: document.getElementById('policyName').value,
+        description: document.getElementById('policyDesc').value,
+        target_tool: document.getElementById('policyTarget').value,
+        severity: document.getElementById('policySeverity').value,
+        risk_threshold: document.getElementById('policyThreshold').value,
+        enforcement_action: document.getElementById('policyEnforce').value
+      };
+
+      try {
+        await window.api.createPolicy(payload);
+        window.app.closeModal('createPolicyModal');
+        window.app.showToast("New security policy created successfully", "success");
+        loadPolicies();
+      } catch (err) {
+        window.app.showToast(err.message, 'error');
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', loadPolicies);
+  </script>
+</body>
+</html>

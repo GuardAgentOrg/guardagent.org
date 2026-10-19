@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Enterprise Account — GuardAgent Gateway</title>
+  <meta name="description" content="Sign up for the GuardAgent AI Agent Security Platform SOC console.">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <style>
+    .auth-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2.5rem 1rem;
+      background-color: var(--bg-canvas);
+      position: relative;
+      overflow: hidden;
+    }
+    .auth-glow-grid {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      height: 500px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(circle at 50% 20%, black 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(circle at 50% 20%, black 20%, transparent 75%);
+      pointer-events: none;
+    }
+    .auth-card {
+      max-width: 480px;
+      width: 100%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-lg), 0 0 25px -5px rgba(0, 210, 180, 0.1);
+      position: relative;
+      z-index: 1;
+    }
+    .auth-alert {
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.825rem;
+      font-family: var(--font-mono);
+      margin-bottom: 1.25rem;
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .auth-alert-error {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #FCA5A5;
+    }
+    .auth-alert-success {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34D399;
+    }
+    .btn-loading {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="auth-page">
+  <div class="auth-glow-grid"></div>
+
+  <div class="auth-card">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <a href="/" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.65rem;">
+        <img src="/assets/images/logo.png" alt="GuardAgent Logo" style="height: 34px; width: auto; object-fit: contain;">
+        <span style="font-weight: 700; color: #FFFFFF; font-size: 1.15rem; letter-spacing: -0.02em;">GuardAgent</span>
+      </a>
+      <h2 style="font-size: 1.25rem; margin-top: 1.25rem; color: #FFFFFF;">Create Security Operations Workspace</h2>
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; font-family: var(--font-mono);">
+        CLUSTER // PROD-US-EAST-1
+      </p>
+    </div>
+
+    <!-- Alert Banner -->
+    <div id="signupAlert" class="auth-alert"></div>
+
+    <form id="signupForm">
+      <div class="form-group">
+        <label class="form-label" for="fullName">Lead Operator Name</label>
+        <input type="text" id="fullName" class="form-input" placeholder="Sarah Chen" required autocomplete="name">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="organization">Organization / Team Identity</label>
+        <input type="text" id="organization" class="form-input" placeholder="Acme Security Engineering" required autocomplete="organization">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email">Work Email</label>
+        <input type="email" id="email" class="form-input" placeholder="s.chen@acme-corp.com" required autocomplete="email">
+      </div>
+
+      <div class="grid grid-2 gap-3">
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input type="password" id="password" class="form-input" placeholder="Min. 8 chars" minlength="8" required autocomplete="new-password">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" class="form-input" placeholder="Repeat password" minlength="8" required autocomplete="new-password">
+        </div>
+      </div>
+
+      <button type="submit" id="submitBtn" class="btn btn-teal" style="width: 100%; padding: 0.75rem; margin-top: 0.5rem; font-size: 0.875rem;">
+        Initialize Workspace &amp; Launch Console &rarr;
+      </button>
+    </form>
+
+    <div style="margin-top: 1.75rem; text-align: center; font-size: 0.825rem; border-top: 1px solid var(--border-subtle); padding-top: 1.25rem;">
+      <span style="color: var(--text-muted);">Already enrolled?</span>
+      <a href="/login" style="font-weight: 600; color: var(--brand-teal); margin-left: 0.25rem;">Sign In</a>
+    </div>
+  </div>
+
+  <div style="margin-top: 2rem; font-size: 0.825rem; position: relative; z-index: 1;">
+    <a href="/" style="color: var(--text-muted); text-decoration: none; font-family: var(--font-mono);">&larr; Return to GuardAgent Gateway</a>
+  </div>
+
+  <script src="/assets/js/api.js"></script>
+  <script>
+    const alertBox = document.getElementById('signupAlert');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function showAlert(message, type) {
+      alertBox.textContent = message;
+      alertBox.className = 'auth-alert ' + (type === 'error' ? 'auth-alert-error' : 'auth-alert-success');
+      alertBox.style.display = 'flex';
+    }
+
+    document.getElementById('signupForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fullName = document.getElementById('fullName').value.trim();
+      const organization = document.getElementById('organization').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (password !== confirmPassword) {
+        showAlert("Passwords do not match. Please verify and retry.", "error");
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.classList.add('btn-loading');
+      submitBtn.textContent = 'Enrolling workspace...';
+      alertBox.style.display = 'none';
+
+      try {
+        const res = await window.api.signup({
+          full_name: fullName,
+          organization: organization,
+          email: email,
+          password: password
+        });
+
+        showAlert(res.message || "Account initialized! Loading SOC workspace...", "success");
+        setTimeout(() => {
+          window.location.href = '/app/';
+        }, 600);
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('btn-loading');
+        submitBtn.textContent = 'Initialize Workspace & Launch Console →';
+        showAlert(err.message || "Enrollment failed. Please check inputs and retry.", "error");
+      }
+    });
+  </script>
+</body>
+</html>

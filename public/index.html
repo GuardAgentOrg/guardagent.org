@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GuardAgent — Zero-Trust Security Gateway for Autonomous AI Agents</title>
+  <meta name="description" content="Authoritative security gateway and policy enforcement firewall for AI agents. Intercept tool calls, prevent SSRF and prompt injection, enforce financial caps, and maintain cryptographic audit logs.">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+</head>
+<body>
+
+  <!-- =========================================================================
+       Site Header / Navigation Bar
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-link" id="brandHeaderLink">
+        <img src="/assets/images/logo.png" alt="GuardAgent — AI Agent Security Platform" class="brand-logo" id="brandLogoImg">
+        <span class="brand-tag">GATEWAY v1.0</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="desktopNav">
+          <li><a href="/" class="nav-link active">Gateway</a></li>
+          <li><a href="/features" class="nav-link">Features</a></li>
+          <li><a href="/how-it-works" class="nav-link">Architecture</a></li>
+          <li><a href="/security" class="nav-link">Security Specs</a></li>
+          <li><a href="/docs" class="nav-link">Documentation</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="badge badge-allow" style="font-size: 0.75rem; padding: 0.3rem 0.75rem;" title="Gateway Telemetry Operational">
+          <span class="badge-dot"></span> 99.99% UP
+        </div>
+        <a href="/login" class="btn btn-outline btn-sm" id="navSignInBtn">Sign In</a>
+        <a href="/app/" class="btn btn-teal btn-sm" id="navLaunchConsoleBtn">Launch Console &rarr;</a>
+      </div>
+
+      <button class="mobile-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">
+        <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileNavMenu" style="display: none; flex-direction: column; gap: 0.85rem; padding: 1.25rem 1.5rem; background: var(--bg-surface); border-bottom: 1px solid var(--border-default);">
+      <a href="/" class="nav-link active">Gateway</a>
+      <a href="/features" class="nav-link">Features</a>
+      <a href="/how-it-works" class="nav-link">Architecture</a>
+      <a href="/security" class="nav-link">Security Specs</a>
+      <a href="/docs" class="nav-link">Documentation</a>
+      <div style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
+        <a href="/login" class="btn btn-outline btn-sm" style="flex: 1;">Sign In</a>
+        <a href="/app/" class="btn btn-teal btn-sm" style="flex: 1;">Console</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       Hero Section with Developer CLI Pill & Metrics
+       ========================================================================= -->
+  <section class="hero text-center">
+    <div class="hero-glow-grid"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      
+      <div class="hero-badge-pill">
+        <span class="badge-dot" style="background: var(--brand-emerald); width: 7px; height: 7px; border-radius: 50%;"></span>
+        <span>ZERO-TRUST ENFORCEMENT GATEWAY FOR LLM AGENTS</span>
+      </div>
+
+      <h1>
+        Secure Every Action Your <br><span class="gradient-teal">Autonomous AI Agents</span> Take.
+      </h1>
+
+      <p class="lead">
+        Intercept, inspect, and enforce deterministic policy guardrails on LLM tool invocations in real time. 
+        Prevent SSRF cloud breakouts, prompt injections, privilege escalations, and unapproved transactions before external actions execute.
+      </p>
+
+      <div class="hero-actions">
+        <a href="/app/" class="btn btn-teal btn-lg" id="heroExploreConsoleBtn">
+          Launch Developer Console &rarr;
+        </a>
+        <div class="cli-pill" onclick="navigator.clipboard.writeText('npm i @guardagent/sdk'); alert('Copied SDK command to clipboard: npm i @guardagent/sdk');" title="Click to copy install command">
+          <span style="color: var(--text-muted);">$</span>
+          <span>npm i @guardagent/sdk</span>
+          <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+        </div>
+        <a href="/docs" class="btn btn-outline btn-lg" id="heroDocsBtn">
+          Architecture Docs
+        </a>
+      </div>
+
+      <!-- Metrics Ribbon -->
+      <div class="metrics-ribbon">
+        <div class="metric-ribbon-card">
+          <div class="metric-ribbon-val" style="color: var(--brand-emerald);">&lt; 3.2ms</div>
+          <div class="metric-ribbon-label">p99 Gateway Latency</div>
+        </div>
+        <div class="metric-ribbon-card">
+          <div class="metric-ribbon-val" style="color: var(--brand-cyan);">100%</div>
+          <div class="metric-ribbon-label">Deterministic (Zero Hallucinations)</div>
+        </div>
+        <div class="metric-ribbon-card">
+          <div class="metric-ribbon-val" style="color: #A78BFA;">OWASP</div>
+          <div class="metric-ribbon-label">LLM Top 10 Attack Shield</div>
+        </div>
+        <div class="metric-ribbon-card">
+          <div class="metric-ribbon-val" style="color: #FFFFFF;">SHA-256</div>
+          <div class="metric-ribbon-label">Cryptographic Audit Ledger</div>
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           Interactive Developer Gateway Simulator Workbench
+           ===================================================================== -->
+      <div class="workbench-shell" id="simulator-section">
+        <div class="workbench-topbar">
+          <div class="workbench-window-controls">
+            <span class="window-dot red"></span>
+            <span class="window-dot yellow"></span>
+            <span class="window-dot green"></span>
+          </div>
+
+          <div class="workbench-meta">
+            <span class="workbench-status-dot"></span>
+            <span>gateway.guardagent.internal:8443</span>
+            <span style="color: var(--border-strong);">|</span>
+            <span>p99: <strong style="color: #38BDF8;">3.2ms</strong></span>
+            <span style="color: var(--border-strong);">|</span>
+            <span>gRPC / HTTPS</span>
+          </div>
+
+          <div class="workbench-presets">
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); margin-right: 0.35rem;">TEST SCENARIOS:</span>
+            <button class="preset-chip active" data-preset="safe_read" id="presetSafeRead">1. Safe DB Query (ALLOW)</button>
+            <button class="preset-chip" data-preset="financial_escalation" id="presetFinancial">2. Financial Overcap (APPROVE)</button>
+            <button class="preset-chip" data-preset="ssrf_attack" id="presetSsrf">3. AWS Metadata SSRF (BLOCK)</button>
+            <button class="preset-chip" data-preset="prompt_injection" id="presetInjection">4. Prompt Injection (BLOCK)</button>
+          </div>
+        </div>
+
+        <div class="workbench-grid">
+          <!-- Left: Payload Editor -->
+          <div class="workbench-pane">
+            <div class="pane-header">
+              <span>Agent Request Payload (JSON)</span>
+              <span class="mono" style="color: #38BDF8;">POST /api/requests/evaluate</span>
+            </div>
+            <textarea id="simulatorPayload" class="pane-code-area" rows="10" spellcheck="false"></textarea>
+            <div style="display: flex; gap: 0.75rem; margin-top: 0.85rem;">
+              <button id="runSimulatorBtn" class="btn btn-teal btn-sm" style="flex: 1;">
+                Evaluate Request via Gateway &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: Real Gateway Trace Verdict -->
+          <div class="workbench-pane" style="background: #060B18;">
+            <div class="pane-header">
+              <span>Gateway Decision &amp; Audit Trace</span>
+              <span class="mono" style="color: #10B981;">Live Security Engine</span>
+            </div>
+            <div id="simulatorResult" style="min-height: 260px; display: flex; flex-direction: column; justify-content: center;">
+              <!-- Populated live via /api/requests/evaluate -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Architecture & Zero-Trust Verification Pipeline
+       ========================================================================= -->
+  <section class="section section-alt" id="architecture">
+    <div class="container">
+      <div class="section-head">
+        <h2>Deterministic Enforcement at the Gateway Layer</h2>
+        <p>GuardAgent sits between autonomous AI agents and enterprise infrastructure, terminating unconstrained direct execution privileges.</p>
+      </div>
+
+      <div class="grid grid-4">
+        
+        <div class="card">
+          <div class="card-icon-wrap">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 0.725rem; color: #38BDF8; margin-bottom: 0.5rem;">STAGE 01 // INGESTION</div>
+          <h3 style="margin-bottom: 0.6rem;">Agent Identity &amp; RBAC</h3>
+          <p style="font-size: 0.875rem; line-height: 1.6;">
+            Cryptographic agent tokens authenticate principal identity. Suspended, rate-limited, or unauthorized agents are rejected before payload parsing.
+          </p>
+          <div style="margin-top: 1.25rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
+            <code>agt_principal</code> • Zero-trust mTLS
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon-wrap" style="color: var(--brand-emerald); background: rgba(0, 245, 160, 0.1); border-color: rgba(0, 245, 160, 0.3);">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 0.725rem; color: var(--brand-emerald); margin-bottom: 0.5rem;">STAGE 02 // SANITIZATION</div>
+          <h3 style="margin-bottom: 0.6rem;">Deep Payload Sanitizer</h3>
+          <p style="font-size: 0.875rem; line-height: 1.6;">
+            Parses parameters for cloud metadata SSRF (<code style="font-size: 0.75rem;">169.254.169.254</code>), SQL injection patterns, shell command chaining, and exfiltration webhooks.
+          </p>
+          <div style="margin-top: 1.25rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
+            AST &amp; Regex Engine • &lt;1.2ms
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon-wrap" style="color: #F59E0B; background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.3);">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 0.725rem; color: #F59E0B; margin-bottom: 0.5rem;">STAGE 03 // POLICY ENGINE</div>
+          <h3 style="margin-bottom: 0.6rem;">Rule Matrix &amp; Risk Scoring</h3>
+          <p style="font-size: 0.875rem; line-height: 1.6;">
+            Evaluates financial velocity caps, database row ceilings, and sensitive tool allowlists. Generates an explainable risk score (0–100) with full audit factors.
+          </p>
+          <div style="margin-top: 1.25rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
+            Zero Hallucination • Deterministic
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon-wrap" style="color: #8B5CF6; background: rgba(139, 92, 246, 0.1); border-color: rgba(139, 92, 246, 0.3);">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 0.725rem; color: #8B5CF6; margin-bottom: 0.5rem;">STAGE 04 // GOVERNANCE</div>
+          <h3 style="margin-bottom: 0.6rem;">Dual Approvals &amp; Ledger</h3>
+          <p style="font-size: 0.875rem; line-height: 1.6;">
+            High-risk transactions pause in the SecOps approval queue for human authorization. Every invocation is sealed in an immutable cryptographic audit ledger.
+          </p>
+          <div style="margin-top: 1.25rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
+            Human-in-the-Loop • SHA-256 Trace
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Core Platform Capabilities Grid
+       ========================================================================= -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-head">
+        <h2>Engineered for Mission-Critical AI Workflows</h2>
+        <p>Comprehensive protection across all autonomous agent tool execution boundaries.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-icon-wrap">
+            <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </div>
+          <h3>Sub-4ms In-Memory Execution</h3>
+          <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+            No cold starts, no LLM latency penalties. GuardAgent compiles security policies into native AST filters for instantaneous evaluation.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon-wrap" style="color: var(--brand-cyan); background: rgba(0, 216, 246, 0.1); border-color: rgba(0, 216, 246, 0.3);">
+            <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <h3>Financial Velocity Guardrails</h3>
+          <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+            Prevent runaway loops and excessive refunds. Enforce per-agent spending limits, daily budget quotas, and mandatory dual-custody thresholds.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon-wrap" style="color: #FF4444; background: rgba(255, 68, 68, 0.1); border-color: rgba(255, 68, 68, 0.3);">
+            <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path></svg>
+          </div>
+          <h3>SSRF &amp; Egress Isolation</h3>
+          <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+            Strictly block cloud instance metadata endpoints (169.254.169.254), internal RFC-1918 subnets, and unvetted external webhooks.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon-wrap" style="color: #10B981; background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3);">
+            <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+          </div>
+          <h3>SQL Injection &amp; Row Caps</h3>
+          <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+            Inspect dynamic queries, enforce strict column access allowlists, and cap result sets to prevent full database exfiltration.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon-wrap" style="color: #A78BFA; background: rgba(167, 139, 250, 0.1); border-color: rgba(167, 139, 250, 0.3);">
+            <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          </div>
+          <h3>Human-in-the-Loop Review</h3>
+          <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+            Route elevated actions to Slack, Microsoft Teams, or web console for 1-click human verification before tool execution resumes.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon-wrap" style="color: #38BDF8; background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.3);">
+            <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+          </div>
+          <h3>SOC2 &amp; OpenTelemetry Tracing</h3>
+          <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+            Native OTel spans export seamlessly to Datadog, Splunk, or Honeycomb. Cryptographically chained ledger guarantees tamper resistance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       OWASP Top 10 for LLMs Threat Matrix
+       ========================================================================= -->
+  <section class="section section-alt" id="threat-matrix">
+    <div class="container">
+      <div class="section-head">
+        <h2>OWASP Top 10 for LLMs Protection Matrix</h2>
+        <p>GuardAgent applies server-side technical barriers against generative AI attack vectors.</p>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>OWASP LLM Vector</th>
+              <th>Attack Surface &amp; Real-World Threat</th>
+              <th>GuardAgent Gateway Defense Primitives</th>
+              <th>Enforcement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cell-highlight mono">LLM01: Prompt Injection</td>
+              <td>Indirect prompt injection in ingested emails triggering unauthorized tool execution.</td>
+              <td>AST payload parameter sanitizer, forbidden command regex, and schema validation.</td>
+              <td><span class="badge badge-block"><span class="badge-dot"></span> BLOCK</span></td>
+            </tr>
+            <tr>
+              <td class="cell-highlight mono">LLM02: Sensitive Data Leak</td>
+              <td>Agent reads full database dump instead of targeted record, exposing customer PII.</td>
+              <td>Policy SQL row limit cap (max 50 rows) and column allowlists.</td>
+              <td><span class="badge badge-block"><span class="badge-dot"></span> ENFORCE CAP</span></td>
+            </tr>
+            <tr>
+              <td class="cell-highlight mono">LLM06: Excessive Agency</td>
+              <td>Agent autonomous loop executing destructive refunds or deleting cloud resources.</td>
+              <td>Mandatory dual-authorization threshold routing to human security officers.</td>
+              <td><span class="badge badge-approval"><span class="badge-dot"></span> APPROVAL</span></td>
+            </tr>
+            <tr>
+              <td class="cell-highlight mono">LLM08: Vector &amp; Tool SSRF</td>
+              <td>Agent weaponized by user prompt to fetch cloud metadata at <code style="font-size: 0.75rem;">169.254.169.254</code>.</td>
+              <td>Strict egress IP blocklists, RFC-1918 private subnet isolation, and domain allowlists.</td>
+              <td><span class="badge badge-block"><span class="badge-dot"></span> HARD DENY</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Drop-in SDK Integration Section
+       ========================================================================= -->
+  <section class="section" id="integration">
+    <div class="container">
+      <div class="section-head">
+        <h2>Drop-in SDK Integration</h2>
+        <p>Wrap standard AI tool calls with GuardAgent gateway checks in 3 lines of code.</p>
+      </div>
+
+      <div class="workbench-shell" style="max-width: 980px;">
+        <div class="workbench-topbar">
+          <div style="display: flex; gap: 0.5rem;">
+            <span class="badge badge-teal" style="font-size: 0.75rem;">PYTHON (LANGCHAIN / CREWAI)</span>
+            <span class="badge badge-neutral" style="font-size: 0.75rem;">TYPESCRIPT / NODE.JS</span>
+            <span class="badge badge-neutral" style="font-size: 0.75rem;">RAW REST PROXY</span>
+          </div>
+          <span class="mono" style="font-size: 0.75rem; color: var(--text-muted);">sdk_version: 1.4.2</span>
+        </div>
+
+        <div style="padding: 1.75rem; background: var(--bg-inset);">
+          <pre style="border: none; background: transparent; padding: 0; margin: 0;"><code class="language-python" style="background: transparent; border: none; padding: 0; color: #E2E8F0; font-size: 0.875rem;">from guardagent import GuardAgentGateway, PolicyViolationError
+
+# Initialize authoritative gateway client
+guard = GuardAgentGateway(api_key="ga_live_7a9f81...", endpoint="https://gateway.guardagent.internal:8443")
+
+@tool
+def execute_agent_transfer(account_id: str, amount_usd: float):
+    """Enforces zero-trust financial boundaries before calling banking ledger."""
+    decision = guard.evaluate(
+        agent_id="agt-finance-core-01",
+        tool_name="bank_wire_transfer",
+        parameters={"account_id": account_id, "amount_usd": amount_usd}
+    )
+    
+    if decision.is_blocked:
+        raise PolicyViolationError(f"Action blocked by policy: {decision.rationale}")
+        
+    if decision.requires_approval:
+        return f"Escrow transfer paused. Awaiting human approval token [ID: {decision.request_id}]"
+
+    return banking_service.dispatch(account_id, amount_usd)</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Final Call to Action
+       ========================================================================= -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="final-cta-box">
+        <h2 style="font-size: clamp(2rem, 4vw, 2.75rem); color: #FFFFFF; margin-bottom: 1rem; font-weight: 800;">
+          Put Zero-Trust Security Between Your Agents and Production.
+        </h2>
+        <p style="font-size: 1.1rem; color: #CBD5E1; max-width: 680px; margin: 0 auto 2.5rem; line-height: 1.6;">
+          Deploy GuardAgent in minutes. Eliminate tool call SSRF, unauthorized financial transfers, and prompt injection breakouts today.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap;">
+          <a href="/app/" class="btn btn-teal btn-lg" id="finalCtaGetStarted">Launch Developer Console &rarr;</a>
+          <a href="/docs/quickstart" class="btn btn-outline btn-lg" id="finalCtaQuickstart">Read Quickstart Guide</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Site Footer
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="margin-bottom: 1rem;">
+            <div style="background: #FFFFFF; display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.25);">
+              <img src="/assets/images/logo.png" alt="GuardAgent — AI Agent Security Platform" style="height: 26px; width: auto; display: block;">
+            </div>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: 320px;">
+            The zero-trust security gateway and deterministic policy firewall between autonomous AI agents and enterprise infrastructure.
+          </p>
+          <div style="margin-top: 1rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-subtle);">
+            SOC2 TYPE II ALIGNED • OPENTELEMETRY READY
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Platform</div>
+          <ul class="footer-links">
+            <li><a href="/features" class="footer-link">Core Features</a></li>
+            <li><a href="/how-it-works" class="footer-link">Gateway Architecture</a></li>
+            <li><a href="/security" class="footer-link">Security Specs</a></li>
+            <li><a href="/app/" class="footer-link">SOC Console</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Developers</div>
+          <ul class="footer-links">
+            <li><a href="/docs" class="footer-link">Documentation</a></li>
+            <li><a href="/docs/quickstart" class="footer-link">Quickstart Guide</a></li>
+            <li><a href="/api/health" class="footer-link" target="_blank">Health Check API</a></li>
+            <li><a href="/docs#sdk" class="footer-link">Python &amp; Node SDKs</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">System Status</div>
+          <ul class="footer-links">
+            <li style="display: flex; align-items: center; gap: 0.45rem; color: #10B981; font-family: var(--font-mono); font-size: 0.8rem;">
+              <span class="badge-dot" style="background: #10B981;"></span> All Systems Operational
+            </li>
+            <li style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.5rem;">Gateway Latency: 3.2ms p99</li>
+            <li style="color: var(--text-muted); font-size: 0.8rem;">Cluster: us-east-1 (Prod)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 GuardAgent Security Inc. All rights reserved.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="/docs#privacy" class="footer-link">Privacy Policy</a>
+          <a href="/docs#terms" class="footer-link">Terms of Service</a>
+          <a href="/docs#disclosure" class="footer-link">Responsible Disclosure</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/marketing.js"></script>
+</body>
+</html>

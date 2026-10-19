@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings &amp; Workspace — GuardAgent Beta</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Sidebar -->
+    <aside class="app-sidebar">
+      <div class="sidebar-header">
+        <a href="/" class="sidebar-brand">
+          <img src="/assets/images/logo.png" alt="GuardAgent Logo">
+          <span>GuardAgent</span>
+        </a>
+        <div class="workspace-badge">
+          <div class="workspace-dot"></div>
+          <span>Production Core SOC</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Security Gateway</div>
+        <a href="/app/" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+          Overview
+        </a>
+        <a href="/app/agents.html" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+          AI Agents
+        </a>
+        <a href="/app/policies.html" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+          Security Policies
+        </a>
+        <a href="/app/risk-analysis.html" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+          Risk Analysis
+        </a>
+        <a href="/app/approvals.html" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+          Approval Requests
+        </a>
+
+        <div class="nav-section-title" style="margin-top: 1rem;">Governance &amp; Observability</div>
+        <a href="/app/audit-logs.html" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          Audit Logs
+        </a>
+        <a href="/app/alerts.html" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+          Alerts
+        </a>
+        <a href="/app/settings.html" class="app-nav-item active">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile-summary">
+          <div class="user-avatar">S</div>
+          <div class="user-meta">
+            <span class="user-name">Sarah Chen</span>
+            <span class="user-role">SOC ARCHITECT</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="app-main">
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <div class="topbar-title-group">
+            <h1>Platform &amp; Workspace Settings</h1>
+            <p>Environment configuration, identity credentials, and database connectivity.</p>
+          </div>
+        </div>
+      </header>
+
+      <main class="app-content">
+
+        <div class="grid grid-2 gap-6">
+          
+          <!-- User Profile & Org -->
+          <div class="card">
+            <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">Operator Profile &amp; Role</h3>
+            
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-input" value="Sarah Chen" readonly>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-input" value="security.lead@enterprise.guardagent.ai" readonly>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Assigned SOC Role</label>
+              <input type="text" class="form-input" value="Lead Security Architect (Full Authorization)" readonly>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Organization Workspace</label>
+              <input type="text" class="form-input" value="GuardAgent Global SOC &bull; Production Core" readonly>
+            </div>
+          </div>
+
+          <!-- Database & Infrastructure Connectivity -->
+          <div class="card">
+            <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">System Architecture &amp; Persistence</h3>
+            
+            <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.875rem;">
+              <div style="display: flex; justify-content: space-between; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-subtle);">
+                <span style="color: var(--text-muted);">Active Engine:</span>
+                <span class="badge badge-allow"><span class="badge-dot"></span>Node.js Express Security Gateway</span>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-subtle);">
+                <span style="color: var(--text-muted);">Database Store:</span>
+                <span class="badge badge-approval" id="dbStatusBadge"><span class="badge-dot"></span>Local Verified Store</span>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-subtle);">
+                <span style="color: var(--text-muted);">Audit Immutability:</span>
+                <span class="badge badge-teal">Enforced (Append-Only)</span>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-subtle);">
+                <span style="color: var(--text-muted);">Secret Masking:</span>
+                <span class="badge badge-teal">100% Client-Side Masked</span>
+              </div>
+            </div>
+
+            <div class="alert-banner alert-banner-info" style="margin-top: 1.5rem; margin-bottom: 0;">
+              <small>
+                <strong>Security Guard:</strong> Privileged credentials (such as <code>SUPABASE_SERVICE_ROLE_KEY</code> or agent signing secrets) are strictly isolated in server environment memory and are never serialized or sent to the browser.
+              </small>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- API Integration Guide -->
+        <div class="card" style="margin-top: 2rem;">
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Agent Gateway Integration Snippet</h3>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">
+            Configure your autonomous agents to route tool invocations through the GuardAgent proxy:
+          </p>
+
+          <pre class="mono" style="background: #0B1220; color: #E2E8F0; padding: 1rem; border-radius: 6px; font-size: 0.825rem; overflow-x: auto; line-height: 1.5;">
+import requests
+
+def execute_agent_tool(agent_id, tool_name, action_name, parameters):
+    url = "http://localhost:3000/api/requests/evaluate"
+    headers = { "Content-Type": "application/json" }
+    payload = {
+        "agent_id": agent_id,
+        "tool_name": tool_name,
+        "action_name": action_name,
+        "parameters": parameters
+    }
+    response = requests.post(url, json=payload, headers=headers).json()
+    
+    if response["decision"] == "ALLOW":
+        return response["execution"]["result"]
+    elif response["decision"] == "REQUIRE_APPROVAL":
+        print(f"Action escalated to Human-in-the-Loop review queue. Request ID: {response['request_id']}")
+        return None
+    else:
+        raise PermissionError(f"Action blocked by GuardAgent: {response['rationale']}")
+          </pre>
+        </div>
+
+      </main>
+    </div>
+
+  </div>
+
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/app.js"></script>
+</body>
+</html>

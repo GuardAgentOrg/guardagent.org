@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Alerts — GuardAgent Beta</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Sidebar -->
+    <aside class="app-sidebar">
+      <div class="sidebar-header">
+        <a href="/" class="sidebar-brand">
+          <img src="/assets/images/logo.png" alt="GuardAgent Logo">
+          <span>GuardAgent</span>
+        </a>
+        <div class="workspace-badge">
+          <div class="workspace-dot"></div>
+          <span>Production Core SOC</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Security Gateway</div>
+        <a href="/app/" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+          Overview
+        </a>
+        <a href="/app/agents.html" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+          AI Agents
+        </a>
+        <a href="/app/policies.html" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+          Security Policies
+        </a>
+        <a href="/app/risk-analysis.html" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+          Risk Analysis
+        </a>
+        <a href="/app/approvals.html" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+          Approval Requests
+        </a>
+
+        <div class="nav-section-title" style="margin-top: 1rem;">Governance &amp; Observability</div>
+        <a href="/app/audit-logs.html" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          Audit Logs
+        </a>
+        <a href="/app/alerts.html" class="app-nav-item active">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+          Alerts
+        </a>
+        <a href="/app/settings.html" class="app-nav-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile-summary">
+          <div class="user-avatar">S</div>
+          <div class="user-meta">
+            <span class="user-name">Sarah Chen</span>
+            <span class="user-role">SOC ARCHITECT</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="app-main">
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <div class="topbar-title-group">
+            <h1>Active Security Alerts</h1>
+            <p>Interception incidents, repeat policy violations, and escalated risks.</p>
+          </div>
+        </div>
+      </header>
+
+      <main class="app-content">
+
+        <div id="alertsListContainer" style="display: flex; flex-direction: column; gap: 1rem;">
+          <div style="text-align: center; padding: 3rem; color: #64748B;">Loading security alerts...</div>
+        </div>
+
+      </main>
+    </div>
+
+  </div>
+
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/app.js"></script>
+  <script>
+    async function loadAlerts() {
+      const container = document.getElementById('alertsListContainer');
+      try {
+        const res = await window.api.getAlerts();
+        
+        if (res.alerts.length === 0) {
+          container.innerHTML = `
+            <div class="card text-center" style="padding: 3.5rem;">
+              <h4 style="color: #16A34A;">All Clear</h4>
+              <p style="font-size: 0.85rem; color: #94A3B8;">No active security incident alerts.</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = res.alerts.map(al => {
+          let sevColor = al.severity === 'CRITICAL' ? '#EF4444' : (al.severity === 'HIGH' ? '#F59E0B' : '#38BDF8');
+          let sevBadge = al.severity === 'CRITICAL' ? 'badge-block' : (al.severity === 'HIGH' ? 'badge-approval' : 'badge-info');
+
+          return `
+            <div class="card" style="border-left: 4px solid ${sevColor}; display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap;">
+              <div style="flex: 1; min-width: 260px;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; flex-wrap: wrap;">
+                  <span class="badge ${sevBadge}"><span class="badge-dot"></span>${al.severity}</span>
+                  <span class="mono" style="font-size: 0.75rem; color: #38BDF8;">${al.alert_id}</span>
+                  <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--text-muted);">&bull; ${new Date(al.created_at).toLocaleString()}</span>
+                </div>
+                <h3 style="font-size: 1.05rem; color: #FFFFFF; margin-bottom: 0.35rem;">${al.title}</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.75rem;">${al.description}</p>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">
+                  Associated Agent: <strong style="color: #FFFFFF;">${al.agent_name || 'N/A'}</strong> <span class="mono" style="color: #38BDF8;">(${al.agent_id || 'system'})</span>
+                </div>
+              </div>
+
+              <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem;">
+                <span class="badge ${al.status === 'OPEN' ? 'badge-block' : 'badge-allow'}">
+                  <span class="badge-dot"></span>${al.status}
+                </span>
+                ${al.status === 'OPEN' ? `
+                  <button class="btn btn-outline btn-sm" onclick="ackAlert('${al.alert_id}')">
+                    Acknowledge
+                  </button>
+                ` : `
+                  <small style="color: var(--status-allow); font-family: var(--font-mono);">✓ Acknowledged</small>
+                `}
+              </div>
+            </div>
+          `;
+        }).join('');
+
+      } catch (err) {
+        container.innerHTML = `<div class="alert-banner alert-banner-warning">Failed to load alerts: ${err.message}</div>`;
+      }
+    }
+
+    async function ackAlert(alertId) {
+      try {
+        await window.api.acknowledgeAlert(alertId, 'ACKNOWLEDGED');
+        window.app.showToast('Alert acknowledged', 'success');
+        loadAlerts();
+      } catch (err) {
+        window.app.showToast(err.message, 'error');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadAlerts);
+  </script>
+</body>
+</html>

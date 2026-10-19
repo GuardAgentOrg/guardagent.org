@@ -1,0 +1,26 @@
+{
+  "name": "guardagent",
+  "version": "1.0.0",
+  "description": "GuardAgent — AI Agent Security Platform (Beta)",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node server/index.js",
+    "test": "node tests/test-api.js"
+  },
+  "keywords": [
+    "ai-agent",
+    "security",
+    "governance",
+    "policy-enforcement",
+    "risk-analysis"
+  ],
+  "author": "GuardAgent Team",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}

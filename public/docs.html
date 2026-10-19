@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Documentation — GuardAgent AI Agent Security Platform</title>
+  <meta name="description" content="Technical documentation for GuardAgent: Gateway architecture, authentication, agent registration, policy engine, risk evaluation, approval workflows, audit logs, and REST API reference.">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <style>
+    .docs-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 3.5rem;
+      padding: 3rem 0 5rem;
+    }
+    .docs-sidebar {
+      position: sticky;
+      top: 5.5rem;
+      height: calc(100vh - 7rem);
+      overflow-y: auto;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      scrollbar-width: thin;
+    }
+    .docs-sidebar h5 {
+      font-size: 0.725rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .docs-sidebar ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.825rem;
+    }
+    .docs-sidebar a {
+      color: var(--text-secondary);
+      display: block;
+      padding: 0.4rem 0.65rem;
+      border-radius: var(--radius-xs);
+      text-decoration: none;
+      transition: all 0.12s ease;
+      line-height: 1.4;
+    }
+    .docs-sidebar a:hover {
+      color: #FFFFFF;
+      background-color: var(--bg-surface-elevated);
+    }
+    .docs-sidebar a.active {
+      color: var(--brand-teal);
+      background-color: rgba(0, 210, 180, 0.08);
+      font-weight: 600;
+    }
+    .docs-content {
+      max-width: 860px;
+    }
+    .docs-content section {
+      margin-bottom: 4rem;
+      scroll-margin-top: 6rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .docs-content section:last-child {
+      border-bottom: none;
+    }
+    .docs-content h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .docs-content h3 {
+      font-size: 1.2rem;
+      margin: 1.75rem 0 0.75rem;
+      color: #FFFFFF;
+    }
+    .docs-content p {
+      font-size: 0.925rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+    .doc-section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: var(--bg-surface-elevated);
+      border: 1px solid rgba(0, 210, 180, 0.3);
+      color: var(--brand-teal);
+      font-size: 0.75rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      flex-shrink: 0;
+    }
+    .code-block {
+      background-color: var(--bg-inset);
+      color: #E2E8F0;
+      padding: 1.25rem;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.825rem;
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+      line-height: 1.6;
+      border: 1px solid var(--border-default);
+    }
+    .code-block .keyword { color: #00D2B4; font-weight: 600; }
+    .code-block .string { color: #FDE047; }
+    .code-block .number { color: #F472B6; }
+    .code-block .comment { color: var(--text-muted); }
+    .endpoint-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-default);
+      margin-bottom: 0.75rem;
+    }
+    .method-get { color: #38BDF8; font-weight: 700; }
+    .method-post { color: #10B981; font-weight: 700; }
+    .method-patch { color: #F59E0B; font-weight: 700; }
+    .method-delete { color: #EF4444; font-weight: 700; }
+    .callout {
+      background: rgba(0, 210, 180, 0.06);
+      border: 1px solid rgba(0, 210, 180, 0.2);
+      border-left: 3px solid var(--brand-teal);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      font-size: 0.875rem;
+      margin: 1.25rem 0;
+      color: var(--text-primary);
+    }
+    .callout-warning {
+      background: rgba(245, 158, 11, 0.06);
+      border-color: rgba(245, 158, 11, 0.2);
+      border-left-color: #F59E0B;
+      color: #FCD34D;
+    }
+    @media (max-width: 900px) {
+      .docs-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .docs-sidebar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================================
+       SECTION 1: Header and Navigation (Global Consistent)
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-link" id="brandHeaderLink">
+        <img src="/assets/images/logo.png" alt="GuardAgent Official Logo" class="brand-logo" id="brandLogoImg">
+        <span class="brand-tag">BETA</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="desktopNav">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/features" class="nav-link">Features</a></li>
+          <li><a href="/how-it-works" class="nav-link">How It Works</a></li>
+          <li><a href="/security" class="nav-link">Security Architecture</a></li>
+          <li><a href="/docs" class="nav-link active">Documentation</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/login" class="btn btn-outline btn-sm" id="navSignInBtn">Sign In</a>
+        <a href="/signup" class="btn btn-teal btn-sm" id="navGetStartedBtn">Get Started</a>
+      </div>
+
+      <button class="mobile-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">
+        <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileNavMenu" style="display: none; flex-direction: column; gap: 0.75rem; padding: 1rem 1.5rem; background: #FFFFFF; border-bottom: 1px solid #E2E8F0;">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/features" class="nav-link">Features</a>
+      <a href="/how-it-works" class="nav-link">How It Works</a>
+      <a href="/security" class="nav-link">Security Architecture</a>
+      <a href="/docs" class="nav-link active">Documentation</a>
+      <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+        <a href="/login" class="btn btn-outline btn-sm w-full">Sign In</a>
+        <a href="/signup" class="btn btn-teal btn-sm w-full">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Breadcrumb / Hero -->
+  <section class="section section-alt" style="padding: 2.75rem 0; border-bottom: 1px solid var(--border-color);">
+    <div class="container">
+      <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #64748B; margin-bottom: 0.5rem;">
+        <a href="/" style="color: #64748B; text-decoration: none;">Home</a>
+        <span>&rsaquo;</span>
+        <span style="color: var(--logo-navy); font-weight: 600;">Documentation</span>
+      </div>
+      <h1 style="font-size: 2.25rem; margin-bottom: 0.5rem;">GuardAgent Documentation</h1>
+      <p class="lead" style="margin-bottom: 0;">Comprehensive technical documentation for integrating, configuring, and securing autonomous AI agent workflows.</p>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <div class="container docs-layout">
+    
+    <!-- Sidebar Navigation with 12 Explicit Sections -->
+    <aside class="docs-sidebar">
+      <h5>Documentation Sections</h5>
+      <ul>
+        <li><a href="#section-1" class="active">1. Introduction</a></li>
+        <li><a href="#section-2">2. Architecture</a></li>
+        <li><a href="#section-3">3. Installation</a></li>
+        <li><a href="#section-4">4. Environment Setup</a></li>
+        <li><a href="#section-5">5. Authentication</a></li>
+        <li><a href="#section-6">6. Agent Registration</a></li>
+        <li><a href="#section-7">7. Security Policies</a></li>
+        <li><a href="#section-8">8. Risk Evaluation</a></li>
+        <li><a href="#section-9">9. Approval Workflow</a></li>
+        <li><a href="#section-10">10. Audit Logs</a></li>
+        <li><a href="#section-11">11. API Reference</a></li>
+        <li><a href="#section-12">12. Troubleshooting</a></li>
+      </ul>
+      <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+        <a href="/docs/quickstart" class="btn btn-teal btn-sm w-full" style="justify-content: center; font-size: 0.775rem;">
+          Quickstart Guide &rarr;
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Reading Area -->
+    <main class="docs-content">
+
+      <!-- 1. INTRODUCTION -->
+      <section id="section-1">
+        <h2><span class="doc-section-num">01</span> Introduction</h2>
+        <p>
+          <strong>GuardAgent</strong> is an enterprise AI agent security gateway. It sits between autonomous LLM agent frameworks (such as LangChain, AutoGen, CrewAI, or bespoke agents) and protected enterprise tools (databases, external APIs, code execution sandboxes, and file systems).
+        </p>
+        <p>
+          Modern AI agents have the ability to formulate tool calls and execute actions autonomously. While powerful, this introduces serious security vulnerabilities: prompt injections causing unintended database drops, SSRF probes attacking internal cloud metadata services, and unconstrained financial transactions. GuardAgent provides a server-enforced security perimeter to evaluate every action before execution.
+        </p>
+        <div class="callout">
+          <strong>Core Mission:</strong> Make policy enforcement, explainable risk scoring, and human-in-the-loop approvals standard building blocks for AI development.
+        </div>
+      </section>
+
+      <!-- 2. ARCHITECTURE -->
+      <section id="section-2">
+        <h2><span class="doc-section-num">02</span> Architecture &amp; Trust Boundaries</h2>
+        <p>
+          GuardAgent enforces a strict <strong>server-side security boundary</strong>. Agents must never hold raw database passwords, cloud credentials, or unrestricted shell access. Instead, all proposed actions are routed to GuardAgent's proxy gateway:
+        </p>
+        <div class="code-block">
+[AI Agent (LangChain / AutoGen / CrewAI)]
+        │  (Proposes JSON action payload)
+        ▼
+[GuardAgent Security Gateway: POST /api/requests/evaluate]
+        │
+        ├── 1. Agent Identity & Key Authentication
+        ├── 2. Workspace & Permission Boundaries
+        ├── 3. Injection Filters (SSRF, SQLi, Shell Escapes)
+        ├── 4. Declarative Policy Evaluation
+        ├── 5. Deterministic Risk Scoring (0–100)
+        ▼
+[Security Decision Engine]
+   ├── ALLOW ──────────────► [Controlled Tool Sandbox] ──► [Tool Result]
+   ├── REQUIRE APPROVAL ──► [SOC Review Queue] ─────────► [24h Expiration Timer]
+   └── BLOCK ──────────────► [Immediate Termination] ───► [Security Alert Logged]
+        │
+        ▼
+[Immutable Audit Ledger (PostgreSQL / In-Memory Store)]
+        </div>
+        <p>
+          All decisions and risk justifications are logged to an append-only audit ledger with cryptographic correlation identifiers.
+        </p>
+      </section>
+
+      <!-- 3. INSTALLATION -->
+      <section id="section-3">
+        <h2><span class="doc-section-num">03</span> Installation</h2>
+        <p>
+          GuardAgent requires Node.js v18.0.0 or higher. To install and run locally:
+        </p>
+        <div class="code-block">
+<span class="comment"># 1. Clone repository</span>
+git clone https://github.com/guardagent/guardagent.git
+cd guardagent
+
+<span class="comment"># 2. Install dependencies (Node Express, CORS, dotenv, Supabase client)</span>
+npm install
+
+<span class="comment"># Note: On Windows PowerShell if script execution is restricted:</span>
+npm.cmd install
+        </div>
+        <p>
+          Check the detailed <a href="/docs/quickstart">Quickstart Guide</a> for a beginner-friendly 10-step walkthrough.
+        </p>
+      </section>
+
+      <!-- 4. ENVIRONMENT SETUP -->
+      <section id="section-4">
+        <h2><span class="doc-section-num">04</span> Environment Setup</h2>
+        <p>
+          Copy the sample environment file to create your local <code>.env</code> file:
+        </p>
+        <div class="code-block">
+cp .env.example .env
+        </div>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Variable</th>
+                <th>Required</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>PORT</code></td>
+                <td>No</td>
+                <td><code>3000</code></td>
+                <td>HTTP port for Express web server and API gateway.</td>
+              </tr>
+              <tr>
+                <td><code>DEMO_MODE</code></td>
+                <td>No</td>
+                <td><code>true</code></td>
+                <td>Zero-config in-memory store mode with realistic seed records.</td>
+              </tr>
+              <tr>
+                <td><code>SUPABASE_URL</code></td>
+                <td>Optional</td>
+                <td><code>""</code></td>
+                <td>Supabase project URL for PostgreSQL persistence.</td>
+              </tr>
+              <tr>
+                <td><code>SUPABASE_ANON_KEY</code></td>
+                <td>Optional</td>
+                <td><code>""</code></td>
+                <td>Public anonymous client key for frontend auth.</td>
+              </tr>
+              <tr>
+                <td><code>SUPABASE_SERVICE_ROLE_KEY</code></td>
+                <td>Optional</td>
+                <td><code>""</code></td>
+                <td>Backend privileged service-role key for database mutations.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 5. AUTHENTICATION -->
+      <section id="section-5">
+        <h2><span class="doc-section-num">05</span> Authentication</h2>
+        <p>
+          GuardAgent employs two distinct authentication mechanisms depending on the caller type:
+        </p>
+        <h3>1. Agent Gateway Authentication</h3>
+        <p>
+          AI agents authenticate by supplying their registered API key via the <code>x-guardagent-key</code> HTTP header or in the request payload:
+        </p>
+        <div class="code-block">
+curl -X POST http://localhost:3000/api/requests/evaluate \
+  -H "Content-Type: application/json" \
+  -H "x-guardagent-key: ga_live_agent_key_demo" \
+  -d '{"agent_id": "agt-customer-support-01", ...}'
+        </div>
+        <h3>2. Operator Dashboard Authentication (SOC Users)</h3>
+        <p>
+          Security operators authenticate via <code>POST /api/auth/login</code>. In production, this integrates with Supabase Auth (JWT). In local <code>DEMO_MODE=true</code>, operators can log in using preloaded SOC credentials or 1-click instant login.
+        </p>
+      </section>
+
+      <!-- 6. AGENT REGISTRATION -->
+      <section id="section-6">
+        <h2><span class="doc-section-num">06</span> Agent Registration &amp; Lifecycle</h2>
+        <p>
+          Before an AI agent can execute any tool call through the gateway, it must be enrolled in the agent registry:
+        </p>
+        <div class="endpoint-badge">
+          <span class="method-post">POST</span> /api/agents
+        </div>
+        <div class="code-block">
+curl -X POST http://localhost:3000/api/agents \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Research Agent Alpha",
+    "description": "Autonomous web scraper and document summarizer",
+    "policy_id": "pol-p03-ssrf-guard",
+    "environment": "production"
+  }'
+        </div>
+        <h3>Agent Status Lifecycle</h3>
+        <ul style="font-size: 0.875rem; color: #475569; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
+          <li><strong>ACTIVE:</strong> Agent is authorized to propose actions against assigned policies.</li>
+          <li><strong>SUSPENDED:</strong> Temporarily locked. All incoming tool requests fail closed with <code>BLOCK</code>.</li>
+          <li><strong>REVOKED:</strong> Permanently decommissioned. API keys are immediately invalidated.</li>
+        </ul>
+      </section>
+
+      <!-- 7. SECURITY POLICIES -->
+      <section id="section-7">
+        <h2><span class="doc-section-num">07</span> Security Policies &amp; Rules</h2>
+        <p>
+          Policies define the strict boundaries of acceptable agent behavior. GuardAgent implements declarative rules covering:
+        </p>
+        <div class="grid grid-2 gap-4">
+          <div class="card">
+            <strong>Financial Transaction Limits</strong>
+            <p style="font-size: 0.85rem; color: #64748B; margin-top: 0.25rem;">
+              Auto-allow payments under $500. Require human SOC approval for $500–$2,500. Outright block transactions &gt;$2,500.
+            </p>
+          </div>
+          <div class="card">
+            <strong>Database Row Ceilings</strong>
+            <p style="font-size: 0.85rem; color: #64748B; margin-top: 0.25rem;">
+              Enforce maximum row count (default: 250). Prohibit full table scans and bulk dumps.
+            </p>
+          </div>
+          <div class="card">
+            <strong>SSRF &amp; Egress Allowlists</strong>
+            <p style="font-size: 0.85rem; color: #64748B; margin-top: 0.25rem;">
+              Block link-local addresses (<code>169.254.169.254</code>) and loopbacks. Whitelist approved API domains.
+            </p>
+          </div>
+          <div class="card">
+            <strong>Command Blacklists</strong>
+            <p style="font-size: 0.85rem; color: #64748B; margin-top: 0.25rem;">
+              Detect and reject destructive SQL keywords (<code>DROP</code>, <code>TRUNCATE</code>) and shell commands.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. RISK EVALUATION -->
+      <section id="section-8">
+        <h2><span class="doc-section-num">08</span> Risk Evaluation Engine</h2>
+        <p>
+          Every proposed action is evaluated through GuardAgent's deterministic risk engine. The engine outputs a numerical score from <strong>0 to 100</strong>, broken down into human-readable rationale factors:
+        </p>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Score Range</th>
+                <th>Risk Tier</th>
+                <th>Default Decision</th>
+                <th>Action Path</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>0 – 39</strong></td>
+                <td><span class="badge badge-allow">LOW</span></td>
+                <td>ALLOW</td>
+                <td>Dispatched to registered tool / sandbox for execution.</td>
+              </tr>
+              <tr>
+                <td><strong>40 – 59</strong></td>
+                <td><span class="badge badge-info">MEDIUM</span></td>
+                <td>ALLOW (with Log)</td>
+                <td>Allowed under heightened audit monitoring.</td>
+              </tr>
+              <tr>
+                <td><strong>60 – 79</strong></td>
+                <td><span class="badge badge-approval">HIGH</span></td>
+                <td>REQUIRE APPROVAL</td>
+                <td>Escalated to human review queue with 24h expiration.</td>
+              </tr>
+              <tr>
+                <td><strong>80 – 100</strong></td>
+                <td><span class="badge badge-block">CRITICAL</span></td>
+                <td>BLOCK</td>
+                <td>Terminated immediately; zero tool execution; alert raised.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 9. APPROVAL WORKFLOW -->
+      <section id="section-9">
+        <h2><span class="doc-section-num">09</span> Approval Workflows (Human-in-the-Loop)</h2>
+        <p>
+          When an action triggers a policy escalation (e.g. high-value refund or elevated API parameter), GuardAgent pauses execution and creates an approval request record:
+        </p>
+        <div class="endpoint-badge">
+          <span class="method-post">POST</span> /api/approvals/:id/decide
+        </div>
+        <div class="code-block">
+curl -X POST http://localhost:3000/api/approvals/apr-2026-001/decide \
+  -H "Content-Type: application/json" \
+  -d '{
+    "decision": "APPROVED",
+    "reviewer_notes": "Verified with finance team via ticket #FIN-8812."
+  }'
+        </div>
+        <p>
+          Security officers can inspect full argument parameters, evaluate risk factors, and either approve or reject the request. Once approved, the tool executes under bounded limits.
+        </p>
+      </section>
+
+      <!-- 10. AUDIT LOGS -->
+      <section id="section-10">
+        <h2><span class="doc-section-num">10</span> Audit Logs &amp; Integrity</h2>
+        <p>
+          Every incoming action—regardless of outcome—is stamped with a persistent correlation ID and saved to the immutable audit log:
+        </p>
+        <div class="endpoint-badge">
+          <span class="method-get">GET</span> /api/audit-logs
+        </div>
+        <div class="callout callout-warning">
+          <strong>Immutability Guarantee:</strong> Audit log records cannot be updated or deleted via API. Attempts to perform HTTP DELETE or PATCH against <code>/api/audit-logs</code> return an explicit <code>405 Method Not Allowed</code> error.
+        </div>
+      </section>
+
+      <!-- 11. API REFERENCE -->
+      <section id="section-11">
+        <h2><span class="doc-section-num">11</span> API Reference</h2>
+        <p>All implemented REST endpoints in the GuardAgent Gateway:</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1rem;">
+          
+          <div class="card">
+            <div class="endpoint-badge"><span class="method-get">GET</span> /api/health</div>
+            <p style="font-size: 0.85rem; color: #475569;">Returns service health, registered tool count, and active policy status.</p>
+          </div>
+
+          <div class="card">
+            <div class="endpoint-badge"><span class="method-post">POST</span> /api/requests/evaluate</div>
+            <p style="font-size: 0.85rem; color: #475569;">Core security gateway endpoint. Evaluates proposed agent action against policies, calculates risk, and returns ALLOW, BLOCK, or REQUIRE APPROVAL.</p>
+          </div>
+
+          <div class="card">
+            <div class="endpoint-badge"><span class="method-get">GET</span> /api/agents &nbsp;|&nbsp; <span class="method-post">POST</span> /api/agents</div>
+            <p style="font-size: 0.85rem; color: #475569;">List registered agents or enroll a new autonomous agent.</p>
+          </div>
+
+          <div class="card">
+            <div class="endpoint-badge"><span class="method-patch">PATCH</span> /api/agents/:id/status</div>
+            <p style="font-size: 0.85rem; color: #475569;">Toggle agent operational status (ACTIVE, SUSPENDED, REVOKED).</p>
+          </div>
+
+          <div class="card">
+            <div class="endpoint-badge"><span class="method-get">GET</span> /api/policies &nbsp;|&nbsp; <span class="method-post">POST</span> /api/policies</div>
+            <p style="font-size: 0.85rem; color: #475569;">Manage declarative security guardrails, financial caps, and row ceilings.</p>
+          </div>
+
+          <div class="card">
+            <div class="endpoint-badge"><span class="method-get">GET</span> /api/approvals &nbsp;|&nbsp; <span class="method-post">POST</span> /api/approvals/:id/decide</div>
+            <p style="font-size: 0.85rem; color: #475569;">List pending human escalation tickets or submit an approval/rejection decision.</p>
+          </div>
+
+          <div class="card">
+            <div class="endpoint-badge"><span class="method-get">GET</span> /api/audit-logs</div>
+            <p style="font-size: 0.85rem; color: #475569;">Query immutable chronological security events with filtering by decision, agent, or risk level.</p>
+          </div>
+
+          <div class="card">
+            <div class="endpoint-badge"><span class="method-get">GET</span> /api/alerts</div>
+            <p style="font-size: 0.85rem; color: #475569;">Fetch security alerts raised by critical risk violations, SSRF attacks, or SQL injection probes.</p>
+          </div>
+
+          <div class="card">
+            <div class="endpoint-badge"><span class="method-get">GET</span> /api/analytics/metrics</div>
+            <p style="font-size: 0.85rem; color: #475569;">Aggregate SOC telemetry: total requests, allowed vs blocked ratios, and risk score distributions.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 12. TROUBLESHOOTING -->
+      <section id="section-12">
+        <h2><span class="doc-section-num">12</span> Troubleshooting</h2>
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          
+          <div class="card">
+            <strong style="color: var(--logo-navy);">Q: Why did my agent receive a BLOCK decision with "Unknown tool"?</strong>
+            <p style="font-size: 0.85rem; color: #475569; margin-top: 0.25rem;">
+              GuardAgent enforces deny-by-default. Only registered tools in <code>server/services/toolRegistry.js</code> (e.g. <code>db_read_query</code>, <code>db_write_record</code>, <code>external_api_call</code>, <code>send_email_notification</code>, <code>exec_code_sandbox</code>) are permitted.
+            </p>
+          </div>
+
+          <div class="card">
+            <strong style="color: var(--logo-navy);">Q: How do I test the Human Approval workflow?</strong>
+            <p style="font-size: 0.85rem; color: #475569; margin-top: 0.25rem;">
+              Send an action payload with a refund amount between $500 and $2,500 using tool <code>db_write_record</code>. The gateway will return <code>REQUIRE APPROVAL</code> and create an entry in the Pending Approvals queue.
+            </p>
+          </div>
+
+          <div class="card">
+            <strong style="color: var(--logo-navy);">Q: Can I run GuardAgent completely offline without cloud dependencies?</strong>
+            <p style="font-size: 0.85rem; color: #475569; margin-top: 0.25rem;">
+              Yes! GuardAgent operates in zero-config local mode by default, persisting state in memory and using local mock tools.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- =========================================================================
+       SECTION 11: Footer (Global Consistent 4-Column)
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+            <img src="/assets/images/logo.png" alt="GuardAgent Logo" style="height: 32px; width: auto; object-fit: contain;">
+          </div>
+          <p style="font-size: 0.825rem; color: #94A3B8; line-height: 1.6; max-width: 320px;">
+            Secure Every Agent Action. Authoritative security gateway between autonomous AI agents and enterprise tools.
+          </p>
+          <div style="margin-top: 1rem;">
+            <span class="badge badge-teal" style="font-size: 0.7rem;">PUBLIC BETA v1.0</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="/features">Features</a></li>
+            <li><a href="/how-it-works">How It Works</a></li>
+            <li><a href="/security">Security Architecture</a></li>
+            <li><a href="/app/">Beta Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Developers</h5>
+          <ul>
+            <li><a href="/docs">Documentation</a></li>
+            <li><a href="/docs/quickstart">Quickstart</a></li>
+            <li><a href="/docs#section-11">API Reference</a></li>
+            <li><a href="/api/health">System Health API</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Project &amp; Legal</h5>
+          <ul>
+            <li><a href="/security">About &amp; Security Principles</a></li>
+            <li><a href="/#community">Community Preview</a></li>
+            <li><a href="/#disclaimer">Beta Terms of Use</a></li>
+            <li><a href="/#disclaimer">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom" id="disclaimer">
+        <div>
+          &copy; 2026 GuardAgent. All rights reserved. Beta software provided for evaluation purposes.
+        </div>
+        <div style="color: #64748B;">
+          Technical honesty: Mock tools execute in secure sandbox simulation.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/marketing.js"></script>
+  <script>
+    // Smooth scroll and active link indicator for docs sidebar
+    const links = document.querySelectorAll('.docs-sidebar a');
+    const sections = Array.from(links).map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+
+    window.addEventListener('scroll', () => {
+      let currentSection = sections[0];
+      const scrollPos = window.scrollY + 120;
+      sections.forEach(sec => {
+        if (sec.offsetTop <= scrollPos) {
+          currentSection = sec;
+        }
+      });
+      if (currentSection) {
+        links.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + currentSection.id);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
