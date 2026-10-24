@@ -35,7 +35,7 @@ const publicDir = path.join(__dirname, '../public');
 app.use(express.static(publicDir));
 
 // Route Rewriter for Clean URLs without .html extension
-const publicRoutes = ['features', 'how-it-works', 'security', 'docs', 'login', 'signup', 'quickstart'];
+const publicRoutes = ['features', 'how-it-works', 'use-cases', 'security', 'docs', 'quickstart', 'about', 'contributing', 'api-reference', 'login', 'signup'];
 publicRoutes.forEach(route => {
   app.get(`/${route}`, (req, res) => {
     res.sendFile(path.join(publicDir, `${route}.html`));
@@ -44,6 +44,10 @@ publicRoutes.forEach(route => {
 
 app.get('/docs/quickstart', (req, res) => {
   res.sendFile(path.join(publicDir, 'quickstart.html'));
+});
+
+app.get('/docs/api-reference', (req, res) => {
+  res.sendFile(path.join(publicDir, 'api-reference.html'));
 });
 
 const appRoutes = ['agents', 'policies', 'risk-analysis', 'approvals', 'audit-logs', 'alerts', 'settings'];
@@ -63,9 +67,9 @@ app.all('/api/*', (req, res) => {
   res.status(404).json({ error: "Endpoint Not Found", path: req.path });
 });
 
-// Fallback for root
-app.get('*', (req, res) => {
-  res.sendFile(path.join(publicDir, 'index.html'));
+// Custom 404 page for unmatched routes
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(publicDir, '404.html'));
 });
 
 // Global Error Handler

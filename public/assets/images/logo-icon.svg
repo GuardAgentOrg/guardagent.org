@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" width="100%" height="100%">
+  <defs>
+    <linearGradient id="shieldTealGradIcon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00E5BE" />
+      <stop offset="50%" stop-color="#00A3A6" />
+      <stop offset="100%" stop-color="#053354" />
+    </linearGradient>
+    <linearGradient id="shieldTopGradIcon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="60%" stop-color="#00E5BE" />
+      <stop offset="100%" stop-color="#00A3A6" />
+    </linearGradient>
+    <filter id="iconGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Top Teal Prism Facet -->
+  <path d="M 50 8 L 85 27 L 50 45 L 15 27 Z" fill="url(#shieldTopGradIcon)" />
+  
+  <!-- Left Ribbon Facet (Outer Shell) -->
+  <path d="M 15 27 L 50 45 L 50 91 L 15 71 Z" fill="url(#shieldTealGradIcon)" filter="url(#iconGlow)" opacity="0.95" />
+  
+  <!-- Right Outer Shell Facet -->
+  <path d="M 85 27 L 85 71 L 50 91 L 50 45 Z" fill="#0A2A4A" />
+  
+  <!-- Inner Monogram "G" Cutout Shield Core -->
+  <path d="M 43 41 L 72 55 L 72 68 L 50 80 L 28 68 L 28 50 L 38 45 L 38 61 L 50 68 L 62 61 L 62 58 L 43 48 Z" fill="#FFFFFF" />
+  
+  <!-- Stylized Teal Focus Dot / Gateway Node -->
+  <circle cx="50" cy="56" r="3.5" fill="#00E5BE" filter="url(#iconGlow)" />
+</svg>

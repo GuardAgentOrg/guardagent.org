@@ -3,598 +3,427 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quickstart Guide — GuardAgent AI Agent Security Platform</title>
-  <meta name="description" content="Step-by-step beginner-friendly setup guide for GuardAgent: prerequisites, installation, configuration, health checks, and sample agent security evaluations.">
+  <title>Quickstart Guide — GuardAgent Installation &amp; Setup</title>
+  <meta name="description" content="Step-by-step developer quickstart guide for installing GuardAgent, configuring local environment variables, running the server, and testing policy evaluations.">
   <link rel="stylesheet" href="/assets/css/main.css">
-  <style>
-    .quickstart-layout {
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 3.5rem;
-      padding: 3rem 0 5rem;
-    }
-    .quickstart-nav {
-      position: sticky;
-      top: 5.5rem;
-      height: fit-content;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-md);
-      padding: 1.25rem;
-    }
-    .quickstart-nav h5 {
-      font-size: 0.725rem;
-      font-family: var(--font-mono);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-    .quickstart-nav ol {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      counter-reset: step-counter;
-      font-size: 0.825rem;
-    }
-    .quickstart-nav li {
-      counter-increment: step-counter;
-    }
-    .quickstart-nav a {
-      color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 0.65rem;
-      border-radius: var(--radius-xs);
-      transition: all 0.12s ease;
-      text-decoration: none;
-    }
-    .quickstart-nav a::before {
-      content: counter(step-counter, decimal-leading-zero);
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--brand-teal);
-      font-weight: 600;
-    }
-    .quickstart-nav a:hover {
-      color: #FFFFFF;
-      background-color: var(--bg-surface-elevated);
-    }
-    .step-section {
-      margin-bottom: 3.5rem;
-      scroll-margin-top: 6rem;
-    }
-    .step-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    .step-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: var(--bg-surface-elevated);
-      color: var(--brand-teal);
-      font-weight: 700;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      flex-shrink: 0;
-      border: 1px solid rgba(0, 210, 180, 0.3);
-    }
-    .code-box {
-      background-color: var(--bg-inset);
-      color: #E2E8F0;
-      border: 1px solid var(--border-default);
-      border-radius: 8px;
-      padding: 1.25rem;
-      font-family: var(--font-mono);
-      font-size: 0.825rem;
-      overflow-x: auto;
-      margin: 1rem 0;
-      line-height: 1.6;
-    }
-    .code-box .comment { color: var(--text-muted); }
-    .code-box .command { color: #00D2B4; font-weight: 600; }
-    .code-box .param { color: #38BDF8; }
-    .code-box .string { color: #FDE047; }
-    .info-callout {
-      background: rgba(0, 210, 180, 0.06);
-      border: 1px solid rgba(0, 210, 180, 0.2);
-      border-left: 3px solid var(--brand-teal);
-      border-radius: 6px;
-      padding: 1rem 1.25rem;
-      font-size: 0.875rem;
-      margin: 1rem 0;
-      color: var(--text-primary);
-    }
-    .warning-callout {
-      background: rgba(245, 158, 11, 0.06);
-      border: 1px solid rgba(245, 158, 11, 0.2);
-      border-left: 3px solid #F59E0B;
-      border-radius: 6px;
-      padding: 1rem 1.25rem;
-      font-size: 0.875rem;
-      margin: 1rem 0;
-      color: #FCD34D;
-    }
-    @media (max-width: 900px) {
-      .quickstart-layout {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .quickstart-nav {
-        display: none;
-      }
-    }
-  </style>
+  <link rel="icon" type="image/png" href="/assets/images/logo-transparent.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&family=Space+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="neo-brutalist-theme">
 
   <!-- =========================================================================
-       SECTION 1: Header and Navigation (Global Consistent)
+       Neo-Brutalist Sticky Header
        ========================================================================= -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="/" class="brand-link" id="brandHeaderLink">
-        <img src="/assets/images/logo.png" alt="GuardAgent Official Logo" class="brand-logo" id="brandLogoImg">
-        <span class="brand-tag">BETA</span>
+  <header class="nb-header" role="banner">
+    <div class="nb-header-inner">
+      <a href="/" class="nb-brand-wrap" aria-label="GuardAgent Home">
+        <img src="/assets/images/logo-transparent.png" alt="GuardAgent Logo" class="nb-logo-img" id="brandLogoImg">
       </a>
 
-      <nav>
-        <ul class="nav-links" id="desktopNav">
-          <li><a href="/" class="nav-link">Home</a></li>
-          <li><a href="/features" class="nav-link">Features</a></li>
-          <li><a href="/how-it-works" class="nav-link">How It Works</a></li>
-          <li><a href="/security" class="nav-link">Security Architecture</a></li>
-          <li><a href="/docs" class="nav-link active">Documentation</a></li>
+      <nav role="navigation" aria-label="Main Navigation">
+        <ul class="nb-nav-list" id="desktopNav">
+          <li><a href="/#arcade-soc" class="nb-nav-item">LIVE DEMO</a></li>
+          <li><a href="/#comparison" class="nb-nav-item">BEFORE &amp; AFTER</a></li>
+          <li><a href="/#nightmares" class="nb-nav-item">3 DISASTERS</a></li>
+          <li><a href="/#how-it-works" class="nb-nav-item">HOW IT WORKS</a></li>
+          <li><a href="/#threat-lab" class="nb-nav-item">ATTACK LAB</a></li>
+          <li><a href="/#calculator" class="nb-nav-item">SPEED &amp; SAVINGS</a></li>
+          <li><a href="/docs" class="nb-nav-item" style="background: var(--nb-yellow); border: 2px solid var(--nb-navy); box-shadow: 2.5px 2.5px 0px var(--nb-navy); font-weight: 900;">DOCS</a></li>
         </ul>
       </nav>
 
-      <div class="header-actions">
-        <a href="/login" class="btn btn-outline btn-sm" id="navSignInBtn">Sign In</a>
-        <a href="/signup" class="btn btn-teal btn-sm" id="navGetStartedBtn">Get Started</a>
+      <div class="nb-header-actions">
+        <a href="https://github.com/guardagent/guardagent" target="_blank" rel="noopener noreferrer" class="nb-sticker nb-sticker-yellow" title="Star GuardAgent on GitHub" style="text-decoration: none; padding: 4px 8px;">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+          </svg>
+          <span>4.9K</span>
+        </a>
+        <a href="/login" class="nb-btn nb-btn-sm nb-btn-teal">Sign In</a>
+        
+        <button class="nb-mobile-toggle" id="nbMobileToggle" aria-label="Toggle navigation" aria-expanded="false">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
       </div>
-
-      <button class="mobile-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">
-        <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-      </button>
     </div>
 
-    <!-- Mobile Drawer Menu -->
-    <div id="mobileNavMenu" style="display: none; flex-direction: column; gap: 0.75rem; padding: 1rem 1.5rem; background: #FFFFFF; border-bottom: 1px solid #E2E8F0;">
-      <a href="/" class="nav-link">Home</a>
-      <a href="/features" class="nav-link">Features</a>
-      <a href="/how-it-works" class="nav-link">How It Works</a>
-      <a href="/security" class="nav-link">Security Architecture</a>
-      <a href="/docs" class="nav-link active">Documentation</a>
-      <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
-        <a href="/login" class="btn btn-outline btn-sm w-full">Sign In</a>
-        <a href="/signup" class="btn btn-teal btn-sm w-full">Get Started</a>
-      </div>
+    <!-- Mobile Drawer -->
+    <div class="nb-mobile-drawer" id="nbMobileDrawer">
+      <a href="/#arcade-soc" class="nb-nav-item">LIVE DEMO</a>
+      <a href="/#comparison" class="nb-nav-item">BEFORE &amp; AFTER</a>
+      <a href="/#nightmares" class="nb-nav-item">3 DISASTERS</a>
+      <a href="/#how-it-works" class="nb-nav-item">HOW IT WORKS</a>
+      <a href="/#threat-lab" class="nb-nav-item">ATTACK LAB</a>
+      <a href="/#calculator" class="nb-nav-item">SPEED &amp; SAVINGS</a>
+      <a href="/docs" class="nb-nav-item">DOCUMENTATION</a>
     </div>
   </header>
 
-  <!-- Page Breadcrumb / Hero -->
-  <section class="section section-alt" style="padding: 2.75rem 0; border-bottom: 1px solid var(--border-color);">
-    <div class="container">
-      <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #64748B; margin-bottom: 0.5rem;">
-        <a href="/docs" style="color: #64748B; text-decoration: none;">Documentation</a>
-        <span>&rsaquo;</span>
-        <span style="color: var(--logo-navy); font-weight: 600;">Quickstart Guide</span>
-      </div>
-      <h1 style="font-size: 2.25rem; margin-bottom: 0.5rem;">GuardAgent Quickstart</h1>
-      <p class="lead" style="margin-bottom: 0;">Get the GuardAgent AI Security Gateway running locally in under 5 minutes.</p>
+  <!-- =========================================================================
+       Neo-Brutalist Marquee Tape Ribbon
+       ========================================================================= -->
+  <div class="nb-tape-strip" aria-hidden="true">
+    <div class="nb-tape-content">
+      <span>🚀 1-MINUTE QUICKSTART GUIDE</span>
+      <span>⚡ ZERO EXTERNAL DATABASE REQUIRED</span>
+      <span>🔒 LOCAL IN-MEMORY VERIFIED STORE</span>
+      <span>🛡️ 0.8MS COMPILED CODE CHECKS</span>
+      <span>🚀 1-MINUTE QUICKSTART GUIDE</span>
+      <span>⚡ ZERO EXTERNAL DATABASE REQUIRED</span>
+      <span>🔒 LOCAL IN-MEMORY VERIFIED STORE</span>
     </div>
-  </section>
-
-  <!-- Main Content Layout -->
-  <div class="container quickstart-layout">
-    
-    <!-- Sticky Quickstart Steps Navigation -->
-    <aside class="quickstart-nav">
-      <h5>Quickstart Steps</h5>
-      <ol>
-        <li><a href="#step-1">Prerequisites</a></li>
-        <li><a href="#step-2">Clone Repository</a></li>
-        <li><a href="#step-3">Install Dependencies</a></li>
-        <li><a href="#step-4">Environment Setup</a></li>
-        <li><a href="#step-5">Supabase / Store</a></li>
-        <li><a href="#step-6">Start Local Server</a></li>
-        <li><a href="#step-7">Verify Health Check</a></li>
-        <li><a href="#step-8">Send Sample Request</a></li>
-        <li><a href="#step-9">Analyze Decisions</a></li>
-        <li><a href="#step-10">Troubleshooting</a></li>
-      </ol>
-      <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
-        <a href="/docs" class="btn btn-outline btn-sm w-full" style="justify-content: center; font-size: 0.8rem;">
-          &larr; Full Documentation
-        </a>
-      </div>
-    </aside>
-
-    <!-- Reading Area with 10 Precise Steps -->
-    <main class="quickstart-content">
-
-      <!-- STEP 1: Prerequisites -->
-      <section id="step-1" class="step-section">
-        <div class="step-header">
-          <span class="step-badge">01</span>
-          <h2>Prerequisites</h2>
-        </div>
-        <p>Before running GuardAgent, ensure you have the following installed on your local development machine:</p>
-        <div class="grid grid-3 gap-4" style="margin-top: 1rem;">
-          <div class="card" style="padding: 1.25rem;">
-            <strong style="color: var(--logo-navy);">Node.js</strong>
-            <p style="font-size: 0.85rem; color: #64748B; margin-top: 0.25rem;">v18.0.0 or later (LTS recommended).</p>
-            <div class="mono" style="font-size: 0.75rem; margin-top: 0.5rem; color: var(--logo-teal-dark);">node -v</div>
-          </div>
-          <div class="card" style="padding: 1.25rem;">
-            <strong style="color: var(--logo-navy);">npm Package Manager</strong>
-            <p style="font-size: 0.85rem; color: #64748B; margin-top: 0.25rem;">v9.0.0 or later included with Node.</p>
-            <div class="mono" style="font-size: 0.75rem; margin-top: 0.5rem; color: var(--logo-teal-dark);">npm -v</div>
-          </div>
-          <div class="card" style="padding: 1.25rem;">
-            <strong style="color: var(--logo-navy);">cURL or REST Client</strong>
-            <p style="font-size: 0.85rem; color: #64748B; margin-top: 0.25rem;">For sending mock agent payload requests.</p>
-            <div class="mono" style="font-size: 0.75rem; margin-top: 0.5rem; color: var(--logo-teal-dark);">curl --version</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- STEP 2: Clone Repository -->
-      <section id="step-2" class="step-section">
-        <div class="step-header">
-          <span class="step-badge">02</span>
-          <h2>Clone the Repository</h2>
-        </div>
-        <p>Clone the GuardAgent project or navigate to your local workspace directory:</p>
-        <div class="code-box">
-<span class="comment"># Clone the GuardAgent repository</span>
-<span class="command">git clone</span> https://github.com/guardagent/guardagent.git
-
-<span class="comment"># Navigate into the project directory</span>
-<span class="command">cd</span> guardagent
-        </div>
-        <div class="info-callout">
-          <strong>Local Development Notice:</strong> If you are working directly in this workspace, you are already in the root directory (<code>d:\GuardAgent</code>).
-        </div>
-      </section>
-
-      <!-- STEP 3: Install Dependencies -->
-      <section id="step-3" class="step-section">
-        <div class="step-header">
-          <span class="step-badge">03</span>
-          <h2>Install Dependencies</h2>
-        </div>
-        <p>Install the required Node.js production dependencies (Express, CORS, dotenv, and @supabase/supabase-js):</p>
-        <div class="code-box">
-<span class="comment"># Standard npm installation</span>
-<span class="command">npm install</span>
-
-<span class="comment"># On Windows PowerShell (if execution policy restricts npm.ps1):</span>
-<span class="command">npm.cmd install</span>
-        </div>
-        <p style="font-size: 0.875rem; color: #64748B; margin-top: 0.5rem;">
-          Dependencies are lightweight and have zero external native compilation requirements.
-        </p>
-      </section>
-
-      <!-- STEP 4: Configure Environment Variables -->
-      <section id="step-4" class="step-section">
-        <div class="step-header">
-          <span class="step-badge">04</span>
-          <h2>Configure Environment Variables</h2>
-        </div>
-        <p>Copy the sample environment file to create your local <code>.env</code> configuration:</p>
-        <div class="code-box">
-<span class="comment"># Copy template configuration</span>
-<span class="command">cp</span> .env.example .env
-        </div>
-        <p style="font-size: 0.875rem; margin-top: 1rem;">
-          The primary environment variables and their functions are:
-        </p>
-        <div class="table-wrapper" style="margin-top: 0.75rem;">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Variable</th>
-                <th>Default</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>PORT</code></td>
-                <td><code>3000</code></td>
-                <td>HTTP port for the Express web server and REST gateway.</td>
-              </tr>
-              <tr>
-                <td><code>DEMO_MODE</code></td>
-                <td><code>true</code></td>
-                <td>When <code>true</code>, automatically initializes the in-memory security store with preloaded demo agents, policies, and audit logs.</td>
-              </tr>
-              <tr>
-                <td><code>SUPABASE_URL</code></td>
-                <td><em>(Empty)</em></td>
-                <td>Optional. Your remote Supabase project endpoint.</td>
-              </tr>
-              <tr>
-                <td><code>SUPABASE_ANON_KEY</code></td>
-                <td><em>(Empty)</em></td>
-                <td>Optional. Public anonymous client key for Supabase Auth.</td>
-              </tr>
-              <tr>
-                <td><code>SUPABASE_SERVICE_ROLE_KEY</code></td>
-                <td><em>(Empty)</em></td>
-                <td>Optional. Backend service-role key for PostgreSQL table mutations.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- STEP 5: Supabase or Zero-Config Store -->
-      <section id="step-5" class="step-section">
-        <div class="step-header">
-          <span class="step-badge">05</span>
-          <h2>Configure Supabase (Optional)</h2>
-        </div>
-        <p>GuardAgent is architected to be <strong>zero-config ready</strong> out of the box:</p>
-        <div class="grid grid-2 gap-4" style="margin-top: 1rem;">
-          <div class="card" style="border-left: 3px solid #009E96;">
-            <h4 style="font-size: 1rem; margin-bottom: 0.5rem; color: var(--logo-navy);">Option A: Zero-Config Local Mode (Recommended)</h4>
-            <p style="font-size: 0.85rem; color: #475569;">
-              Leave Supabase variables unset in <code>.env</code>. GuardAgent automatically defaults to its built-in in-memory store with enterprise demo records. All state changes, approvals, and evaluations remain functional in memory.
-            </p>
-          </div>
-          <div class="card" style="border-left: 3px solid #051329;">
-            <h4 style="font-size: 1rem; margin-bottom: 0.5rem; color: var(--logo-navy);">Option B: Supabase PostgreSQL Persistence</h4>
-            <p style="font-size: 0.85rem; color: #475569;">
-              1. Open your Supabase Dashboard SQL Editor.<br>
-              2. Execute the migration file at <code>server/database/schema.sql</code>.<br>
-              3. Paste your project URL and Service Role Key into <code>.env</code>.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- STEP 6: Start Application Locally -->
-      <section id="step-6" class="step-section">
-        <div class="step-header">
-          <span class="step-badge">06</span>
-          <h2>Start the Application Locally</h2>
-        </div>
-        <p>Launch the GuardAgent daemon server:</p>
-        <div class="code-box">
-<span class="comment"># Start via npm script</span>
-<span class="command">npm start</span>
-
-<span class="comment"># Or run directly with Node</span>
-<span class="command">node</span> server/index.js
-        </div>
-        <p style="font-size: 0.875rem; margin-top: 0.75rem;">
-          You will observe startup confirmation banners in your terminal:
-        </p>
-        <div class="code-box" style="color: #94A3B8;">
-=======================================================
-  GuardAgent — AI Agent Security Platform (Beta)
-  Server running at: http://localhost:3000
-  Public Website:   http://localhost:3000/
-  Beta Application: http://localhost:3000/app/
-  Health Endpoint:  http://localhost:3000/api/health
-=======================================================
-        </div>
-      </section>
-
-      <!-- STEP 7: Health Endpoint Check -->
-      <section id="step-7" class="step-section">
-        <div class="step-header">
-          <span class="step-badge">07</span>
-          <h2>Check the Health Endpoint</h2>
-        </div>
-        <p>Verify that the REST gateway is running and operational:</p>
-        <div class="code-box">
-<span class="command">curl</span> -i http://localhost:3000/api/health
-        </div>
-        <p style="font-size: 0.875rem; margin-top: 0.5rem;">Expected HTTP 200 JSON response:</p>
-        <div class="code-box">
-{
-  <span class="param">"status"</span>: <span class="string">"healthy"</span>,
-  <span class="param">"version"</span>: <span class="string">"1.0.0-beta"</span>,
-  <span class="param">"service"</span>: <span class="string">"GuardAgent Security Gateway"</span>,
-  <span class="param">"timestamp"</span>: <span class="string">"2026-10-15T09:30:00.000Z"</span>,
-  <span class="param">"engine"</span>: {
-    <span class="param">"status"</span>: <span class="string">"online"</span>,
-    <span class="param">"registered_tools"</span>: 5,
-    <span class="param">"active_policies"</span>: 6
-  }
-}
-        </div>
-      </section>
-
-      <!-- STEP 8: Send Sample Request -->
-      <section id="step-8" class="step-section">
-        <div class="step-header">
-          <span class="step-badge">08</span>
-          <h2>Send a Sample Request</h2>
-        </div>
-        <p>
-          Simulate an autonomous agent proposing an action to the gateway. Dispatch a POST request to <code>/api/requests/evaluate</code>:
-        </p>
-        <div class="code-box">
-<span class="command">curl</span> -X POST http://localhost:3000/api/requests/evaluate \
-  -H <span class="string">"Content-Type: application/json"</span> \
-  -d <span class="string">'{
-    "agent_id": "agt-customer-support-01",
-    "tool_name": "db_read_query",
-    "action_name": "fetch_orders",
-    "parameters": {
-      "customer_id": "cust_1029",
-      "limit": 15
-    }
-  }'</span>
-        </div>
-      </section>
-
-      <!-- STEP 9: Understand Returned Security Decision -->
-      <section id="step-9" class="step-section">
-        <div class="step-header">
-          <span class="step-badge">09</span>
-          <h2>Understand the Security Decision</h2>
-        </div>
-        <p>GuardAgent returns a structured, deterministic security envelope. The 3 possible outcomes are:</p>
-
-        <div style="display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1rem;">
-          
-          <div class="card" style="border-left: 4px solid #009E96;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-              <span class="badge badge-allow">1. ALLOW</span>
-              <span class="mono" style="font-size: 0.75rem; color: #64748B;">Risk Score: 0 – 39 (Low)</span>
-            </div>
-            <p style="font-size: 0.875rem; color: #475569;">
-              The action complies with all active policy caps (e.g. read limit &le; 250 rows). The tool executes safely under server controls and returns the execution result.
-            </p>
-          </div>
-
-          <div class="card" style="border-left: 4px solid #F59E0B;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-              <span class="badge badge-approval">2. REQUIRE APPROVAL</span>
-              <span class="mono" style="font-size: 0.75rem; color: #64748B;">Risk Score: 40 – 79 (High)</span>
-            </div>
-            <p style="font-size: 0.875rem; color: #475569;">
-              The action exceeds auto-allow bounds (e.g. refund between $500 and $2,500). An approval ticket is created (<code>apr-id</code>) with a 24-hour expiration window. The agent must pause and await human review.
-            </p>
-          </div>
-
-          <div class="card" style="border-left: 4px solid #EF4444;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-              <span class="badge badge-block">3. BLOCK</span>
-              <span class="mono" style="font-size: 0.75rem; color: #64748B;">Risk Score: 80 – 100 (Critical)</span>
-            </div>
-            <p style="font-size: 0.875rem; color: #475569;">
-              The action violates an explicit deny policy (e.g. SSRF probe to <code>169.254.169.254</code>, SQL injection keywords, or revoked agent). Immediate zero-execution drop and security alert logged.
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- STEP 10: Troubleshooting Common Errors -->
-      <section id="step-10" class="step-section">
-        <div class="step-header">
-          <span class="step-badge">10</span>
-          <h2>Troubleshoot Common Errors</h2>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
-          
-          <div class="card">
-            <strong style="color: #DC2626; font-size: 0.9rem;">Issue: PowerShell "npm.ps1 cannot be loaded because running scripts is disabled"</strong>
-            <p style="font-size: 0.85rem; color: #475569; margin-top: 0.25rem;">
-              <strong>Fix:</strong> Windows PowerShell execution policy restricts <code>.ps1</code> script execution by default. Run <code>npm.cmd start</code> or execute directly via <code>node server/index.js</code>.
-            </p>
-          </div>
-
-          <div class="card">
-            <strong style="color: #DC2626; font-size: 0.9rem;">Issue: Error "EADDRINUSE: address already in use :::3000"</strong>
-            <p style="font-size: 0.85rem; color: #475569; margin-top: 0.25rem;">
-              <strong>Fix:</strong> Another process is occupying port 3000. Specify an alternate port in your environment: <code>PORT=3001 npm start</code>.
-            </p>
-          </div>
-
-          <div class="card">
-            <strong style="color: #DC2626; font-size: 0.9rem;">Issue: Response returns decision "BLOCK" with rationale "Agent is unregistered"</strong>
-            <p style="font-size: 0.85rem; color: #475569; margin-top: 0.25rem;">
-              <strong>Fix:</strong> Ensure the <code>agent_id</code> specified in the payload exists in the registry. By default, preloaded demo agents include: <code>agt-customer-support-01</code>, <code>agt-code-assistant-01</code>, <code>agt-lead-enrichment-02</code>, and <code>agt-data-pipeline-03</code>.
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Next Steps Callout -->
-      <div class="card" style="background: linear-gradient(135deg, #F0FDFB 0%, #FFFFFF 100%); border-color: #B2F5EA; padding: 2rem; margin-top: 2rem;">
-        <h3 style="color: var(--logo-navy); font-size: 1.25rem; margin-bottom: 0.5rem;">Ready to explore the Platform?</h3>
-        <p style="font-size: 0.9rem; color: #475569; margin-bottom: 1.25rem;">
-          Now that your local security gateway is verified, launch the authenticated beta SOC dashboard to monitor live telemetry, configure guardrails, and manage human approvals.
-        </p>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <a href="/app/" class="btn btn-primary btn-sm">Launch Beta Dashboard &rarr;</a>
-          <a href="/docs" class="btn btn-outline btn-sm">Read Full Documentation</a>
-        </div>
-      </div>
-
-    </main>
-
   </div>
 
   <!-- =========================================================================
-       SECTION 11: Footer (Global Consistent 4-Column)
+       Main Quickstart Documentation Layout
        ========================================================================= -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
-            <img src="/assets/images/logo.png" alt="GuardAgent Logo" style="height: 32px; width: auto; object-fit: contain;">
+  <main id="main-content">
+    <div class="nb-docs-wrapper">
+      <div class="nb-docs-grid">
+        
+        <!-- Sticky Sidebar Navigation -->
+        <aside class="nb-docs-sidebar" role="complementary" aria-label="Quickstart Steps Navigation">
+          <div class="nb-docs-group">
+            <div class="nb-docs-group-title">
+              <span>GETTING STARTED</span>
+            </div>
+            <ul class="nb-docs-nav-list">
+              <li><a href="/docs" class="nb-docs-nav-item">📚 Documentation Index</a></li>
+              <li><a href="/docs/quickstart" class="nb-docs-nav-item active">🚀 1-Minute Quickstart</a></li>
+              <li><a href="/docs/api-reference" class="nb-docs-nav-item">⚡ REST API Reference</a></li>
+            </ul>
           </div>
-          <p style="font-size: 0.825rem; color: #94A3B8; line-height: 1.6; max-width: 320px;">
-            Secure Every Agent Action. Authoritative security gateway between autonomous AI agents and enterprise tools.
+
+          <div class="nb-docs-group">
+            <div class="nb-docs-group-title">
+              <span>SETUP STEPS</span>
+            </div>
+            <ul class="nb-docs-nav-list">
+              <li><a href="#prerequisites" class="nb-docs-nav-item">00. Prerequisites</a></li>
+              <li><a href="#step-1" class="nb-docs-nav-item">01. Clone Repository</a></li>
+              <li><a href="#step-2" class="nb-docs-nav-item">02. Install Dependencies</a></li>
+              <li><a href="#step-3" class="nb-docs-nav-item">03. Environment Config</a></li>
+              <li><a href="#step-4" class="nb-docs-nav-item">04. Boot Server</a></li>
+              <li><a href="#step-5" class="nb-docs-nav-item">05. Verify Health API</a></li>
+              <li><a href="#step-6" class="nb-docs-nav-item">06. Test Policy Check</a></li>
+              <li><a href="#troubleshooting" class="nb-docs-nav-item">07. Troubleshooting</a></li>
+            </ul>
+          </div>
+
+          <div class="nb-docs-group">
+            <div class="nb-docs-group-title">
+              <span>COMMUNITY</span>
+            </div>
+            <ul class="nb-docs-nav-list">
+              <li><a href="https://github.com/guardagent/guardagent" target="_blank" rel="noopener noreferrer" class="nb-docs-nav-item">⭐ Star on GitHub</a></li>
+              <li><a href="/security" class="nb-docs-nav-item">🔒 Security Architecture</a></li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Documentation Content Article -->
+        <article class="nb-docs-article">
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+            <span class="nb-sticker nb-sticker-yellow tilt-1">⏱️ 5-MINUTE SETUP</span>
+            <span class="nb-sticker nb-sticker-teal">ZERO-CONFIG LOCAL MODE</span>
+            <span class="nb-sticker nb-sticker-mint">APACHE 2.0</span>
+          </div>
+
+          <h1>Quickstart &amp; Local Setup Guide</h1>
+          
+          <p style="font-size: 1.15rem; color: #334155; line-height: 1.7; font-weight: 600; margin-bottom: 28px;">
+            Get an authoritative GuardAgent AI security gateway running locally in under five minutes with zero external database dependencies.
           </p>
-          <div style="margin-top: 1rem;">
-            <span class="badge badge-teal" style="font-size: 0.7rem;">PUBLIC BETA v1.0</span>
+
+          <!-- Prerequisites Box -->
+          <div id="prerequisites" class="nb-docs-callout" style="background: var(--nb-canvas); margin-bottom: 32px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
+              <span class="nb-step-box-title" style="font-size: 1.15rem;">Workstation Prerequisites</span>
+              <span class="nb-sticker nb-sticker-mint">NO DOCKER REQUIRED</span>
+            </div>
+            <p style="margin-bottom: 12px; font-size: 0.9rem; color: #475569;">Ensure you have the following installed on your machine:</p>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <span class="nb-sticker nb-sticker-white">Node.js v18.0.0+ (LTS)</span>
+              <span class="nb-sticker nb-sticker-white">npm v9.0.0+</span>
+              <span class="nb-sticker nb-sticker-white">Git 2.0+</span>
+            </div>
           </div>
-        </div>
 
-        <div class="footer-col">
-          <h5>Product</h5>
-          <ul>
-            <li><a href="/features">Features</a></li>
-            <li><a href="/how-it-works">How It Works</a></li>
-            <li><a href="/security">Security Architecture</a></li>
-            <li><a href="/app/">Beta Dashboard</a></li>
-          </ul>
-        </div>
+          <!-- Step 1 Card -->
+          <div id="step-1" class="nb-step-box">
+            <div class="nb-step-box-header">
+              <span class="nb-step-badge">01</span>
+              <h2 class="nb-step-box-title">Clone the Repository</h2>
+            </div>
+            <p>Clone the open-source repository from GitHub and navigate into the project directory:</p>
+            <div class="nb-code-container">
+              <div class="nb-code-header">
+                <span class="lang">BASH / TERMINAL</span>
+                <button class="copy-code-btn" data-target="cmdClone">Copy</button>
+              </div>
+              <div class="nb-code-body">
+<pre id="cmdClone"><code>git clone https://github.com/guardagent/guardagent.git
+cd guardagent</code></pre>
+              </div>
+            </div>
+          </div>
 
-        <div class="footer-col">
-          <h5>Developers</h5>
-          <ul>
-            <li><a href="/docs">Documentation</a></li>
-            <li><a href="/docs/quickstart">Quickstart</a></li>
-            <li><a href="/docs#api-reference">API Reference</a></li>
-            <li><a href="/api/health">System Health API</a></li>
-          </ul>
-        </div>
+          <!-- Step 2 Card -->
+          <div id="step-2" class="nb-step-box">
+            <div class="nb-step-box-header">
+              <span class="nb-step-badge">02</span>
+              <h2 class="nb-step-box-title">Install Runtime Dependencies</h2>
+            </div>
+            <p>Install the lightweight core gateway dependencies (Express, CORS, and Dotenv):</p>
+            <div class="nb-code-container">
+              <div class="nb-code-header">
+                <span class="lang">NPM</span>
+                <button class="copy-code-btn" data-target="cmdInstall">Copy</button>
+              </div>
+              <div class="nb-code-body">
+<pre id="cmdInstall"><code>npm install</code></pre>
+              </div>
+            </div>
+          </div>
 
-        <div class="footer-col">
-          <h5>Project &amp; Legal</h5>
-          <ul>
-            <li><a href="/security">About &amp; Security Principles</a></li>
-            <li><a href="/#community">Community Preview</a></li>
-            <li><a href="/#disclaimer">Beta Terms of Use</a></li>
-            <li><a href="/#disclaimer">Privacy Policy</a></li>
-          </ul>
+          <!-- Step 3 Card -->
+          <div id="step-3" class="nb-step-box">
+            <div class="nb-step-box-header">
+              <span class="nb-step-badge">03</span>
+              <h2 class="nb-step-box-title">Configure Environment Variables</h2>
+            </div>
+            <p>Duplicate the template configuration file to initialize your local <code>.env</code> file:</p>
+            <div class="nb-code-container">
+              <div class="nb-code-header">
+                <span class="lang">SHELL</span>
+                <button class="copy-code-btn" data-target="cmdEnv">Copy</button>
+              </div>
+              <div class="nb-code-body">
+<pre id="cmdEnv"><code>cp .env.example .env</code></pre>
+              </div>
+            </div>
+
+            <div class="nb-docs-callout teal" style="margin-top: 14px;">
+              <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">
+                <strong>Zero-Config Local Mode:</strong> If you leave the keys empty in <code>.env</code>, GuardAgent automatically runs in <strong>Local Verified Memory Store Mode</strong>. It pre-populates seed agents, declarative safety policies, and historical audit logs for immediate development.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4 Card -->
+          <div id="step-4" class="nb-step-box">
+            <div class="nb-step-box-header">
+              <span class="nb-step-badge">04</span>
+              <h2 class="nb-step-box-title">Boot the Gateway Server</h2>
+            </div>
+            <p>Start the local server. On Windows PowerShell, run <code>npm.cmd start</code> or <code>npm start</code>:</p>
+            <div class="nb-code-container">
+              <div class="nb-code-header">
+                <span class="lang">START SERVER</span>
+                <button class="copy-code-btn" data-target="cmdStart">Copy</button>
+              </div>
+              <div class="nb-code-body">
+<pre id="cmdStart"><code>npm start</code></pre>
+              </div>
+            </div>
+
+            <p style="font-size: 0.85rem; color: #475569; font-weight: 700; margin-top: 12px;">Expected startup terminal output:</p>
+            <div class="nb-code-container">
+              <div class="nb-code-header">
+                <span>TERMINAL LOGS // ONLINE</span>
+              </div>
+              <div class="nb-code-body">
+<pre><code>=======================================================
+  GuardAgent — AI Agent Security Platform
+  Server running at: http://localhost:3000
+  Public Website:   http://localhost:3000/
+  Security Console: http://localhost:3000/app/
+=======================================================</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 5 Card -->
+          <div id="step-5" class="nb-step-box">
+            <div class="nb-step-box-header">
+              <span class="nb-step-badge">05</span>
+              <h2 class="nb-step-box-title">Verify Health API</h2>
+            </div>
+            <p>In another terminal tab, ping the health endpoint to verify the gateway is healthy:</p>
+            <div class="nb-code-container">
+              <div class="nb-code-header">
+                <span class="lang">CURL</span>
+                <button class="copy-code-btn" data-target="cmdHealth">Copy</button>
+              </div>
+              <div class="nb-code-body">
+<pre id="cmdHealth"><code>curl http://localhost:3000/api/health</code></pre>
+              </div>
+            </div>
+            <p style="font-size: 0.85rem; color: #475569; font-weight: 700;">Expected 200 OK Response:</p>
+            <div class="nb-code-container">
+              <div class="nb-code-header">
+                <span class="lang">JSON RESPONSE</span>
+              </div>
+              <div class="nb-code-body">
+<pre><code>{
+  "status": "healthy",
+  "version": "1.2.0",
+  "timestamp": "2026-10-24T12:00:00.000Z",
+  "evaluator_engine": "deterministic-ast",
+  "uptime_seconds": 42
+}</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 6 Card -->
+          <div id="step-6" class="nb-step-box">
+            <div class="nb-step-box-header">
+              <span class="nb-step-badge">06</span>
+              <h2 class="nb-step-box-title">Test Policy Evaluation</h2>
+            </div>
+            <p>Simulate an AI bot trying to process an unauthorized $1,450 refund:</p>
+            <div class="nb-code-container">
+              <div class="nb-code-header">
+                <span class="lang">CURL // EVALUATE ACTION</span>
+                <button class="copy-code-btn" data-target="cmdEval">Copy</button>
+              </div>
+              <div class="nb-code-body">
+<pre id="cmdEval"><code>curl -X POST http://localhost:3000/api/requests/evaluate \
+  -H "Content-Type: application/json" \
+  -d '{
+    "agent_id": "agt-customer-support-01",
+    "tool_name": "stripe.transfers.create",
+    "action_name": "process_refund",
+    "parameters": {
+      "amount_usd": 1450.00,
+      "account_id": "act_4412_premium"
+    }
+  }'</code></pre>
+              </div>
+            </div>
+
+            <p style="font-size: 0.85rem; color: #475569; font-weight: 700;">Expected Policy Result:</p>
+            <div class="nb-code-container">
+              <div class="nb-code-header">
+                <span class="lang">JSON DECISION (0.8MS)</span>
+              </div>
+              <div class="nb-code-body">
+<pre><code>{
+  "decision": "REQUIRE_APPROVAL",
+  "risk_score": 65,
+  "risk_level": "HIGH RISK",
+  "latency_ms": 0.8,
+  "rationale": "Safety Cap Triggered: $1,450.00 exceeds your $500 safety rule."
+}</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Troubleshooting Section -->
+          <div id="troubleshooting" class="nb-step-box" style="background: var(--nb-canvas);">
+            <div class="nb-step-box-header">
+              <span class="nb-step-badge" style="background: var(--nb-coral);">07</span>
+              <h2 class="nb-step-box-title">Troubleshooting Common Issues</h2>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div>
+                <h3 style="font-size: 1rem; margin-bottom: 4px;">Port 3000 Already in Use</h3>
+                <p style="font-size: 0.875rem; color: #475569; margin: 0;">Set <code>PORT=3001</code> in your <code>.env</code> file or terminate the lingering Node process with <code>taskkill /F /IM node.exe</code> on Windows.</p>
+              </div>
+              <div>
+                <h3 style="font-size: 1rem; margin-bottom: 4px;">PowerShell Execution Policy Error</h3>
+                <p style="font-size: 0.875rem; color: #475569; margin: 0;">If running <code>npm start</code> throws a script execution policy error on Windows, run <code>npm.cmd start</code> directly.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Next Steps Resource Grid -->
+          <h2>Next Steps</h2>
+          <div class="nb-docs-cards-grid">
+            <div class="nb-docs-card">
+              <div>
+                <span class="nb-sticker nb-sticker-teal" style="font-size: 0.65rem; margin-bottom: 8px;">FULL SPECIFICATION</span>
+                <h3 style="margin-top: 6px;">REST API Reference</h3>
+                <p style="font-size: 0.875rem; color: #475569; margin-bottom: 16px;">
+                  Explore all HTTP endpoints for agents, policies, approvals, and tamper-proof audit ledgers.
+                </p>
+              </div>
+              <a href="/docs/api-reference" class="nb-btn nb-btn-teal nb-btn-sm" style="align-self: flex-start;">
+                API Reference &rarr;
+              </a>
+            </div>
+
+            <div class="nb-docs-card">
+              <div>
+                <span class="nb-sticker nb-sticker-yellow" style="font-size: 0.65rem; margin-bottom: 8px;">CORE ARCHITECTURE</span>
+                <h3 style="margin-top: 6px;">Security Boundaries</h3>
+                <p style="font-size: 0.875rem; color: #475569; margin-bottom: 16px;">
+                  Understand threat boundaries, defense-in-depth design, and deterministic policy rules.
+                </p>
+              </div>
+              <a href="/security" class="nb-btn nb-btn-white nb-btn-sm" style="align-self: flex-start;">
+                Security Architecture &rarr;
+              </a>
+            </div>
+          </div>
+
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       Neo-Brutalist Streamlined Footer
+       ========================================================================= -->
+  <footer class="nb-footer" role="contentinfo">
+    <div class="nb-footer-grid">
+      <div>
+        <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 16px;">
+          <img src="/assets/images/logo-transparent.png" alt="GuardAgent Logo" class="nb-logo-img">
+        </a>
+        <p style="font-size: 0.95rem; font-weight: 600; line-height: 1.6; max-width: 340px; color: var(--nb-navy);">
+          The open-source 0.8ms safety switch and deterministic firewall for autonomous AI agents.
+        </p>
+        <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="nb-sticker nb-sticker-teal" style="font-size: 0.68rem;">APACHE 2.0 OPEN SOURCE</span>
+          <span class="nb-sticker nb-sticker-yellow" style="font-size: 0.68rem;">0.8MS ZERO LAG</span>
         </div>
       </div>
 
-      <div class="footer-bottom" id="disclaimer">
-        <div>
-          &copy; 2026 GuardAgent. All rights reserved. Beta software provided for evaluation purposes.
-        </div>
-        <div style="color: #64748B;">
-          Technical honesty: Mock tools execute in secure sandbox simulation.
-        </div>
+      <div>
+        <div class="nb-footer-title">Explore</div>
+        <ul class="nb-footer-links">
+          <li><a href="/#how-it-works" class="nb-footer-link">How GuardAgent Works</a></li>
+          <li><a href="/#threat-lab" class="nb-footer-link">Attack Defense Lab</a></li>
+          <li><a href="/#calculator" class="nb-footer-link">Speed &amp; Token Savings</a></li>
+          <li><a href="/#faq" class="nb-footer-link">Common Questions</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="nb-footer-title">Developers</div>
+        <ul class="nb-footer-links">
+          <li><a href="/docs" class="nb-footer-link">Documentation</a></li>
+          <li><a href="/docs/quickstart" class="nb-footer-link">1-Minute Quickstart</a></li>
+          <li><a href="https://github.com/guardagent/guardagent" target="_blank" rel="noopener noreferrer" class="nb-footer-link">GitHub Repository</a></li>
+          <li><a href="/security" class="nb-footer-link">Security Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="max-width: 1140px; margin: 0 auto; padding-top: 24px; border-top: 2.5px solid var(--nb-navy); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-weight: 700; font-size: 0.85rem;">
+      <div>&copy; 2026 GuardAgent Open Source Project. Licensed under Apache 2.0.</div>
+      <div style="display: flex; gap: 20px;">
+        <a href="/docs" class="nb-footer-link">Documentation</a>
+        <a href="https://github.com/guardagent/guardagent" target="_blank" rel="noopener noreferrer" class="nb-footer-link">GitHub</a>
+        <a href="/security" class="nb-footer-link">Security Notice</a>
       </div>
     </div>
   </footer>
 
-  <script src="/assets/js/marketing.js"></script>
+  <script src="/assets/js/site.js"></script>
 </body>
 </html>

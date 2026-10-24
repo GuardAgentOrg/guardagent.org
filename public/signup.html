@@ -3,132 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Enterprise Account — GuardAgent Gateway</title>
+  <title>Create Free Account — GuardAgent Gateway</title>
   <meta name="description" content="Sign up for the GuardAgent AI Agent Security Platform SOC console.">
   <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="icon" type="image/png" href="/assets/images/logo-transparent.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&family=Space+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
   <style>
-    .auth-page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 2.5rem 1rem;
-      background-color: var(--bg-canvas);
-      position: relative;
-      overflow: hidden;
-    }
-    .auth-glow-grid {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100vw;
-      height: 500px;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      mask-image: radial-gradient(circle at 50% 20%, black 20%, transparent 75%);
-      -webkit-mask-image: radial-gradient(circle at 50% 20%, black 20%, transparent 75%);
-      pointer-events: none;
-    }
-    .auth-card {
-      max-width: 480px;
-      width: 100%;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-strong);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      box-shadow: var(--shadow-lg), 0 0 25px -5px rgba(0, 210, 180, 0.1);
-      position: relative;
-      z-index: 1;
-    }
-    .auth-alert {
-      padding: 0.75rem 1rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.825rem;
-      font-family: var(--font-mono);
-      margin-bottom: 1.25rem;
-      display: none;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .auth-alert-error {
-      background: rgba(239, 68, 68, 0.1);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      color: #FCA5A5;
-    }
-    .auth-alert-success {
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: #34D399;
-    }
     .btn-loading {
       opacity: 0.7;
       pointer-events: none;
     }
   </style>
 </head>
-<body class="auth-page">
-  <div class="auth-glow-grid"></div>
+<body class="neo-brutalist-theme">
+  <div class="nb-auth-wrapper">
+    <div class="nb-auth-bg-pattern"></div>
 
-  <div class="auth-card">
-    <div style="text-align: center; margin-bottom: 2rem;">
-      <a href="/" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.65rem;">
-        <img src="/assets/images/logo.png" alt="GuardAgent Logo" style="height: 34px; width: auto; object-fit: contain;">
-        <span style="font-weight: 700; color: #FFFFFF; font-size: 1.15rem; letter-spacing: -0.02em;">GuardAgent</span>
+    <!-- Top Navigation Bar -->
+    <div style="width: 100%; max-width: 520px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1;">
+      <a href="/" class="nb-btn nb-btn-sm nb-btn-white" style="font-size: 0.75rem; padding: 6px 12px;">
+        &larr; BACK TO HOME
       </a>
-      <h2 style="font-size: 1.25rem; margin-top: 1.25rem; color: #FFFFFF;">Create Security Operations Workspace</h2>
-      <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; font-family: var(--font-mono);">
-        CLUSTER // PROD-US-EAST-1
-      </p>
+      <span class="nb-sticker nb-sticker-yellow tilt-1" style="font-size: 0.65rem;">100% FREE &bull; APACHE 2.0</span>
     </div>
 
-    <!-- Alert Banner -->
-    <div id="signupAlert" class="auth-alert"></div>
-
-    <form id="signupForm">
-      <div class="form-group">
-        <label class="form-label" for="fullName">Lead Operator Name</label>
-        <input type="text" id="fullName" class="form-input" placeholder="Sarah Chen" required autocomplete="name">
+    <!-- Main Neo-Brutalist Signup Card -->
+    <div class="nb-auth-card wide">
+      <div class="nb-auth-header">
+        <a href="/" style="display: inline-block; margin-bottom: 8px;" aria-label="GuardAgent Home">
+          <img src="/assets/images/logo-transparent.png" alt="GuardAgent Logo" class="nb-logo-img" style="height: 44px; width: auto;">
+        </a>
+        <div>
+          <span class="nb-sticker nb-sticker-mint tilt-2" style="font-size: 0.65rem; margin-top: 4px;">FREE OPERATOR WORKSPACE</span>
+        </div>
+        <h1 class="nb-auth-title">Create Your Workspace</h1>
+        <p class="nb-auth-subtitle">
+          Add a 0.8ms deterministic firewall between your AI agents and real APIs.
+        </p>
       </div>
 
-      <div class="form-group">
-        <label class="form-label" for="organization">Organization / Team Identity</label>
-        <input type="text" id="organization" class="form-input" placeholder="Acme Security Engineering" required autocomplete="organization">
-      </div>
+      <!-- Alert / Status Notice Banner -->
+      <div id="signupAlert" class="nb-auth-alert"></div>
 
-      <div class="form-group">
-        <label class="form-label" for="email">Work Email</label>
-        <input type="email" id="email" class="form-input" placeholder="s.chen@acme-corp.com" required autocomplete="email">
-      </div>
-
-      <div class="grid grid-2 gap-3">
-        <div class="form-group">
-          <label class="form-label" for="password">Password</label>
-          <input type="password" id="password" class="form-input" placeholder="Min. 8 chars" minlength="8" required autocomplete="new-password">
+      <form id="signupForm" class="nb-auth-form">
+        <div class="nb-form-group">
+          <label class="nb-form-label" for="fullName">Lead Operator Name</label>
+          <input type="text" id="fullName" class="nb-form-input" placeholder="Sarah Chen" required autocomplete="name">
         </div>
 
-        <div class="form-group">
-          <label class="form-label" for="confirmPassword">Confirm Password</label>
-          <input type="password" id="confirmPassword" class="form-input" placeholder="Repeat password" minlength="8" required autocomplete="new-password">
+        <div class="nb-form-group">
+          <label class="nb-form-label" for="organization">Organization / Team Identity</label>
+          <input type="text" id="organization" class="nb-form-input" placeholder="Acme AI Engineering" required autocomplete="organization">
         </div>
+
+        <div class="nb-form-group">
+          <label class="nb-form-label" for="email">Work Email</label>
+          <input type="email" id="email" class="nb-form-input" placeholder="s.chen@acme-corp.com" required autocomplete="email">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="nb-form-group">
+            <label class="nb-form-label" for="password">Password</label>
+            <input type="password" id="password" class="nb-form-input" placeholder="Min. 8 chars" minlength="8" required autocomplete="new-password">
+          </div>
+
+          <div class="nb-form-group">
+            <label class="nb-form-label" for="confirmPassword">Confirm</label>
+            <input type="password" id="confirmPassword" class="nb-form-input" placeholder="Repeat password" minlength="8" required autocomplete="new-password">
+          </div>
+        </div>
+
+        <button type="submit" id="submitBtn" class="nb-btn nb-btn-teal" style="width: 100%; padding: 13px; margin-top: 8px; font-size: 0.95rem;">
+          🚀 Initialize Workspace &amp; Launch &rarr;
+        </button>
+      </form>
+
+      <div class="nb-auth-footer">
+        <span>Already have an account?</span>
+        <a href="/login">Sign In here &rarr;</a>
       </div>
-
-      <button type="submit" id="submitBtn" class="btn btn-teal" style="width: 100%; padding: 0.75rem; margin-top: 0.5rem; font-size: 0.875rem;">
-        Initialize Workspace &amp; Launch Console &rarr;
-      </button>
-    </form>
-
-    <div style="margin-top: 1.75rem; text-align: center; font-size: 0.825rem; border-top: 1px solid var(--border-subtle); padding-top: 1.25rem;">
-      <span style="color: var(--text-muted);">Already enrolled?</span>
-      <a href="/login" style="font-weight: 600; color: var(--brand-teal); margin-left: 0.25rem;">Sign In</a>
     </div>
-  </div>
 
-  <div style="margin-top: 2rem; font-size: 0.825rem; position: relative; z-index: 1;">
-    <a href="/" style="color: var(--text-muted); text-decoration: none; font-family: var(--font-mono);">&larr; Return to GuardAgent Gateway</a>
+    <!-- Bottom Footer Note -->
+    <div style="position: relative; z-index: 1; margin-top: 14px; font-size: 0.75rem; font-weight: 700; color: #64748B; font-family: var(--font-mono); text-align: center;">
+      Runs locally on your computer or private cloud &bull; Zero external data sharing
+    </div>
   </div>
 
   <script src="/assets/js/api.js"></script>
@@ -138,8 +99,8 @@
 
     function showAlert(message, type) {
       alertBox.textContent = message;
-      alertBox.className = 'auth-alert ' + (type === 'error' ? 'auth-alert-error' : 'auth-alert-success');
-      alertBox.style.display = 'flex';
+      alertBox.className = 'nb-auth-alert ' + (type === 'error' ? 'error' : 'success');
+      alertBox.style.display = 'block';
     }
 
     document.getElementById('signupForm').addEventListener('submit', async (e) => {
@@ -175,7 +136,7 @@
       } catch (err) {
         submitBtn.disabled = false;
         submitBtn.classList.remove('btn-loading');
-        submitBtn.textContent = 'Initialize Workspace & Launch Console →';
+        submitBtn.textContent = 'Initialize Workspace & Launch →';
         showAlert(err.message || "Enrollment failed. Please check inputs and retry.", "error");
       }
     });

@@ -6,134 +6,94 @@
   <title>Sign In — GuardAgent Security Console</title>
   <meta name="description" content="Sign in to the GuardAgent AI Agent Security Platform SOC console.">
   <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="icon" type="image/png" href="/assets/images/logo-transparent.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&family=Space+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
   <style>
-    .auth-page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 2.5rem 1rem;
-      background-color: var(--bg-canvas);
-      position: relative;
-      overflow: hidden;
-    }
-    .auth-glow-grid {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100vw;
-      height: 500px;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      mask-image: radial-gradient(circle at 50% 20%, black 20%, transparent 75%);
-      -webkit-mask-image: radial-gradient(circle at 50% 20%, black 20%, transparent 75%);
-      pointer-events: none;
-    }
-    .auth-card {
-      max-width: 440px;
-      width: 100%;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-strong);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      box-shadow: var(--shadow-lg), 0 0 25px -5px rgba(0, 210, 180, 0.1);
-      position: relative;
-      z-index: 1;
-    }
-    .auth-alert {
-      padding: 0.75rem 1rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.825rem;
-      font-family: var(--font-mono);
-      margin-bottom: 1.25rem;
-      display: none;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .auth-alert-error {
-      background: rgba(239, 68, 68, 0.1);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      color: #FCA5A5;
-    }
-    .auth-alert-success {
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: #34D399;
-    }
     .btn-loading {
       opacity: 0.7;
       pointer-events: none;
     }
   </style>
 </head>
-<body class="auth-page">
-  <div class="auth-glow-grid"></div>
+<body class="neo-brutalist-theme">
+  <div class="nb-auth-wrapper">
+    <div class="nb-auth-bg-pattern"></div>
 
-  <div class="auth-card">
-    <div style="text-align: center; margin-bottom: 2rem;">
-      <a href="/" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.65rem;">
-        <img src="/assets/images/logo.png" alt="GuardAgent Logo" style="height: 34px; width: auto; object-fit: contain;">
-        <span style="font-weight: 700; color: #FFFFFF; font-size: 1.15rem; letter-spacing: -0.02em;">GuardAgent</span>
+    <!-- Top Navigation Bar -->
+    <div style="width: 100%; max-width: 460px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1;">
+      <a href="/" class="nb-btn nb-btn-sm nb-btn-white" style="font-size: 0.75rem; padding: 6px 12px;">
+        &larr; BACK TO HOME
       </a>
-      <h2 style="font-size: 1.25rem; margin-top: 1.25rem; color: #FFFFFF;">Authenticate to Security Console</h2>
-      <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; font-family: var(--font-mono);">
-        CLUSTER // PROD-US-EAST-1
-      </p>
+      <span class="nb-sticker nb-sticker-yellow tilt-1" style="font-size: 0.65rem;">0.8MS ZERO LAG</span>
     </div>
 
-    <!-- Alert / Status Notice Banner -->
-    <div id="authAlert" class="auth-alert"></div>
-
-    <!-- Quick 1-Click Demo Access -->
-    <div style="background: rgba(0, 210, 180, 0.05); border: 1px solid rgba(0, 210, 180, 0.2); border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1.5rem; text-align: center;">
-      <div style="font-size: 0.7rem; font-family: var(--font-mono); text-transform: uppercase; color: var(--brand-teal); font-weight: 700; letter-spacing: 0.05em; margin-bottom: 0.35rem;">
-        Fast-Track Evaluation Access
-      </div>
-      <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
-        Authenticate with the preloaded Security Lead profile. Pre-configured with live policies and simulated agents.
-      </p>
-      <button id="quickDemoBtn" class="btn btn-teal" style="width: 100%; padding: 0.65rem; font-size: 0.85rem;">
-        Launch Demo SOC Session &rarr;
-      </button>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 0.75rem; margin: 1.5rem 0;">
-      <hr style="flex: 1; border: none; border-top: 1px solid var(--border-default);">
-      <span style="font-size: 0.7rem; font-family: var(--font-mono); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">or email authorization</span>
-      <hr style="flex: 1; border: none; border-top: 1px solid var(--border-default);">
-    </div>
-
-    <form id="loginForm">
-      <div class="form-group">
-        <label class="form-label" for="email">Work Email</label>
-        <input type="email" id="email" class="form-input" placeholder="security.lead@enterprise.guardagent.ai" required autocomplete="email">
-      </div>
-
-      <div class="form-group">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
-          <label class="form-label" for="password" style="margin-bottom: 0;">Password</label>
-          <span style="font-size: 0.7rem; font-family: var(--font-mono); color: var(--text-muted);">(Demo: any string)</span>
+    <!-- Main Neo-Brutalist Auth Card -->
+    <div class="nb-auth-card">
+      <div class="nb-auth-header">
+        <a href="/" style="display: inline-block; margin-bottom: 8px;" aria-label="GuardAgent Home">
+          <img src="/assets/images/logo-transparent.png" alt="GuardAgent Logo" class="nb-logo-img" style="height: 44px; width: auto;">
+        </a>
+        <div>
+          <span class="nb-sticker nb-sticker-mint tilt-2" style="font-size: 0.65rem; margin-top: 4px;">OPERATOR CONSOLE</span>
         </div>
-        <input type="password" id="password" class="form-input" placeholder="••••••••" required autocomplete="current-password">
+        <h1 class="nb-auth-title">Sign In to Platform</h1>
+        <p class="nb-auth-subtitle">
+          Enter your work email or test with 1-click evaluation profile.
+        </p>
       </div>
 
-      <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%; padding: 0.75rem; margin-top: 0.5rem; font-size: 0.875rem;">
-        Sign In to Platform &rarr;
-      </button>
-    </form>
+      <!-- Alert / Status Notice Banner -->
+      <div id="authAlert" class="nb-auth-alert"></div>
 
-    <div style="margin-top: 1.75rem; text-align: center; font-size: 0.825rem; border-top: 1px solid var(--border-subtle); padding-top: 1.25rem;">
-      <span style="color: var(--text-muted);">Need an organization workspace?</span>
-      <a href="/signup" style="font-weight: 600; color: var(--brand-teal); margin-left: 0.25rem;">Create Account</a>
+      <!-- Quick 1-Click Demo Access -->
+      <div class="nb-auth-callout">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <span class="nb-sticker nb-sticker-teal" style="font-size: 0.62rem; padding: 2px 6px;">FAST-TRACK EVALUATION</span>
+          <span style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 900; color: #008780;">NO PASSWORD NEEDED</span>
+        </div>
+        <p style="font-size: 0.8rem; font-weight: 600; color: var(--nb-navy); margin-bottom: 12px; line-height: 1.45;">
+          Preloaded Security Lead profile. Test live deterministic safety rules, telemetry, and attack defenses.
+        </p>
+        <button id="quickDemoBtn" type="button" class="nb-btn nb-btn-teal" style="width: 100%; font-size: 0.85rem; padding: 10px 16px;">
+          ⚡ Launch Demo SOC Session &rarr;
+        </button>
+      </div>
+
+      <div class="nb-auth-divider">
+        <span class="nb-sticker nb-sticker-white" style="font-size: 0.65rem;">OR WORK EMAIL</span>
+      </div>
+
+      <form id="loginForm" class="nb-auth-form">
+        <div class="nb-form-group">
+          <label class="nb-form-label" for="email">Work Email</label>
+          <input type="email" id="email" class="nb-form-input" placeholder="security.lead@enterprise.guardagent.ai" required autocomplete="email">
+        </div>
+
+        <div class="nb-form-group">
+          <div class="nb-form-label">
+            <label for="password">Password</label>
+            <span style="font-size: 0.68rem; font-weight: 700; color: #64748B;">(Demo: any string)</span>
+          </div>
+          <input type="password" id="password" class="nb-form-input" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+
+        <button type="submit" id="submitBtn" class="nb-btn nb-btn-navy" style="width: 100%; padding: 12px; margin-top: 6px; font-size: 0.95rem;">
+          Sign In to Platform &rarr;
+        </button>
+      </form>
+
+      <div class="nb-auth-footer">
+        <span>Need an organization workspace?</span>
+        <a href="/signup">Create Account &rarr;</a>
+      </div>
     </div>
-  </div>
 
-  <div style="margin-top: 2rem; font-size: 0.825rem; position: relative; z-index: 1;">
-    <a href="/" style="color: var(--text-muted); text-decoration: none; font-family: var(--font-mono);">&larr; Return to GuardAgent Gateway</a>
+    <!-- Bottom Footer Note -->
+    <div style="position: relative; z-index: 1; margin-top: 14px; font-size: 0.75rem; font-weight: 700; color: #64748B; font-family: var(--font-mono); text-align: center;">
+      100% Deterministic &bull; Apache 2.0 Open Source &bull; 0.8ms Latency
+    </div>
   </div>
 
   <script src="/assets/js/api.js"></script>
@@ -144,12 +104,13 @@
 
     function showAlert(message, type) {
       alertBox.textContent = message;
-      alertBox.className = 'auth-alert ' + (type === 'error' ? 'auth-alert-error' : 'auth-alert-success');
-      alertBox.style.display = 'flex';
+      alertBox.className = 'nb-auth-alert ' + (type === 'error' ? 'error' : 'success');
+      alertBox.style.display = 'block';
     }
 
     demoBtn.addEventListener('click', async () => {
       demoBtn.disabled = true;
+      demoBtn.classList.add('btn-loading');
       demoBtn.textContent = 'Authenticating Demo Profile...';
       try {
         await window.api.login('security.lead@enterprise.guardagent.ai', 'demo', true);
@@ -157,6 +118,7 @@
         setTimeout(() => { window.location.href = '/app/'; }, 400);
       } catch (err) {
         demoBtn.disabled = false;
+        demoBtn.classList.remove('btn-loading');
         demoBtn.textContent = 'Launch Demo SOC Session →';
         showAlert("Sign in failed: " + err.message, "error");
       }
