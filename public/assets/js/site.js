@@ -42,6 +42,13 @@ function initMobileNav() {
     setMenuState(!isCurrentlyOpen);
   });
 
+  // Automatically close mobile menu when clicking any anchor link
+  drawer.querySelectorAll('a').forEach((navLink) => {
+    navLink.addEventListener('click', () => {
+      setMenuState(false);
+    });
+  });
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && drawer.classList.contains('open')) {
       setMenuState(false);
