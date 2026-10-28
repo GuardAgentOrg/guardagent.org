@@ -6031,6 +6031,222 @@ body.neo-brutalist-theme {
 }
 
 /* ==========================================================================
+   404 Multi-Tier Responsive Breakpoints (Laptop / Tablet / Mobile)
+   ========================================================================== */
+
+/* 1. Laptops and Compact Desktops (<= 1024px) */
+@media (max-width: 1024px) {
+  .nb-404-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+/* 2. Tablets and Medium Devices (<= 768px) */
+@media (max-width: 768px) {
+  .nb-404-container {
+    padding: 30px 16px 64px;
+  }
+  .nb-404-hero {
+    margin-bottom: 28px;
+  }
+  .nb-404-giant-number {
+    font-size: clamp(4.8rem, 16vw, 7.5rem);
+  }
+  .nb-404-tape-wrap {
+    max-width: calc(100vw - 32px);
+    box-sizing: border-box;
+  }
+  .nb-404-tape-inner {
+    font-size: 0.72rem;
+    padding: 6px 14px;
+    letter-spacing: 0.03em;
+  }
+  .nb-404-title {
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+  }
+  .nb-404-subtitle {
+    font-size: 1rem;
+    margin-bottom: 26px;
+  }
+  .nb-404-terminal {
+    margin-bottom: 32px;
+  }
+  .nb-404-terminal-body {
+    padding: 16px 18px;
+  }
+  .nb-404-actions {
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .nb-404-actions .nb-btn {
+    padding: 12px 22px;
+    font-size: 0.95rem;
+  }
+  .nb-404-search-box {
+    padding: 20px 18px;
+    margin-bottom: 44px;
+  }
+  .nb-404-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .nb-404-card {
+    padding: 20px 18px;
+  }
+}
+
+/* 3. Small Tablets and Large Mobile Viewports (<= 580px) */
+@media (max-width: 580px) {
+  .terminal-row {
+    grid-template-columns: 1fr;
+    gap: 3px;
+    margin-bottom: 11px;
+  }
+  .term-key {
+    font-size: 0.7rem;
+  }
+  .term-val {
+    font-size: 0.78rem;
+  }
+  .nb-404-actions {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 36px;
+  }
+  .nb-404-actions .nb-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .nb-404-search-form {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .nb-404-search-input {
+    width: 100%;
+    height: 46px;
+  }
+  .nb-404-search-btn {
+    width: 100%;
+    height: 46px;
+  }
+  .nb-404-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+/* 4. Compact Mobile Phones (<= 480px) */
+@media (max-width: 480px) {
+  .nb-404-container {
+    padding: 22px 12px 50px;
+  }
+  .nb-404-badges {
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .nb-404-badges .nb-sticker {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+  }
+  .nb-404-giant-number {
+    font-size: clamp(3.8rem, 20vw, 5.5rem);
+    text-shadow: 4px 4px 0px var(--nb-yellow), 8px 8px 0px var(--nb-coral);
+  }
+  html[data-theme="dark"] .nb-404-giant-number,
+  html.dark-theme .nb-404-giant-number,
+  body.dark-theme .nb-404-giant-number {
+    text-shadow: 4px 4px 0px #FACC15, 8px 8px 0px #F43F5E, 12px 12px 0px #00E5BE !important;
+  }
+  .nb-404-tape-wrap {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-top: 10px;
+    transform: rotate(-0.5deg);
+  }
+  .nb-404-tape-inner {
+    font-size: 0.64rem;
+    padding: 6px 8px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.35;
+    word-break: break-word;
+  }
+  .nb-404-title {
+    font-size: clamp(1.35rem, 6.2vw, 1.75rem);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .nb-404-subtitle {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin-bottom: 22px;
+  }
+  .nb-404-terminal {
+    border-radius: 8px;
+    margin-bottom: 28px;
+  }
+  .nb-404-terminal-header {
+    padding: 8px 12px;
+  }
+  .nb-404-terminal-title {
+    font-size: 0.6rem;
+    letter-spacing: 0;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .nb-404-latency {
+    font-size: 0.6rem;
+    padding: 1px 5px;
+  }
+  .nb-404-terminal-body {
+    padding: 12px 14px;
+    font-size: 0.75rem;
+  }
+  .nb-404-search-box {
+    padding: 16px 12px;
+    margin-bottom: 34px;
+    border-radius: 8px;
+  }
+  .nb-404-search-label {
+    font-size: 0.65rem;
+  }
+  .nb-404-search-suggestions {
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .sug-pill {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+  }
+  .nb-404-pathways-header h2 {
+    font-size: 1.35rem;
+  }
+  .nb-404-pathways-header p {
+    font-size: 0.85rem;
+  }
+  .nb-404-card {
+    padding: 16px 14px;
+  }
+  .nb-404-card-title {
+    font-size: 1.05rem;
+  }
+  .nb-404-card-desc {
+    font-size: 0.825rem;
+  }
+}
+
+/* ==========================================================================
    Comprehensive Multi-Device Responsiveness System
    (Mobile: 320px-480px | Tablet: 481px-768px | Laptop: 769px-1024px | Desktop: 1025px+)
    ========================================================================== */
@@ -8238,3 +8454,37 @@ html.dark-theme .nb-404-pathways-header p,
 body.dark-theme .nb-404-pathways-header p {
   color: #71717A !important;
 }
+
+/* Dark Theme Support for Subpage Heroes, Workflows & Footer Titles */
+html[data-theme="dark"] .workflow-step-item,
+html.dark-theme .workflow-step-item,
+body.dark-theme .workflow-step-item {
+  background: #09090B !important;
+  border-color: #27272A !important;
+}
+
+html[data-theme="dark"] .step-badge,
+html.dark-theme .step-badge,
+body.dark-theme .step-badge {
+  background: #00E5BE !important;
+  color: #000000 !important;
+}
+
+html[data-theme="dark"] .hero-title,
+html.dark-theme .hero-title,
+body.dark-theme .hero-title {
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .hero-lead,
+html.dark-theme .hero-lead,
+body.dark-theme .hero-lead {
+  color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .footer-col-title,
+html.dark-theme .footer-col-title,
+body.dark-theme .footer-col-title {
+  color: #FFFFFF !important;
+}
+
