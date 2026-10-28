@@ -48,30 +48,12 @@
         </div>
         <h1 class="nb-auth-title">Sign In to Platform</h1>
         <p class="nb-auth-subtitle">
-          Enter your work email or test with 1-click evaluation profile.
+          Enter your work email and password to access the platform.
         </p>
       </div>
 
       <!-- Alert / Status Notice Banner -->
       <div id="authAlert" class="nb-auth-alert"></div>
-
-      <!-- Quick 1-Click Demo Access -->
-      <div class="nb-auth-callout">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-          <span class="nb-sticker nb-sticker-teal" style="font-size: 0.62rem; padding: 2px 6px;">FAST-TRACK EVALUATION</span>
-          <span style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 900; color: #008780;">NO PASSWORD NEEDED</span>
-        </div>
-        <p style="font-size: 0.8rem; font-weight: 600; color: var(--nb-navy); margin-bottom: 12px; line-height: 1.45;">
-          Preloaded Security Lead profile. Test live deterministic safety rules, telemetry, and attack defenses.
-        </p>
-        <button id="quickDemoBtn" type="button" class="nb-btn nb-btn-teal" style="width: 100%; font-size: 0.85rem; padding: 10px 16px;">
-          ⚡ Launch Demo SOC Session &rarr;
-        </button>
-      </div>
-
-      <div class="nb-auth-divider">
-        <span class="nb-sticker nb-sticker-white" style="font-size: 0.65rem;">OR WORK EMAIL</span>
-      </div>
 
       <form id="loginForm" class="nb-auth-form">
         <div class="nb-form-group">
@@ -80,10 +62,7 @@
         </div>
 
         <div class="nb-form-group">
-          <div class="nb-form-label">
-            <label for="password">Password</label>
-            <span style="font-size: 0.68rem; font-weight: 700; color: #64748B;">(Demo: any string)</span>
-          </div>
+          <label class="nb-form-label" for="password">Password</label>
           <input type="password" id="password" class="nb-form-input" placeholder="••••••••" required autocomplete="current-password">
         </div>
 
@@ -109,29 +88,12 @@
   <script>
     const alertBox = document.getElementById('authAlert');
     const submitBtn = document.getElementById('submitBtn');
-    const demoBtn = document.getElementById('quickDemoBtn');
 
     function showAlert(message, type) {
       alertBox.textContent = message;
       alertBox.className = 'nb-auth-alert ' + (type === 'error' ? 'error' : 'success');
       alertBox.style.display = 'block';
     }
-
-    demoBtn.addEventListener('click', async () => {
-      demoBtn.disabled = true;
-      demoBtn.classList.add('btn-loading');
-      demoBtn.textContent = 'Authenticating Demo Profile...';
-      try {
-        await window.api.login('security.lead@enterprise.guardagent.ai', 'demo', true);
-        showAlert("Authentication verified. Loading security telemetry...", "success");
-        setTimeout(() => { window.location.href = '/app/'; }, 400);
-      } catch (err) {
-        demoBtn.disabled = false;
-        demoBtn.classList.remove('btn-loading');
-        demoBtn.textContent = 'Launch Demo SOC Session →';
-        showAlert("Sign in failed: " + err.message, "error");
-      }
-    });
 
     document.getElementById('loginForm').addEventListener('submit', async (e) => {
       e.preventDefault();
