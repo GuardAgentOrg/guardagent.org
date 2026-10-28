@@ -115,13 +115,17 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Start Server
-app.listen(PORT, () => {
-  console.log(`=======================================================`);
-  console.log(`  GuardAgent — AI Agent Security Platform (Beta)`);
-  console.log(`  Server running at: http://localhost:${PORT}`);
-  console.log(`  Public Website:   http://localhost:${PORT}/`);
-  console.log(`  Beta Application: http://localhost:${PORT}/app/`);
-  console.log(`  Health Endpoint:  http://localhost:${PORT}/api/health`);
-  console.log(`=======================================================`);
-});
+// Start Server (when invoked directly)
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`=======================================================`);
+    console.log(`  GuardAgent — AI Agent Security Platform (Beta)`);
+    console.log(`  Server running at: http://localhost:${PORT}`);
+    console.log(`  Public Website:   http://localhost:${PORT}/`);
+    console.log(`  Beta Application: http://localhost:${PORT}/app/`);
+    console.log(`  Health Endpoint:  http://localhost:${PORT}/api/health`);
+    console.log(`=======================================================`);
+  });
+}
+
+module.exports = app;

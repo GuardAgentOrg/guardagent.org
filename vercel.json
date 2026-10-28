@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/signin", "destination": "/signin.html" },
+    { "source": "/sign-in", "destination": "/signin.html" },
+    { "source": "/login", "destination": "/signin.html" },
+    { "source": "/auth/login", "destination": "/signin.html" },
+    { "source": "/documentation", "destination": "/documentation.html" },
+    { "source": "/documentation/:match*", "destination": "/docs.html" },
+    { "source": "/docs", "destination": "/docs.html" },
+    { "source": "/docs/quickstart", "destination": "/quickstart.html" },
+    { "source": "/docs/api-reference", "destination": "/api-reference.html" },
+    { "source": "/security-notice", "destination": "/security-notice.html" },
+    { "source": "/security_notice", "destination": "/security-notice.html" },
+    { "source": "/security-policy", "destination": "/security-notice.html" },
+    { "source": "/security", "destination": "/security.html" },
+    { "source": "/features", "destination": "/features.html" },
+    { "source": "/how-it-works", "destination": "/how-it-works.html" },
+    { "source": "/use-cases", "destination": "/use-cases.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/contributing", "destination": "/contributing.html" },
+    { "source": "/signup", "destination": "/signup.html" },
+    { "source": "/sign-up", "destination": "/signup.html" },
+    { "source": "/app", "destination": "/app/index.html" },
+    { "source": "/api/:match*", "destination": "/api/index.js" }
+  ]
+}
