@@ -513,21 +513,21 @@
               GUARDAGENT FIREWALL DECISION:
             </div>
 
-            <div style="background: var(--nb-canvas); border: var(--nb-border-base); box-shadow: 3px 3px 0px var(--nb-navy); border-radius: 6px; padding: 16px; margin-bottom: 16px;">
+            <div class="nb-attack-verdict-card">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                 <span style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800;">FIREWALL ACTION:</span>
                 <span id="attackVerdictBadge" class="nb-sticker nb-sticker-coral" style="font-size: 0.75rem;">HARD BLOCK</span>
               </div>
-              <div id="attackVerdictDesc" style="font-family: var(--font-mono); font-size: 0.825rem; font-weight: 700; color: var(--nb-navy); line-height: 1.55;">
+              <div id="attackVerdictDesc" class="nb-attack-verdict-desc">
                 Hacker Trick Blocked: An attacker told the agent to download and run an unverified internet script. GuardAgent blocked the command in 0.7ms before anything could run.
               </div>
             </div>
 
-            <div style="margin-top: auto; padding: 14px; background: var(--nb-green); border: var(--nb-border-base); box-shadow: 3px 3px 0px var(--nb-navy); border-radius: 6px;">
-              <div style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 900; color: var(--nb-navy);">
+            <div class="nb-attack-guarantee-card">
+              <div class="nb-attack-guarantee-title">
                 ✓ 100% PRODUCTION PROTECTION GUARANTEE
               </div>
-              <div style="font-size: 0.8rem; font-weight: 600; color: var(--nb-navy); margin-top: 4px;">
+              <div class="nb-attack-guarantee-desc">
                 Dangerous command safely dropped before reaching your server. Tamper-proof audit log recorded.
               </div>
             </div>
