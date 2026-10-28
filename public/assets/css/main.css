@@ -4013,6 +4013,48 @@ body.neo-brutalist-theme {
   flex-direction: column;
 }
 
+/* Attack Result Verdict & Guarantee Cards */
+.nb-attack-verdict-card {
+  background: var(--nb-canvas);
+  border: var(--nb-border-base);
+  box-shadow: 3px 3px 0px var(--nb-navy);
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.nb-attack-verdict-desc {
+  font-family: var(--font-mono);
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: var(--nb-navy);
+  line-height: 1.55;
+}
+
+.nb-attack-guarantee-card {
+  margin-top: auto;
+  padding: 14px;
+  background: var(--nb-green);
+  border: var(--nb-border-base);
+  box-shadow: 3px 3px 0px var(--nb-navy);
+  border-radius: 6px;
+}
+
+.nb-attack-guarantee-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: var(--nb-navy);
+}
+
+.nb-attack-guarantee-desc {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--nb-navy);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
 /* ==========================================================================
    Neo-Brutalist Threat Table
    ========================================================================== */
@@ -6346,9 +6388,52 @@ html[data-theme="dark"] .nb-attack-code-col {
   font-family: 'JetBrains Mono', monospace !important;
 }
 
-html[data-theme="dark"] .nb-attack-result-col {
+html[data-theme="dark"] .nb-attack-result-col,
+html.dark-theme .nb-attack-result-col,
+body.dark-theme .nb-attack-result-col {
   background: #080808 !important;
   color: #FFFFFF !important;
+}
+
+/* Attack Lab Verdict Card in Dark Theme */
+html[data-theme="dark"] .nb-attack-verdict-card,
+html.dark-theme .nb-attack-verdict-card,
+body.dark-theme .nb-attack-verdict-card {
+  background: #0D0D10 !important;
+  border: 2px solid #27272A !important;
+  box-shadow: 3px 3px 0px #000000 !important;
+}
+
+html[data-theme="dark"] .nb-attack-verdict-desc,
+html.dark-theme .nb-attack-verdict-desc,
+body.dark-theme .nb-attack-verdict-desc {
+  color: #FFFFFF !important;
+}
+
+/* Attack Lab 100% Protection Guarantee Banner in Dark Theme */
+html[data-theme="dark"] .nb-attack-guarantee-card,
+html[data-theme="dark"] .nb-attack-result-col div[style*="background: var(--nb-green)"],
+html.dark-theme .nb-attack-guarantee-card,
+body.dark-theme .nb-attack-guarantee-card {
+  background: #021F14 !important;
+  border: 2px solid #10B981 !important;
+  box-shadow: 3px 3px 0px #000000 !important;
+}
+
+html[data-theme="dark"] .nb-attack-guarantee-title,
+html[data-theme="dark"] .nb-attack-guarantee-card .nb-attack-guarantee-title,
+html[data-theme="dark"] .nb-attack-result-col div[style*="background: var(--nb-green)"] > div:first-child,
+html.dark-theme .nb-attack-guarantee-title,
+body.dark-theme .nb-attack-guarantee-title {
+  color: #34D399 !important;
+}
+
+html[data-theme="dark"] .nb-attack-guarantee-desc,
+html[data-theme="dark"] .nb-attack-guarantee-card .nb-attack-guarantee-desc,
+html[data-theme="dark"] .nb-attack-result-col div[style*="background: var(--nb-green)"] > div:last-child,
+html.dark-theme .nb-attack-guarantee-desc,
+body.dark-theme .nb-attack-guarantee-desc {
+  color: #D1FAE5 !important;
 }
 
 /* 12. ROI Scoreboard, FAQ & Confident CTA Card */
@@ -6734,4 +6819,14 @@ html[data-theme="dark"] .nb-btn-yellow [style*="color: var(--nb-navy)"],
 html[data-theme="dark"] .nb-attack-tab.active [style*="color: var(--nb-navy)"],
 html[data-theme="dark"] .nb-arcade-topbar [style*="color: var(--nb-navy)"] {
   color: #000000 !important;
+}
+
+html[data-theme="dark"] .nb-attack-guarantee-card [style*="color: var(--nb-navy)"],
+html[data-theme="dark"] .nb-attack-result-col div[style*="background: var(--nb-green)"] [style*="color: var(--nb-navy)"] {
+  color: #D1FAE5 !important;
+}
+
+html[data-theme="dark"] .nb-attack-guarantee-card .nb-attack-guarantee-title[style*="color: var(--nb-navy)"],
+html[data-theme="dark"] .nb-attack-result-col div[style*="background: var(--nb-green)"] > div:first-child[style*="color: var(--nb-navy)"] {
+  color: #34D399 !important;
 }
