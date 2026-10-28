@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — GuardAgent Security Console</title>
+  <meta name="description" content="Sign in to the GuardAgent AI Agent Security Platform SOC console.">
+  <link rel="canonical" href="/login">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="icon" type="image/png" href="/assets/images/logo-transparent.png">
+  <script>(function(){try{var t=localStorage.getItem('guardagent-theme')||'dark';document.documentElement.setAttribute('data-theme',t);document.documentElement.classList.add(t==='dark'?'dark':'light');if(t==='dark')document.documentElement.classList.add('dark-theme');}catch(e){}})();</script>
+  <style>
+    .btn-loading {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="neo-brutalist-theme">
+  <div class="nb-auth-wrapper">
+    <div class="nb-auth-bg-pattern"></div>
+
+    <!-- Top Navigation Bar -->
+    <div class="nb-auth-nav" style="width: 100%; max-width: 460px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1;">
+      <a href="/" class="nb-btn nb-btn-sm nb-btn-white" style="font-size: 0.75rem; padding: 6px 12px;">
+        &larr; BACK TO HOME
+      </a>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <button class="nb-theme-toggle" aria-label="Toggle Dark Theme" title="Toggle theme (Dark / Light)">
+          <svg class="sun-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          <svg class="moon-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        <span class="nb-sticker nb-sticker-yellow tilt-1" style="font-size: 0.65rem;">0.8MS ZERO LAG</span>
+      </div>
+    </div>
+
+    <!-- Main Neo-Brutalist Auth Card -->
+    <div class="nb-auth-card">
+      <div class="nb-auth-header">
+        <a href="/" style="display: inline-block; margin-bottom: 8px;" aria-label="GuardAgent Home">
+          <img src="/assets/images/logo-transparent.png" alt="GuardAgent Logo" class="nb-logo-img" style="height: 44px; width: auto;">
+        </a>
+        <div>
+          <span class="nb-sticker nb-sticker-mint tilt-2" style="font-size: 0.65rem; margin-top: 4px;">OPERATOR CONSOLE</span>
+        </div>
+        <h1 class="nb-auth-title">Sign In to Platform</h1>
+        <p class="nb-auth-subtitle">
+          Enter your work email or test with 1-click evaluation profile.
+        </p>
+      </div>
+
+      <!-- Alert / Status Notice Banner -->
+      <div id="authAlert" class="nb-auth-alert"></div>
+
+      <!-- Quick 1-Click Demo Access -->
+      <div class="nb-auth-callout">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <span class="nb-sticker nb-sticker-teal" style="font-size: 0.62rem; padding: 2px 6px;">FAST-TRACK EVALUATION</span>
+          <span style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 900; color: #008780;">NO PASSWORD NEEDED</span>
+        </div>
+        <p style="font-size: 0.8rem; font-weight: 600; color: var(--nb-navy); margin-bottom: 12px; line-height: 1.45;">
+          Preloaded Security Lead profile. Test live deterministic safety rules, telemetry, and attack defenses.
+        </p>
+        <button id="quickDemoBtn" type="button" class="nb-btn nb-btn-teal" style="width: 100%; font-size: 0.85rem; padding: 10px 16px;">
+          ⚡ Launch Demo SOC Session &rarr;
+        </button>
+      </div>
+
+      <div class="nb-auth-divider">
+        <span class="nb-sticker nb-sticker-white" style="font-size: 0.65rem;">OR WORK EMAIL</span>
+      </div>
+
+      <form id="loginForm" class="nb-auth-form">
+        <div class="nb-form-group">
+          <label class="nb-form-label" for="email">Work Email</label>
+          <input type="email" id="email" class="nb-form-input" placeholder="security.lead@enterprise.guardagent.ai" required autocomplete="email">
+        </div>
+
+        <div class="nb-form-group">
+          <div class="nb-form-label">
+            <label for="password">Password</label>
+            <span style="font-size: 0.68rem; font-weight: 700; color: #64748B;">(Demo: any string)</span>
+          </div>
+          <input type="password" id="password" class="nb-form-input" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+
+        <button type="submit" id="submitBtn" class="nb-btn nb-btn-navy" style="width: 100%; padding: 12px; margin-top: 6px; font-size: 0.95rem;">
+          Sign In to Platform &rarr;
+        </button>
+      </form>
+
+      <div class="nb-auth-footer">
+        <span>Need an organization workspace?</span>
+        <a href="/signup">Create Account &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Bottom Footer Note -->
+    <div style="position: relative; z-index: 1; margin-top: 14px; font-size: 0.75rem; font-weight: 700; color: #64748B; font-family: var(--font-mono); text-align: center;">
+      100% Deterministic &bull; Apache 2.0 Open Source &bull; 0.8ms Latency
+    </div>
+  </div>
+
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/site.js"></script>
+  <script>
+    const alertBox = document.getElementById('authAlert');
+    const submitBtn = document.getElementById('submitBtn');
+    const demoBtn = document.getElementById('quickDemoBtn');
+
+    function showAlert(message, type) {
+      alertBox.textContent = message;
+      alertBox.className = 'nb-auth-alert ' + (type === 'error' ? 'error' : 'success');
+      alertBox.style.display = 'block';
+    }
+
+    demoBtn.addEventListener('click', async () => {
+      demoBtn.disabled = true;
+      demoBtn.classList.add('btn-loading');
+      demoBtn.textContent = 'Authenticating Demo Profile...';
+      try {
+        await window.api.login('security.lead@enterprise.guardagent.ai', 'demo', true);
+        showAlert("Authentication verified. Loading security telemetry...", "success");
+        setTimeout(() => { window.location.href = '/app/'; }, 400);
+      } catch (err) {
+        demoBtn.disabled = false;
+        demoBtn.classList.remove('btn-loading');
+        demoBtn.textContent = 'Launch Demo SOC Session →';
+        showAlert("Sign in failed: " + err.message, "error");
+      }
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      submitBtn.disabled = true;
+      submitBtn.classList.add('btn-loading');
+      submitBtn.textContent = 'Verifying credentials...';
+      alertBox.style.display = 'none';
+
+      try {
+        await window.api.login(email, password, false);
+        showAlert("Sign in successful. Redirecting to SOC...", "success");
+        setTimeout(() => { window.location.href = '/app/'; }, 500);
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('btn-loading');
+        submitBtn.textContent = 'Sign In to Platform →';
+        showAlert(err.message || "Invalid email or password.", "error");
+      }
+    });
+  </script>
+</body>
+</html>
+

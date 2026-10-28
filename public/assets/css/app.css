@@ -453,3 +453,97 @@
     padding: 0.75rem 1.25rem;
   }
 }
+
+/* ==========================================================================
+   APP CONSOLE PITCH DARK OVERRIDES (TRUE OLED BLACK)
+   ========================================================================== */
+html[data-theme="dark"] .app-container,
+html.dark-theme .app-container {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .app-sidebar,
+html.dark-theme .app-sidebar {
+  background-color: #000000 !important;
+  border-right: 1px solid #1C1C1E !important;
+}
+
+html[data-theme="dark"] .sidebar-header,
+html.dark-theme .sidebar-header {
+  border-bottom: 1px solid #1C1C1E !important;
+}
+
+html[data-theme="dark"] .sidebar-footer,
+html.dark-theme .sidebar-footer {
+  border-top: 1px solid #1C1C1E !important;
+  background-color: #000000 !important;
+}
+
+html[data-theme="dark"] .workspace-badge,
+html.dark-theme .workspace-badge {
+  background-color: #080808 !important;
+  border-color: #222222 !important;
+  color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .app-nav-item,
+html.dark-theme .app-nav-item {
+  color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .app-nav-item:hover,
+html.dark-theme .app-nav-item:hover {
+  background-color: #0F0F0F !important;
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .app-nav-item.active,
+html.dark-theme .app-nav-item.active {
+  background-color: rgba(0, 229, 190, 0.12) !important;
+  color: #00E5BE !important;
+  border-color: rgba(0, 229, 190, 0.3) !important;
+}
+
+html[data-theme="dark"] .app-topbar,
+html.dark-theme .app-topbar {
+  background-color: #000000 !important;
+  border-bottom: 1px solid #1C1C1E !important;
+}
+
+html[data-theme="dark"] .topbar-title-group h1,
+html.dark-theme .topbar-title-group h1 {
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .topbar-title-group p,
+html.dark-theme .topbar-title-group p {
+  color: #71717A !important;
+}
+
+html[data-theme="dark"] .stat-card,
+html[data-theme="dark"] .metric-card,
+html[data-theme="dark"] .panel-card,
+html[data-theme="dark"] .chart-container,
+html[data-theme="dark"] .table-card,
+html[data-theme="dark"] .card,
+html.dark-theme .stat-card,
+html.dark-theme .metric-card {
+  background-color: #080808 !important;
+  border: 1px solid #1C1C1E !important;
+}
+
+html[data-theme="dark"] .table-container th,
+html[data-theme="dark"] .table th,
+html.dark-theme .table th {
+  background-color: #0C0C0C !important;
+  color: #FFFFFF !important;
+  border-bottom: 1px solid #1C1C1E !important;
+}
+
+html[data-theme="dark"] .table-container td,
+html[data-theme="dark"] .table td,
+html.dark-theme .table td {
+  border-bottom: 1px solid #1C1C1E !important;
+  color: #D4D4D8 !important;
+}

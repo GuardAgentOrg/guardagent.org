@@ -4,6 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initThemeToggle();
   initMobileNav();
   initCategoryFilter();
   initGatewayPlayground();
@@ -1113,3 +1114,92 @@ function initRoiCalculator() {
   updateRoi();
 }
 
+
+/* ==========================================================================
+   11. Pitch Dark / Light Theme System
+   ========================================================================== */
+function getPreferredTheme() {
+  const saved = localStorage.getItem('guardagent-theme');
+  if (saved) return saved;
+  // Default to pitch dark mode if not explicitly chosen
+  return 'dark';
+}
+
+function applyTheme(theme) {
+  const isDark = theme === 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.classList.toggle('dark', isDark);
+  document.documentElement.classList.toggle('dark-theme', isDark);
+
+  if (document.body) {
+    document.body.classList.toggle('dark-theme', isDark);
+  }
+
+  // Swap brand logo images to high-contrast white version when dark
+  document.querySelectorAll('#brandLogoImg, .brand-logo, .nb-logo-img').forEach(img => {
+    if (img && img.tagName === 'IMG') {
+      const src = img.getAttribute('src') || '';
+      if (isDark) {
+        if (src.includes('logo-transparent.png') || src.includes('logo.png')) {
+          img.setAttribute('src', '/assets/images/logo-white.png');
+        }
+      } else {
+        if (src.includes('logo-white.png')) {
+          img.setAttribute('src', '/assets/images/logo-transparent.png');
+        }
+      }
+    }
+  });
+
+  // Update aria-labels and tooltips
+  document.querySelectorAll('.theme-toggle-btn, .nb-theme-toggle').forEach(btn => {
+    btn.setAttribute('aria-label', isDark ? 'Switch to Light Theme' : 'Switch to Pitch Dark Theme');
+    btn.setAttribute('title', isDark ? 'Switch to Light Theme' : 'Switch to Pitch Dark Theme');
+  });
+
+  try {
+    window.dispatchEvent(new CustomEvent('guardagent-theme-changed', { detail: { theme } }));
+  } catch(e) {}
+}
+
+function initThemeToggle() {
+  const current = getPreferredTheme();
+  applyTheme(current);
+
+  // Global event delegation: works seamlessly for desktop nav, mobile drawers, and modals
+  if (!window._guardThemeDelegated) {
+    window._guardThemeDelegated = true;
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.theme-toggle-btn, .nb-theme-toggle');
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+
+      const active = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = active === 'dark' ? 'light' : 'dark';
+      try {
+        localStorage.setItem('guardagent-theme', next);
+      } catch(err) {}
+      applyTheme(next);
+    });
+  }
+
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('guardagent-theme')) {
+        applyTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  }
+}
+
+// Immediate synchronous evaluation to prevent flash of unstyled theme
+(function() {
+  try {
+    const saved = localStorage.getItem('guardagent-theme');
+    const t = saved ? saved : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    document.documentElement.classList.toggle('dark', t === 'dark');
+    document.documentElement.classList.toggle('dark-theme', t === 'dark');
+  } catch(e) {}
+})();

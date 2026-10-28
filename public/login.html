@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign In — GuardAgent Security Console</title>
   <meta name="description" content="Sign in to the GuardAgent AI Agent Security Platform SOC console.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:wght@600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="icon" type="image/png" href="/assets/images/logo-transparent.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&family=Space+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
+  <script>(function(){try{var t=localStorage.getItem('guardagent-theme')||'dark';document.documentElement.setAttribute('data-theme',t);document.documentElement.classList.add(t==='dark'?'dark':'light');if(t==='dark')document.documentElement.classList.add('dark-theme');}catch(e){}})();</script>
   <style>
     .btn-loading {
       opacity: 0.7;
@@ -26,7 +27,13 @@
       <a href="/" class="nb-btn nb-btn-sm nb-btn-white" style="font-size: 0.75rem; padding: 6px 12px;">
         &larr; BACK TO HOME
       </a>
-      <span class="nb-sticker nb-sticker-yellow tilt-1" style="font-size: 0.65rem;">0.8MS ZERO LAG</span>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <button class="nb-theme-toggle" aria-label="Toggle Dark Theme" title="Toggle theme (Dark / Light)">
+          <svg class="sun-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          <svg class="moon-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        <span class="nb-sticker nb-sticker-yellow tilt-1" style="font-size: 0.65rem;">0.8MS ZERO LAG</span>
+      </div>
     </div>
 
     <!-- Main Neo-Brutalist Auth Card -->
@@ -97,6 +104,7 @@
   </div>
 
   <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/site.js"></script>
   <script>
     const alertBox = document.getElementById('authAlert');
     const submitBtn = document.getElementById('submitBtn');

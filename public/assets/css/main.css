@@ -5,7 +5,7 @@
    Typography: Plus Jakarta Sans / Inter / JetBrains Mono
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:wght@600;700;800;900&display=swap');
 
 :root {
   /* Brand Palette (Directly from logo.png) */
@@ -32,6 +32,7 @@
   --bg-elevated: #F1F5F9;
   --bg-subtle: #F8FAFC;
   --bg-sidebar: #FFFFFF;
+  --bg-inset: #F1F5F9;
 
   /* Subtle Borders (Slate 200 & Slate 300) */
   --border-subtle: #E2E8F0;
@@ -43,14 +44,22 @@
   /* Legacy & Subpage Compatibility Aliases */
   --surface-alt: #F8FAFC;
   --secondary-text: #475569;
+  --muted-text: #64748B;
   --primary-teal: #009E96;
+  --teal-primary: #009E96;
   --teal-dark: #00827C;
   --dark-teal: #006D77;
   --primary-navy: #0B132B;
+  --navy-primary: #0A1128;
+  --navy-secondary: #162038;
+  --navy-surface: #0F172A;
   --navy-dark: #0B132B;
+  --danger-color: #EF4444;
   --status-block: #DC2626;
   --status-allow: #059669;
   --status-review: #D97706;
+  --status-success: #10B981;
+  --status-approval: #F59E0B;
   --white: #FFFFFF;
 
   /* Clean Minimalist Typography */
@@ -79,8 +88,8 @@
   --decision-block-bg: #FEF2F2;
   --decision-block-border: #FECACA;
 
-  /* Typography Scales (Linear / Resend Style Pure Inter) */
-  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Typography Scales (High-Precision Modern Fonts) */
+  --font-display: 'Space Grotesk', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
 
@@ -2946,8 +2955,10 @@ p {
 body.neo-brutalist-theme {
   background-color: var(--nb-canvas);
   color: var(--nb-navy);
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'Space Grotesk', 'Inter', -apple-system, sans-serif;
   letter-spacing: -0.015em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Neo-Brutalist Header */
@@ -4082,7 +4093,7 @@ body.neo-brutalist-theme {
    Neo-Brutalist Footer
    ========================================================================== */
 .nb-footer {
-  background: var(--nb-yellow);
+  background: var(--nb-white);
   border-top: 3.5px solid var(--nb-navy);
   padding: 64px 24px 32px;
   color: var(--nb-navy);
@@ -4208,14 +4219,16 @@ body.neo-brutalist-theme {
   top: -16px;
   left: 20px;
   background: var(--nb-yellow);
-  color: var(--nb-navy);
+  color: #0A1128;
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 900;
-  padding: 4px 12px;
-  border: 2.5px solid var(--nb-navy);
-  box-shadow: 2.5px 2.5px 0px var(--nb-navy);
+  letter-spacing: 0.05em;
+  padding: 4px 14px;
+  border: 2px solid #0A1128;
+  box-shadow: 2.5px 2.5px 0px #0A1128;
   border-radius: 999px;
+  text-transform: uppercase;
 }
 
 .nb-vs-comparison {
@@ -5206,3 +5219,1289 @@ img, svg, video, canvas {
 
 
 
+
+/* ==========================================================================
+   THEME TOGGLE BUTTON CONTROLS
+   ========================================================================== */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: var(--brand-teal);
+}
+
+.nb-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: var(--nb-white);
+  border: 2px solid var(--nb-navy);
+  box-shadow: 2px 2px 0px var(--nb-navy);
+  border-radius: 6px;
+  color: var(--nb-navy);
+  cursor: pointer;
+  transition: all 0.12s ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.nb-theme-toggle:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px var(--nb-navy);
+  background: var(--nb-yellow);
+}
+
+.nb-theme-toggle:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px var(--nb-navy);
+}
+
+/* Bulletproof Icon Visibility */
+html[data-theme="dark"] .sun-icon,
+html.dark .sun-icon,
+html.dark-theme .sun-icon {
+  display: block !important;
+}
+
+html[data-theme="dark"] .moon-icon,
+html.dark .moon-icon,
+html.dark-theme .moon-icon {
+  display: none !important;
+}
+
+html:not([data-theme="dark"]) .sun-icon {
+  display: none !important;
+}
+
+html:not([data-theme="dark"]) .moon-icon {
+  display: block !important;
+}
+
+/* ==========================================================================
+   PITCH DARK MODE: TRUE OLED BLACK (#000000) SYSTEM
+   ========================================================================== */
+
+/* 1. Variable Overrides for Pitch Dark Mode */
+
+/* ==========================================================================
+   GUARDAGENT TRUE PITCH DARK & BRAND COLOR THEME SYSTEM (OLED PITCH BLACK #000000)
+   - Pitch Dark (#000000) Canvas, Crisp Slate Borders (#27272A)
+   - Full Multi-Font System: Space Grotesk, Plus Jakarta Sans, Inter, JetBrains Mono
+   - Neo-Brutalist Color Preservations: High-Contrast Yellow, Mint, Coral, Purple, Teal
+   - Full Overrides for All Minimalist, Neo-Brutalist & App Console Surfaces
+   - Universal Resolution for 66+ Hardcoded Inline Dark Text Elements
+   ========================================================================== */
+
+/* 1. Global CSS Custom Properties in Dark Mode */
+html[data-theme="dark"],
+:root[data-theme="dark"],
+html.dark,
+html.dark-theme,
+body.dark-theme {
+  /* True Pitch Black Canvas & Surfaces */
+  --bg-page: #000000 !important;
+  --bg-canvas: #000000 !important;
+  --bg-surface: #080808 !important;
+  --bg-section-alt: #030303 !important;
+  --bg-card: #080808 !important;
+  --bg-card-hover: #111113 !important;
+  --bg-elevated: #0F0F0F !important;
+  --bg-subtle: #050505 !important;
+  --bg-sidebar: #000000 !important;
+  --surface-alt: #050505 !important;
+  --bg-inset: #050505 !important;
+
+  /* True Pitch Dark Borders */
+  --border-subtle: #1C1C1E !important;
+  --border-default: #27272A !important;
+  --border-light: #141416 !important;
+  --border-hover: #00E5BE !important;
+  --border-color: #27272A !important;
+
+  /* High-Contrast Pitch Dark Typography */
+  --text-primary: #FFFFFF !important;
+  --text-secondary: #D4D4D8 !important;
+  --text-muted: #A1A1AA !important;
+  --secondary-text: #D4D4D8 !important;
+  --muted-text: #A1A1AA !important;
+  --text-inverse: #000000 !important;
+
+  /* Radiant Neon Brand Colors */
+  --brand-navy: #FFFFFF !important;
+  --brand-navy-light: #E4E4E7 !important;
+  --brand-teal: #00E5BE !important;
+  --brand-teal-light: #00F5CE !important;
+  --brand-teal-subtle: rgba(0, 229, 190, 0.12) !important;
+  --brand-cyan: #38BDF8 !important;
+  --brand-cyan-subtle: rgba(56, 189, 248, 0.12) !important;
+
+  /* Terminal & Code */
+  --console-bg: #000000 !important;
+  --console-surface: #080808 !important;
+  --console-border: #1F1F23 !important;
+  --console-text: #00E5BE !important;
+  --console-muted: #71717A !important;
+
+  /* Neo-Brutalist System Tokens in Pitch Dark */
+  --nb-navy: #FFFFFF !important;
+  --nb-canvas: #000000 !important;
+  --nb-white: #080808 !important;
+  --nb-border-base: 2.5px solid #27272A !important;
+  --nb-border-heavy: 3.5px solid #3F3F46 !important;
+  --nb-border-thin: 1.5px solid #27272A !important;
+  --nb-shadow-base: 4px 4px 0px #000000 !important;
+  --nb-shadow-lg: 6px 6px 0px #000000 !important;
+  --nb-shadow-xl: 8px 8px 0px #000000 !important;
+  --nb-shadow-teal: 4px 4px 0px #00E5BE !important;
+  --nb-shadow-yellow: 4px 4px 0px #FACC15 !important;
+  --nb-teal-bg: rgba(0, 229, 190, 0.12) !important;
+
+  /* Font Variables Enforced */
+  --font-display: 'Space Grotesk', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace !important;
+}
+
+/* 2. Global Document & Typography Architecture in Pitch Dark */
+html[data-theme="dark"],
+html[data-theme="dark"] body,
+html.dark-theme,
+html.dark-theme body,
+body.dark-theme {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+}
+
+/* Display Headings: Space Grotesk + Plus Jakarta Sans */
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6,
+html[data-theme="dark"] .hero-title,
+html[data-theme="dark"] .nb-hero-h1,
+html[data-theme="dark"] .nb-auth-title,
+html[data-theme="dark"] .section-title,
+html[data-theme="dark"] .card-title,
+html[data-theme="dark"] .feature-title,
+html[data-theme="dark"] .workflow-num,
+html[data-theme="dark"] .nb-stat-num,
+html[data-theme="dark"] .code-title,
+html[data-theme="dark"] .canvas-title,
+html.dark-theme h1,
+html.dark-theme h2,
+html.dark-theme h3,
+html.dark-theme h4 {
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif !important;
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.025em !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Paragraphs, Body Copy & Subtitles: Inter */
+html[data-theme="dark"] p,
+html[data-theme="dark"] .hero-lead,
+html[data-theme="dark"] .nb-hero-lead,
+html[data-theme="dark"] .nb-hero-tagline,
+html[data-theme="dark"] .nb-auth-subtitle,
+html[data-theme="dark"] .workflow-content p,
+html[data-theme="dark"] .feature-box p,
+html[data-theme="dark"] .card p,
+html[data-theme="dark"] .faq-card p,
+html[data-theme="dark"] .nb-faq-card p,
+html[data-theme="dark"] .nb-step-card p,
+html[data-theme="dark"] .nb-nightmare-card p,
+html[data-theme="dark"] .nb-docs-article p,
+html[data-theme="dark"] .nb-docs-card p,
+html.dark-theme p {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  color: #D4D4D8 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+html[data-theme="dark"] small,
+html[data-theme="dark"] .text-muted,
+html[data-theme="dark"] .text-secondary,
+html[data-theme="dark"] .secondary-text,
+html.dark-theme small,
+html.dark-theme .text-muted {
+  color: #A1A1AA !important;
+}
+
+/* Monospace & Code: JetBrains Mono */
+html[data-theme="dark"] code,
+html[data-theme="dark"] pre,
+html[data-theme="dark"] .code-block,
+html[data-theme="dark"] .nb-code-box,
+html[data-theme="dark"] .nb-terminal,
+html[data-theme="dark"] .nb-cli-pill,
+html[data-theme="dark"] .nb-tape-strip,
+html[data-theme="dark"] .nb-sticker,
+html[data-theme="dark"] .nb-arcade-metric-pill,
+html[data-theme="dark"] .nb-method-badge,
+html[data-theme="dark"] .badge-mono,
+html[data-theme="dark"] .data-mono,
+html.dark-theme code,
+html.dark-theme pre {
+  font-family: 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* 3. Site Headers & Navigation */
+html[data-theme="dark"] .site-header,
+html[data-theme="dark"] .nb-header,
+html.dark-theme .site-header,
+html.dark-theme .nb-header {
+  background: rgba(0, 0, 0, 0.96) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-bottom: 2.5px solid #222222 !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.9) !important;
+}
+
+html[data-theme="dark"] .nav-link,
+html[data-theme="dark"] .nb-nav-item,
+html.dark-theme .nav-link,
+html.dark-theme .nb-nav-item {
+  color: #D4D4D8 !important;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="dark"] .nav-link:hover,
+html[data-theme="dark"] .nb-nav-item:hover,
+html.dark-theme .nav-link:hover,
+html.dark-theme .nb-nav-item:hover {
+  color: #00E5BE !important;
+  background: #111111 !important;
+  border-color: #333333 !important;
+}
+
+html[data-theme="dark"] .nav-link.active,
+html[data-theme="dark"] .nb-nav-item.active {
+  color: #00E5BE !important;
+  background: rgba(0, 229, 190, 0.12) !important;
+}
+
+html[data-theme="dark"] .mobile-nav-drawer,
+html[data-theme="dark"] .nb-mobile-drawer,
+html.dark-theme .mobile-nav-drawer,
+html.dark-theme .nb-mobile-drawer {
+  background: #000000 !important;
+  border-bottom: 2.5px solid #27272A !important;
+}
+
+/* 4. Global Sections & Canvas Backgrounds */
+html[data-theme="dark"] .section,
+html[data-theme="dark"] .page-hero,
+html[data-theme="dark"] .hero-enterprise,
+html[data-theme="dark"] .nb-hero,
+html[data-theme="dark"] .nb-category-section,
+html[data-theme="dark"] .nb-attack-section,
+html[data-theme="dark"] .bento-section,
+html[data-theme="dark"] .attack-lab-section,
+html[data-theme="dark"] .roi-section,
+html.dark-theme .section,
+html.dark-theme .page-hero,
+html.dark-theme .hero-enterprise,
+html.dark-theme .nb-category-section {
+  background-color: #000000 !important;
+  background-image: none !important;
+}
+
+html[data-theme="dark"] .section-alt,
+html[data-theme="dark"] section[style*="background-color: var(--bg-section-alt)"],
+html[data-theme="dark"] section[style*="background: var(--bg-section-alt)"],
+html[data-theme="dark"] section[style*="background: var(--nb-white)"],
+html.dark-theme .section-alt {
+  background-color: #040404 !important;
+  background: #040404 !important;
+  border-top-color: #27272A !important;
+  border-bottom-color: #27272A !important;
+}
+
+/* Fix "#how-it-works" section: In dark mode, replace blinding light yellow with pitch black + brand borders */
+html[data-theme="dark"] section#how-it-works,
+html[data-theme="dark"] section[style*="background: var(--nb-yellow)"] {
+  background: #000000 !important;
+  border-top: 2.5px solid #27272A !important;
+  border-bottom: 2.5px solid #27272A !important;
+}
+
+html[data-theme="dark"] section#how-it-works h2,
+html[data-theme="dark"] section[style*="background: var(--nb-yellow)"] h2 {
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] section#how-it-works p,
+html[data-theme="dark"] section[style*="background: var(--nb-yellow)"] p {
+  color: #D4D4D8 !important;
+}
+
+/* 5. Neo-Brutalist Sticker Badges (Vibrant High-Contrast in Pitch Dark) */
+html[data-theme="dark"] .nb-sticker,
+html.dark-theme .nb-sticker {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 2.5px 2.5px 0px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Warning Yellow Badge */
+html[data-theme="dark"] .nb-sticker-yellow,
+html.dark-theme .nb-sticker-yellow {
+  background: #FACC15 !important;
+  color: #0A1128 !important;
+  border: 2px solid #000000 !important;
+}
+html[data-theme="dark"] .nb-sticker-yellow *,
+html.dark-theme .nb-sticker-yellow * {
+  color: #0A1128 !important;
+  font-weight: 800 !important;
+}
+html[data-theme="dark"] .nb-sticker-yellow:hover {
+  background: #FDE047 !important;
+  color: #0A1128 !important;
+}
+
+/* Mint Green Badge */
+html[data-theme="dark"] .nb-sticker-mint,
+html.dark-theme .nb-sticker-mint {
+  background: #5EEAD4 !important;
+  color: #064E3B !important;
+  border: 2px solid #000000 !important;
+}
+html[data-theme="dark"] .nb-sticker-mint *,
+html.dark-theme .nb-sticker-mint * {
+  color: #064E3B !important;
+  font-weight: 800 !important;
+}
+html[data-theme="dark"] .nb-sticker-mint:hover {
+  background: #6EE7B7 !important;
+}
+
+/* Coral / Rose Badge */
+html[data-theme="dark"] .nb-sticker-coral,
+html.dark-theme .nb-sticker-coral {
+  background: #FDA4AF !important;
+  color: #881337 !important;
+  border: 2px solid #000000 !important;
+}
+html[data-theme="dark"] .nb-sticker-coral *,
+html.dark-theme .nb-sticker-coral * {
+  color: #881337 !important;
+  font-weight: 800 !important;
+}
+html[data-theme="dark"] .nb-sticker-coral:hover {
+  background: #FECDD3 !important;
+}
+
+/* Purple Badge */
+html[data-theme="dark"] .nb-sticker-purple,
+html.dark-theme .nb-sticker-purple {
+  background: #DDD6FE !important;
+  color: #3B0764 !important;
+  border: 2px solid #000000 !important;
+}
+html[data-theme="dark"] .nb-sticker-purple *,
+html.dark-theme .nb-sticker-purple * {
+  color: #3B0764 !important;
+  font-weight: 800 !important;
+}
+
+/* Teal Badge */
+html[data-theme="dark"] .nb-sticker-teal,
+html.dark-theme .nb-sticker-teal {
+  background: #00E5BE !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+}
+html[data-theme="dark"] .nb-sticker-teal *,
+html.dark-theme .nb-sticker-teal * {
+  color: #000000 !important;
+  font-weight: 800 !important;
+}
+html[data-theme="dark"] .nb-sticker-teal:hover {
+  background: #00F5CE !important;
+}
+
+/* Red Disaster Badge */
+html[data-theme="dark"] .nb-sticker-red,
+html.dark-theme .nb-sticker-red {
+  background: #EF4444 !important;
+  color: #FFFFFF !important;
+  border: 2px solid #991B1B !important;
+}
+
+/* Dark Minimal Badge */
+html[data-theme="dark"] .nb-sticker-white,
+html.dark-theme .nb-sticker-white {
+  background: #18181B !important;
+  color: #F4F4F5 !important;
+  border: 2px solid #3F3F46 !important;
+}
+html[data-theme="dark"] .nb-sticker-white:hover {
+  background: #27272A !important;
+  color: #FFFFFF !important;
+}
+
+/* 6. Caution Marquee Tape & Hero Highlights */
+html[data-theme="dark"] .nb-tape-strip,
+html.dark-theme .nb-tape-strip {
+  background: #FACC15 !important;
+  color: #000000 !important;
+  border-top: 3.5px solid #000000 !important;
+  border-bottom: 3.5px solid #000000 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7) !important;
+}
+
+html[data-theme="dark"] .nb-tape-content span,
+html.dark-theme .nb-tape-content span {
+  color: #000000 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.08em !important;
+}
+
+/* Hero Headings Highlights */
+html[data-theme="dark"] .nb-highlight-teal,
+html.dark-theme .nb-highlight-teal {
+  background: #00E5BE !important;
+  color: #000000 !important;
+  border: 2.5px solid #000000 !important;
+  box-shadow: 4px 4px 0px #00F5CE !important;
+  font-weight: 800 !important;
+}
+
+html[data-theme="dark"] .nb-highlight-yellow,
+html.dark-theme .nb-highlight-yellow {
+  background: #FACC15 !important;
+  color: #000000 !important;
+  border: 2.5px solid #000000 !important;
+  box-shadow: 4px 4px 0px #FEF08A !important;
+  font-weight: 800 !important;
+}
+
+/* Interactive CLI Pill */
+html[data-theme="dark"] .nb-cli-pill,
+html.dark-theme .nb-cli-pill {
+  background: #09090B !important;
+  border: 2px solid #27272A !important;
+  box-shadow: 3px 3px 0px #000000 !important;
+  color: #00E5BE !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+html[data-theme="dark"] .nb-cli-pill #quickInstallCmd {
+  color: #00E5BE !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+html[data-theme="dark"] .nb-cli-prompt {
+  color: #FACC15 !important;
+  font-weight: 900 !important;
+}
+
+html[data-theme="dark"] .nb-cli-pill .nb-sticker {
+  background: #FACC15 !important;
+  color: #000000 !important;
+  border: 1.5px solid #000000 !important;
+}
+
+/* 7. Buttons in Pitch Dark */
+html[data-theme="dark"] .btn,
+html[data-theme="dark"] .nb-btn {
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em !important;
+}
+
+html[data-theme="dark"] .btn-primary,
+html[data-theme="dark"] .btn-teal,
+html[data-theme="dark"] .nb-btn-teal,
+html.dark-theme .btn-primary,
+html.dark-theme .btn-teal {
+  background: #00E5BE !important;
+  color: #000000 !important;
+  border: 2.5px solid #000000 !important;
+  box-shadow: 4px 4px 0px #00F5CE !important;
+}
+
+html[data-theme="dark"] .btn-primary:hover,
+html[data-theme="dark"] .btn-teal:hover,
+html[data-theme="dark"] .nb-btn-teal:hover,
+html.dark-theme .btn-primary:hover {
+  background: #00F5CE !important;
+  box-shadow: 6px 6px 0px #00F5CE !important;
+  transform: translate(-2px, -2px) !important;
+}
+
+html[data-theme="dark"] .nb-btn-yellow {
+  background: #FACC15 !important;
+  color: #000000 !important;
+  border: 2.5px solid #000000 !important;
+  box-shadow: 4px 4px 0px #FEF08A !important;
+}
+html[data-theme="dark"] .nb-btn-yellow:hover {
+  background: #FDE047 !important;
+  box-shadow: 6px 6px 0px #FEF08A !important;
+  transform: translate(-2px, -2px) !important;
+}
+
+html[data-theme="dark"] .nb-btn-coral {
+  background: #FB7185 !important;
+  color: #000000 !important;
+  border: 2.5px solid #000000 !important;
+  box-shadow: 4px 4px 0px #FDA4AF !important;
+}
+
+html[data-theme="dark"] .nb-btn-green {
+  background: #4ADE80 !important;
+  color: #000000 !important;
+  border: 2.5px solid #000000 !important;
+  box-shadow: 4px 4px 0px #86EFAC !important;
+}
+
+html[data-theme="dark"] .btn-outline,
+html[data-theme="dark"] .nb-btn-white,
+html.dark-theme .btn-outline,
+html.dark-theme .nb-btn-white {
+  background: #18181B !important;
+  color: #FFFFFF !important;
+  border: 2.5px solid #3F3F46 !important;
+  box-shadow: 4px 4px 0px #000000 !important;
+}
+
+html[data-theme="dark"] .btn-outline:hover,
+html[data-theme="dark"] .nb-btn-white:hover,
+html.dark-theme .btn-outline:hover {
+  background: #27272A !important;
+  border-color: #00E5BE !important;
+  color: #00E5BE !important;
+  box-shadow: 4px 4px 0px #00E5BE !important;
+}
+
+html[data-theme="dark"] .nb-btn-navy,
+html.dark-theme .nb-btn-navy {
+  background: #09090B !important;
+  color: #FFFFFF !important;
+  border: 2.5px solid #38BDF8 !important;
+  box-shadow: 4px 4px 0px #38BDF8 !important;
+}
+
+/* 8. Neo-Brutalist Arcade SOC Console (Hero Centerpiece) */
+html[data-theme="dark"] .nb-arcade-console {
+  background: #080808 !important;
+  border: 3.5px solid #27272A !important;
+  box-shadow: 6px 6px 0px #000000, 6px 6px 0px 1.5px #27272A !important;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+html[data-theme="dark"] .nb-arcade-topbar {
+  background: #FACC15 !important;
+  color: #000000 !important;
+  border-bottom: 2.5px solid #000000 !important;
+}
+
+html[data-theme="dark"] .nb-arcade-topbar span,
+html[data-theme="dark"] .nb-arcade-topbar strong {
+  color: #000000 !important;
+}
+
+html[data-theme="dark"] .nb-arcade-metric-pill {
+  background: #000000 !important;
+  color: #00E5BE !important;
+  border: 1.5px solid #000000 !important;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.725rem !important;
+}
+
+html[data-theme="dark"] .nb-arcade-metric-pill strong {
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .nb-sim-btn.spend {
+  background: #FEF08A !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 2.5px 2.5px 0px #000000 !important;
+}
+
+html[data-theme="dark"] .nb-sim-btn.ssrf {
+  background: #FB7185 !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 2.5px 2.5px 0px #000000 !important;
+}
+
+html[data-theme="dark"] .nb-sim-btn.safe {
+  background: #4ADE80 !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 2.5px 2.5px 0px #000000 !important;
+}
+
+html[data-theme="dark"] .nb-arcade-col {
+  background: #080808 !important;
+}
+
+html[data-theme="dark"] .nb-arcade-col.border-right {
+  border-right: 2.5px solid #27272A !important;
+}
+
+html[data-theme="dark"] .nb-arcade-col-title {
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .nb-stream-item {
+  background: #0D0D10 !important;
+  border: 2px solid #27272A !important;
+  box-shadow: 2.5px 2.5px 0px #000000 !important;
+  border-radius: 6px;
+}
+
+html[data-theme="dark"] .nb-stream-item div[style*="font-weight: 800"] {
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .nb-stream-item div[style*="color: #475569"] {
+  color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .nb-stream-item:hover,
+html[data-theme="dark"] .nb-stream-item.active {
+  background: #0A1C18 !important;
+  border-color: #00E5BE !important;
+  outline-color: #00E5BE !important;
+  box-shadow: 3.5px 3.5px 0px #00E5BE !important;
+}
+
+html[data-theme="dark"] .nb-code-box,
+html[data-theme="dark"] #socInspectCode {
+  background: #000000 !important;
+  border: 2px solid #27272A !important;
+  color: #00E5BE !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+html[data-theme="dark"] .nb-ast-rule-row,
+html[data-theme="dark"] .ast-rule-row {
+  background: #000000 !important;
+  border: 1.5px solid #27272A !important;
+  color: #D4D4D8 !important;
+}
+
+/* 9. Before & After Comparison Cards */
+html[data-theme="dark"] .nb-compare-card.bad,
+html[data-theme="dark"] .nb-vs-card.bad {
+  background: #140508 !important;
+  border: 2.5px solid #E11D48 !important;
+  box-shadow: 4px 4px 0px #000000 !important;
+}
+
+html[data-theme="dark"] .nb-compare-card.bad h3,
+html[data-theme="dark"] .nb-vs-card.bad h3 {
+  color: #FDA4AF !important;
+}
+
+html[data-theme="dark"] .nb-compare-card.bad li,
+html[data-theme="dark"] .nb-compare-card.bad p,
+html[data-theme="dark"] .nb-compare-card.bad div,
+html[data-theme="dark"] .nb-vs-card.bad li {
+  color: #FECDD3 !important;
+}
+
+html[data-theme="dark"] .nb-compare-card.bad strong,
+html[data-theme="dark"] .nb-vs-card.bad strong {
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .nb-compare-card.good,
+html[data-theme="dark"] .nb-vs-card.good {
+  background: #02140D !important;
+  border: 2.5px solid #10B981 !important;
+  box-shadow: 4px 4px 0px #000000 !important;
+}
+
+html[data-theme="dark"] .nb-compare-card.good h3,
+html[data-theme="dark"] .nb-vs-card.good h3 {
+  color: #6EE7B7 !important;
+}
+
+html[data-theme="dark"] .nb-compare-card.good li,
+html[data-theme="dark"] .nb-compare-card.good p,
+html[data-theme="dark"] .nb-compare-card.good div,
+html[data-theme="dark"] .nb-vs-card.good li {
+  color: #D1FAE5 !important;
+}
+
+html[data-theme="dark"] .nb-compare-card.good strong,
+html[data-theme="dark"] .nb-vs-card.good strong {
+  color: #FFFFFF !important;
+}
+
+/* 10. Disaster Cards & Step Boxes */
+html[data-theme="dark"] .nb-nightmare-card,
+html[data-theme="dark"] .nb-step-card,
+html[data-theme="dark"] .nb-step-box {
+  background: #080808 !important;
+  border: 2px solid #27272A !important;
+  box-shadow: 4px 4px 0px #000000 !important;
+  border-radius: 10px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  transition: all 0.15s ease !important;
+}
+
+html[data-theme="dark"] .nb-nightmare-card:hover,
+html[data-theme="dark"] .nb-step-card:hover,
+html[data-theme="dark"] .nb-step-box:hover {
+  border-color: #00E5BE !important;
+  box-shadow: 5px 5px 0px #00E5BE !important;
+  transform: translate(-2px, -2px) !important;
+}
+
+/* Step Number Pills: High-Contrast Yellow with Bold Black Text */
+html[data-theme="dark"] .nb-step-num,
+html[data-theme="dark"] .nb-step-badge,
+html.dark-theme .nb-step-num,
+html.dark-theme .nb-step-badge {
+  background: #FACC15 !important;
+  color: #000000 !important;
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.85rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.05em !important;
+  padding: 4px 14px !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 2.5px 2.5px 0px #000000 !important;
+  border-radius: 999px !important;
+  text-transform: uppercase !important;
+  z-index: 2 !important;
+}
+
+html[data-theme="dark"] .nb-nightmare-card h3,
+html[data-theme="dark"] .nb-step-card h3,
+html[data-theme="dark"] .nb-step-box h3 {
+  color: #FFFFFF !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-size: 1.3rem !important;
+  font-weight: 800 !important;
+  margin: 10px 0 12px 0 !important;
+}
+
+html[data-theme="dark"] .nb-nightmare-card p,
+html[data-theme="dark"] .nb-step-card p,
+html[data-theme="dark"] .nb-step-box p {
+  color: #D4D4D8 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.65 !important;
+  flex-grow: 1 !important;
+  margin-bottom: 16px !important;
+}
+
+/* Disaster Fix Callouts */
+html[data-theme="dark"] .nb-nightmare-card div[style*="background: var(--nb-teal-bg)"],
+html[data-theme="dark"] div[style*="background: var(--nb-teal-bg)"] {
+  background: rgba(0, 229, 190, 0.08) !important;
+  border: 1.5px solid #00E5BE !important;
+  color: #E6FFFA !important;
+}
+
+html[data-theme="dark"] .nb-nightmare-card div[style*="background: var(--nb-teal-bg)"] strong {
+  color: #00E5BE !important;
+}
+
+/* Step Card Bottom Status/Code Boxes: Cohesive Terminal Styling */
+html[data-theme="dark"] .nb-step-card div[style*="font-family: var(--font-mono)"] {
+  background: #000000 !important;
+  border: 1.5px solid #27272A !important;
+  padding: 12px 14px !important;
+  border-radius: 6px !important;
+  margin-top: auto !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+html[data-theme="dark"] .nb-step-card div[style*="background: var(--nb-navy)"] {
+  color: #00E5BE !important;
+}
+
+html[data-theme="dark"] .nb-step-card div[style*="background: var(--nb-green)"] {
+  color: #4ADE80 !important;
+  font-weight: 800 !important;
+}
+
+/* 11. Attack Simulation Lab & Threat Table */
+html[data-theme="dark"] .nb-attack-tab {
+  background: #09090B !important;
+  border: 2px solid #27272A !important;
+  box-shadow: 3px 3px 0px #000000 !important;
+}
+
+html[data-theme="dark"] .nb-attack-tab span[style*="color: var(--nb-navy)"] {
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .nb-attack-tab:hover {
+  background: #111113 !important;
+  border-color: #00E5BE !important;
+}
+
+html[data-theme="dark"] .nb-attack-tab.active {
+  background: #FACC15 !important;
+  border-color: #000000 !important;
+  box-shadow: 4px 4px 0px #000000 !important;
+}
+
+html[data-theme="dark"] .nb-attack-tab.active span[style*="color: var(--nb-navy)"] {
+  color: #000000 !important;
+}
+
+html[data-theme="dark"] .nb-attack-stage {
+  background: #080808 !important;
+  border: 3px solid #27272A !important;
+  box-shadow: 6px 6px 0px #000000 !important;
+}
+
+html[data-theme="dark"] .nb-attack-stage > div:first-child {
+  background: #FACC15 !important;
+  color: #000000 !important;
+  border-bottom: 2px solid #000000 !important;
+}
+
+html[data-theme="dark"] .nb-attack-stage > div:first-child span {
+  color: #000000 !important;
+}
+
+html[data-theme="dark"] .nb-attack-code-col {
+  background: #000000 !important;
+  border-right: 2.5px solid #27272A !important;
+  color: #00E5BE !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+html[data-theme="dark"] .nb-attack-result-col {
+  background: #080808 !important;
+  color: #FFFFFF !important;
+}
+
+/* 12. ROI Scoreboard, FAQ & Confident CTA Card */
+html[data-theme="dark"] .nb-roi-box {
+  background: #09090B !important;
+  border: 2.5px solid #27272A !important;
+  box-shadow: 5px 5px 0px #000000 !important;
+}
+
+html[data-theme="dark"] .nb-roi-box span {
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .nb-stat-card {
+  background: #000000 !important;
+  border: 2px solid #27272A !important;
+  box-shadow: 3px 3px 0px #000000 !important;
+}
+
+html[data-theme="dark"] .nb-stat-card.teal .nb-stat-num {
+  color: #00E5BE !important;
+}
+
+html[data-theme="dark"] .nb-stat-card.yellow .nb-stat-num {
+  color: #FACC15 !important;
+}
+
+html[data-theme="dark"] .nb-stat-card.green .nb-stat-num {
+  color: #4ADE80 !important;
+}
+
+html[data-theme="dark"] .nb-stat-lbl {
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .nb-faq-card {
+  background: #09090B !important;
+  border: 2px solid #27272A !important;
+  box-shadow: 3.5px 3.5px 0px #000000 !important;
+}
+
+html[data-theme="dark"] .nb-faq-card h4 {
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .nb-faq-card p {
+  color: #D4D4D8 !important;
+}
+
+/* Closing CTA Banner in Dark Mode */
+html[data-theme="dark"] section div[style*="background: var(--nb-yellow)"] {
+  background: #09090B !important;
+  border: 2.5px solid #FACC15 !important;
+  box-shadow: 6px 6px 0px #FACC15 !important;
+}
+
+html[data-theme="dark"] section div[style*="background: var(--nb-yellow)"] h2 {
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] section div[style*="background: var(--nb-yellow)"] p {
+  color: #D4D4D8 !important;
+}
+
+/* 13. All Minimalist Cards & Components */
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .workflow-step,
+html[data-theme="dark"] .bento-card,
+html[data-theme="dark"] .bento-section,
+html[data-theme="dark"] .bento-widget-canvas,
+html[data-theme="dark"] .arch-step-card,
+html[data-theme="dark"] .feature-box,
+html[data-theme="dark"] .threat-table-card,
+html[data-theme="dark"] .pricing-card,
+html[data-theme="dark"] .pricing-card.featured,
+html[data-theme="dark"] .framework-strip,
+html[data-theme="dark"] .gateway-playground,
+html[data-theme="dark"] .faq-card,
+html[data-theme="dark"] .auth-card,
+html[data-theme="dark"] .quickstart-step-card,
+html[data-theme="dark"] .showcase-visual,
+html[data-theme="dark"] .slack-mock-card,
+html[data-theme="dark"] .architecture-canvas,
+html[data-theme="dark"] .comparison-card,
+html[data-theme="dark"] .nb-docs-card,
+html[data-theme="dark"] .nb-docs-article,
+html[data-theme="dark"] .nb-docs-sidebar,
+html[data-theme="dark"] .nb-auth-card,
+html.dark-theme .card,
+html.dark-theme .nb-docs-card {
+  background-color: #080808 !important;
+  background: #080808 !important;
+  border: 1px solid #27272A !important;
+  color: #E4E4E7 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8) !important;
+}
+
+html[data-theme="dark"] .workflow-step {
+  border: 1px solid #27272A !important;
+}
+
+html[data-theme="dark"] .workflow-num {
+  color: #00E5BE !important;
+  background: rgba(0, 229, 190, 0.12) !important;
+}
+
+html[data-theme="dark"] .workflow-content h3 {
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .workflow-content p {
+  color: #D4D4D8 !important;
+}
+
+html[data-theme="dark"] .attack-pill-btn {
+  background: #09090B !important;
+  border: 1px solid #27272A !important;
+  color: #D4D4D8 !important;
+}
+
+html[data-theme="dark"] .attack-pill-btn.active {
+  background: rgba(0, 229, 190, 0.15) !important;
+  border-color: #00E5BE !important;
+  color: #00E5BE !important;
+}
+
+/* 14. Tables in Pitch Dark */
+html[data-theme="dark"] .table-wrap,
+html[data-theme="dark"] .table-container,
+html[data-theme="dark"] .table,
+html[data-theme="dark"] .data-table,
+html[data-theme="dark"] .nb-table-container,
+html[data-theme="dark"] .nb-table,
+html.dark-theme .table-wrap,
+html.dark-theme .table-container,
+html.dark-theme .data-table {
+  background-color: #050505 !important;
+  background: #050505 !important;
+  border-color: #27272A !important;
+}
+
+html[data-theme="dark"] .table th,
+html[data-theme="dark"] .data-table th,
+html[data-theme="dark"] .nb-table th,
+html.dark-theme .table th,
+html.dark-theme .data-table th {
+  background-color: #0C0C0C !important;
+  background: #0C0C0C !important;
+  color: #FFFFFF !important;
+  border-bottom: 2px solid #27272A !important;
+}
+
+html[data-theme="dark"] .table td,
+html[data-theme="dark"] .data-table td,
+html[data-theme="dark"] .nb-table td,
+html.dark-theme .table td,
+html.dark-theme .data-table td {
+  border-bottom: 1px solid #1C1C1E !important;
+  color: #D4D4D8 !important;
+}
+
+html[data-theme="dark"] .table tr:hover td,
+html[data-theme="dark"] .data-table tr:hover td,
+html.dark-theme .table tr:hover td {
+  background-color: #111111 !important;
+}
+
+/* 15. Form Inputs in Pitch Dark */
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] .form-input,
+html[data-theme="dark"] .nb-form-input,
+html.dark-theme input {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid #27272A !important;
+}
+
+html[data-theme="dark"] input:focus,
+html[data-theme="dark"] select:focus,
+html[data-theme="dark"] textarea:focus,
+html[data-theme="dark"] .form-input:focus,
+html[data-theme="dark"] .nb-form-input:focus {
+  border-color: #00E5BE !important;
+  box-shadow: 0 0 0 2px rgba(0, 229, 190, 0.25) !important;
+}
+
+/* 16. App Console (Dashboard) in Pitch Dark */
+html[data-theme="dark"] .app-container,
+html.dark-theme .app-container {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .app-sidebar,
+html.dark-theme .app-sidebar {
+  background-color: #000000 !important;
+  border-right: 1px solid #1C1C1E !important;
+}
+
+html[data-theme="dark"] .sidebar-header,
+html.dark-theme .sidebar-header {
+  border-bottom: 1px solid #1C1C1E !important;
+}
+
+html[data-theme="dark"] .app-topbar,
+html.dark-theme .app-topbar {
+  background-color: #000000 !important;
+  border-bottom: 1px solid #1C1C1E !important;
+}
+
+html[data-theme="dark"] .workspace-badge,
+html.dark-theme .workspace-badge {
+  background-color: #080808 !important;
+  border-color: #222222 !important;
+  color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .app-nav-item,
+html.dark-theme .app-nav-item {
+  color: #A1A1AA !important;
+}
+
+html[data-theme="dark"] .app-nav-item:hover,
+html.dark-theme .app-nav-item:hover {
+  background-color: #0E0E0E !important;
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .app-nav-item.active,
+html.dark-theme .app-nav-item.active {
+  background-color: rgba(0, 229, 190, 0.1) !important;
+  color: #00E5BE !important;
+  border-color: rgba(0, 229, 190, 0.3) !important;
+}
+
+html[data-theme="dark"] .topbar-title-group h1,
+html.dark-theme .topbar-title-group h1 {
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .stat-card,
+html[data-theme="dark"] .metric-card,
+html[data-theme="dark"] .panel-card,
+html[data-theme="dark"] .chart-container,
+html[data-theme="dark"] .table-card,
+html.dark-theme .stat-card,
+html.dark-theme .metric-card {
+  background-color: #080808 !important;
+  border: 1px solid #1C1C1E !important;
+}
+
+/* 16b. Footers in Pitch Dark (Obsidian Black with Crisp Accents) */
+html[data-theme="dark"] .nb-footer,
+html[data-theme="dark"] .site-footer,
+html.dark-theme .nb-footer,
+html.dark-theme .site-footer,
+body.dark-theme .nb-footer,
+body.dark-theme .site-footer {
+  background-color: #000000 !important;
+  background: #000000 !important;
+  border-top: 2.5px solid #27272A !important;
+  color: #D4D4D8 !important;
+}
+
+html[data-theme="dark"] .nb-footer-title,
+html[data-theme="dark"] .footer-title,
+html[data-theme="dark"] .footer-col-title,
+html.dark-theme .nb-footer-title,
+html.dark-theme .footer-title {
+  color: #FFFFFF !important;
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 16px !important;
+}
+
+html[data-theme="dark"] .nb-footer-link,
+html[data-theme="dark"] .footer-link,
+html.dark-theme .nb-footer-link,
+html.dark-theme .footer-link {
+  color: #A1A1AA !important;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: all 0.15s ease !important;
+}
+
+html[data-theme="dark"] .nb-footer-link:hover,
+html[data-theme="dark"] .footer-link:hover,
+html.dark-theme .nb-footer-link:hover,
+html.dark-theme .footer-link:hover {
+  color: #00E5BE !important;
+  text-decoration: underline !important;
+  text-underline-offset: 4px !important;
+}
+
+html[data-theme="dark"] .nb-footer p,
+html[data-theme="dark"] .site-footer p,
+html.dark-theme .nb-footer p,
+html.dark-theme .site-footer p {
+  color: #D4D4D8 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+}
+
+html[data-theme="dark"] .nb-footer div[style*="border-top"],
+html[data-theme="dark"] .site-footer div[style*="border-top"],
+html.dark-theme .nb-footer div[style*="border-top"],
+html.dark-theme .site-footer div[style*="border-top"] {
+  border-top: 1px solid #27272A !important;
+  color: #71717A !important;
+  font-size: 0.85rem !important;
+}
+
+html[data-theme="dark"] .nb-footer .nb-sticker-teal,
+html.dark-theme .nb-footer .nb-sticker-teal {
+  background: #00E5BE !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .nb-footer .nb-sticker-yellow,
+html.dark-theme .nb-footer .nb-sticker-yellow {
+  background: #FACC15 !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 2.5px 2.5px 0px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* 17. Theme Toggle Buttons */
+html[data-theme="dark"] .theme-toggle-btn,
+html[data-theme="dark"] .nb-theme-toggle,
+html.dark-theme .theme-toggle-btn,
+html.dark-theme .nb-theme-toggle {
+  background: #0D0D0D !important;
+  border: 1.5px solid #333333 !important;
+  color: #FACC15 !important;
+}
+
+html[data-theme="dark"] .theme-toggle-btn:hover,
+html[data-theme="dark"] .nb-theme-toggle:hover {
+  background: #1C1C1E !important;
+  border-color: #FACC15 !important;
+  box-shadow: 0 0 10px rgba(250, 204, 21, 0.25) !important;
+}
+
+/* 18. Universal Overrides for 66+ Hardcoded Inline Dark Text Elements */
+html[data-theme="dark"] [style*="color: #475569"],
+html[data-theme="dark"] [style*="color: #334155"],
+html[data-theme="dark"] [style*="color: #1E293B"],
+html[data-theme="dark"] [style*="color: #0F172A"],
+html[data-theme="dark"] [style*="color: #0B132B"],
+html[data-theme="dark"] [style*="color: #64748B"] {
+  color: #D4D4D8 !important;
+}
+
+html[data-theme="dark"] [style*="color: var(--secondary-text)"],
+html[data-theme="dark"] [style*="color: var(--text-secondary)"],
+html[data-theme="dark"] [style*="color: var(--muted-text)"],
+html[data-theme="dark"] [style*="color: var(--text-muted)"] {
+  color: #A1A1AA !important;
+}
+
+/* Elements with color: var(--nb-navy) should render white on pitch black surfaces */
+html[data-theme="dark"] [style*="color: var(--nb-navy)"] {
+  color: #FFFFFF !important;
+}
+
+/* EXCEPT when nested inside yellow, mint, coral or tape ribbon elements where dark ink is required */
+html[data-theme="dark"] .nb-sticker-yellow [style*="color: var(--nb-navy)"],
+html[data-theme="dark"] .nb-sticker-mint [style*="color: var(--nb-navy)"],
+html[data-theme="dark"] .nb-sticker-coral [style*="color: var(--nb-navy)"],
+html[data-theme="dark"] .nb-sticker-purple [style*="color: var(--nb-navy)"],
+html[data-theme="dark"] .nb-tape-strip [style*="color: var(--nb-navy)"],
+html[data-theme="dark"] .nb-btn-yellow [style*="color: var(--nb-navy)"],
+html[data-theme="dark"] .nb-attack-tab.active [style*="color: var(--nb-navy)"],
+html[data-theme="dark"] .nb-arcade-topbar [style*="color: var(--nb-navy)"] {
+  color: #000000 !important;
+}

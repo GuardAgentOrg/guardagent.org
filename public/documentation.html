@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation — GuardAgent Technical Guide</title>
+  <meta name="description" content="Technical documentation for GuardAgent AI Agent Security Gateway. Learn key concepts, architecture, local deployment, and REST API integration.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="icon" type="image/png" href="/assets/images/logo-transparent.png">
+  <script>(function(){try{var t=localStorage.getItem('guardagent-theme')||'dark';document.documentElement.setAttribute('data-theme',t);document.documentElement.classList.add(t==='dark'?'dark':'light');if(t==='dark')document.documentElement.classList.add('dark-theme');}catch(e){}})();</script>
+</head>
+<body class="neo-brutalist-theme">
+
+  <!-- =========================================================================
+       Neo-Brutalist Sticky Header (Consistent with Landing Page)
+       ========================================================================= -->
+  <header class="nb-header" role="banner">
+    <div class="nb-header-inner">
+      <a href="/" class="nb-brand-wrap" aria-label="GuardAgent Home">
+        <img src="/assets/images/logo-transparent.png" alt="GuardAgent Logo" class="nb-logo-img" id="brandLogoImg">
+      </a>
+
+      <nav role="navigation" aria-label="Main Navigation">
+        <ul class="nb-nav-list" id="desktopNav">
+          <li><a href="/#arcade-soc" class="nb-nav-item">LIVE DEMO</a></li>
+          <li><a href="/#comparison" class="nb-nav-item">BEFORE &amp; AFTER</a></li>
+          <li><a href="/#nightmares" class="nb-nav-item">3 DISASTERS</a></li>
+          <li><a href="/#how-it-works" class="nb-nav-item">HOW IT WORKS</a></li>
+          <li><a href="/#threat-lab" class="nb-nav-item">ATTACK LAB</a></li>
+          <li><a href="/#calculator" class="nb-nav-item">SPEED &amp; SAVINGS</a></li>
+          <li><a href="/docs" class="nb-nav-item" style="background: var(--nb-yellow); border: 2px solid var(--nb-navy); box-shadow: 2.5px 2.5px 0px var(--nb-navy); font-weight: 900;">DOCS</a></li>
+        </ul>
+      </nav>
+
+      <div class="nb-header-actions">
+        <button class="nb-theme-toggle" aria-label="Toggle Dark Theme" title="Toggle theme (Dark / Light)">
+          <svg class="sun-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          <svg class="moon-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        <a href="https://github.com/guardagent/guardagent" target="_blank" rel="noopener noreferrer" class="nb-sticker nb-sticker-yellow" title="Star GuardAgent on GitHub" style="text-decoration: none; padding: 4px 8px;">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+          </svg>
+          <span>4.9K</span>
+        </a>
+        <a href="/login" class="nb-btn nb-btn-sm nb-btn-teal">Sign In</a>
+        
+        <button class="nb-mobile-toggle" id="nbMobileToggle" aria-label="Toggle navigation" aria-expanded="false">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="nb-mobile-drawer" id="nbMobileDrawer">
+      <a href="/#arcade-soc" class="nb-nav-item">LIVE DEMO</a>
+      <a href="/#comparison" class="nb-nav-item">BEFORE &amp; AFTER</a>
+      <a href="/#nightmares" class="nb-nav-item">THE 3 DISASTERS</a>
+      <a href="/#how-it-works" class="nb-nav-item">HOW IT WORKS</a>
+      <a href="/#threat-lab" class="nb-nav-item">ATTACK LAB</a>
+      <a href="/#calculator" class="nb-nav-item">SPEED &amp; SAVINGS</a>
+      <a href="/docs" class="nb-nav-item">DOCUMENTATION</a>
+      <div style="display: flex; gap: 8px; margin-top: 6px; padding-top: 10px; border-top: 2px dashed var(--nb-navy);">
+        <a href="https://github.com/guardagent/guardagent" target="_blank" rel="noopener noreferrer" class="nb-sticker nb-sticker-yellow" style="text-decoration: none; padding: 8px 12px; justify-content: center; flex: 1; font-size: 0.75rem;">
+          ★ STAR 4.9K ON GITHUB
+        </a>
+        <a href="/login" class="nb-btn nb-btn-sm nb-btn-teal" style="flex: 1; text-align: center; justify-content: center;">SIGN IN &rarr;</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       Neo-Brutalist Marquee Tape Ribbon
+       ========================================================================= -->
+  <div class="nb-tape-strip" aria-hidden="true">
+    <div class="nb-tape-content">
+      <span>📖 DEVELOPER DOCUMENTATION</span>
+      <span>⚡ 0.8MS DETERMINISTIC CHECKS</span>
+      <span>🛡️ ZERO HALLUCINATIONS</span>
+      <span>🚀 PYTHON &amp; JAVASCRIPT SDKs</span>
+      <span>🔒 TAMPER-PROOF AUDIT LOGS</span>
+      <span>📖 DEVELOPER DOCUMENTATION</span>
+      <span>⚡ 0.8MS DETERMINISTIC CHECKS</span>
+      <span>🛡️ ZERO HALLUCINATIONS</span>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Main Documentation Section
+       ========================================================================= -->
+  <main id="main-content">
+    <div class="nb-docs-wrapper">
+      <div class="nb-docs-grid">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="nb-docs-sidebar" role="complementary" aria-label="Documentation Navigation">
+          <div class="nb-docs-group">
+            <div class="nb-docs-group-title">
+              <span>GETTING STARTED</span>
+              <span class="nb-sticker nb-sticker-yellow" style="font-size: 0.55rem; padding: 1px 4px;">v1.2</span>
+            </div>
+            <ul class="nb-docs-nav-list">
+              <li><a href="/docs" class="nb-docs-nav-item active">📚 Documentation Index</a></li>
+              <li><a href="/docs/quickstart" class="nb-docs-nav-item">🚀 1-Minute Quickstart</a></li>
+              <li><a href="/docs/api-reference" class="nb-docs-nav-item">⚡ REST API Reference</a></li>
+            </ul>
+          </div>
+
+          <div class="nb-docs-group">
+            <div class="nb-docs-group-title">
+              <span>CORE CONCEPTS</span>
+            </div>
+            <ul class="nb-docs-nav-list">
+              <li><a href="/#how-it-works" class="nb-docs-nav-item">🔄 How It Works</a></li>
+              <li><a href="/#comparison" class="nb-docs-nav-item">⚖️ Before &amp; After</a></li>
+              <li><a href="/#threat-lab" class="nb-docs-nav-item">🛡️ Attack Simulator</a></li>
+              <li><a href="/security" class="nb-docs-nav-item">🔒 Security Architecture</a></li>
+            </ul>
+          </div>
+
+          <div class="nb-docs-group">
+            <div class="nb-docs-group-title">
+              <span>COMMUNITY</span>
+            </div>
+            <ul class="nb-docs-nav-list">
+              <li><a href="https://github.com/guardagent/guardagent" target="_blank" rel="noopener noreferrer" class="nb-docs-nav-item">⭐ Star on GitHub</a></li>
+              <li><a href="/contributing" class="nb-docs-nav-item">🤝 Contributing Guide</a></li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Documentation Content Article -->
+        <article class="nb-docs-article">
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+            <span class="nb-sticker nb-sticker-teal tilt-1">TECHNICAL GUIDE</span>
+            <span class="nb-sticker nb-sticker-mint">OPEN SOURCE (APACHE 2.0)</span>
+            <span class="nb-sticker nb-sticker-yellow">LATENCY: 0.8MS</span>
+          </div>
+
+          <h1>GuardAgent Documentation</h1>
+          
+          <p style="font-size: 1.15rem; color: #334155; line-height: 1.7; font-weight: 600; margin-bottom: 24px;">
+            GuardAgent is a deterministic safety switch and compiled security gateway for autonomous AI agents. 
+            It intercepts every API, database, and system tool call in 0.8 milliseconds — blocking attacks, unauthorized funds transfers, and accidental table deletions before they touch production.
+          </p>
+
+          <!-- Neo-Brutalist Architecture Diagram Box -->
+          <div style="background: var(--nb-canvas); border: 2.5px solid var(--nb-navy); box-shadow: 4px 4px 0px var(--nb-navy); border-radius: 8px; padding: 20px 24px; margin: 28px 0;">
+            <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 900; color: var(--nb-teal); text-transform: uppercase; margin-bottom: 10px;">
+              REQUEST INTERCEPTION FLOW:
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800;">
+              <span class="nb-sticker nb-sticker-white">🤖 AI Agent (LangChain / CrewAI)</span>
+              <span style="color: var(--nb-navy); font-weight: 900;">&rarr;</span>
+              <span class="nb-sticker nb-sticker-yellow" style="padding: 6px 12px;">🛡️ GuardAgent (0.8ms Check)</span>
+              <span style="color: var(--nb-navy); font-weight: 900;">&rarr;</span>
+              <span class="nb-sticker nb-sticker-mint">🌐 Real APIs &amp; Live DB</span>
+            </div>
+          </div>
+
+          <h2>What is GuardAgent?</h2>
+          <p>
+            When autonomous AI agents interact with external systems (such as Stripe payments, cloud server metadata, SQL databases, or operating system shells), granting direct, unverified access creates catastrophic risks.
+          </p>
+          <p>
+            Prompt injection attacks, malicious third-party web content, or unexpected model hallucinations can trick an agent into sending unauthorized wire transfers, deleting live customer databases, or leaking confidential cloud keys.
+          </p>
+          <p>
+            GuardAgent acts as an <strong>authoritative safety gate</strong> between the AI agent and the tools it intends to call. Before any network call is dispatched or database query is executed, GuardAgent validates the action against your declarative safety rules, computes an explainable risk score, and issues an instant decision in 0.8ms.
+          </p>
+
+          <h2>Key Concepts</h2>
+          <div class="nb-table-container" style="margin: 24px 0;">
+            <table class="nb-table">
+              <thead>
+                <tr>
+                  <th style="width: 25%;">Concept</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Agent</strong></td>
+                  <td>An enrolled AI bot or assistant identified by an <code>agent_id</code> with predefined permissions and allowed tools.</td>
+                </tr>
+                <tr>
+                  <td><strong>Tool</strong></td>
+                  <td>A registered capability (e.g. <code>stripe.transfers.create</code>, <code>sql_query</code>, <code>http_fetch</code>) controlled by GuardAgent.</td>
+                </tr>
+                <tr>
+                  <td><strong>Safety Policy</strong></td>
+                  <td>A declarative rule (e.g., maximum refund $500, forbidden SQL commands, whitelisted IP addresses).</td>
+                </tr>
+                <tr>
+                  <td><strong>Decision</strong></td>
+                  <td>The instant 0.8ms deterministic outcome: <code>ALLOW</code>, <code>REQUIRE APPROVAL</code>, or <code>BLOCK</code>.</td>
+                </tr>
+                <tr>
+                  <td><strong>Human Signoff</strong></td>
+                  <td>A review item dispatched to Slack or Teams requiring an operator click before releasing high-stakes actions.</td>
+                </tr>
+                <tr>
+                  <td><strong>Audit Ledger</strong></td>
+                  <td>A cryptographic, append-only local log recording every action, parameters, decision, and timestamp.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Quick Installation</h2>
+          <p>Install GuardAgent with a single terminal command in Python or JavaScript:</p>
+
+          <div class="nb-code-box" style="margin: 16px 0 24px;">
+            <div style="color: #94A3B8; font-size: 0.7rem; font-weight: 800; margin-bottom: 6px;">TERMINAL INSTALLATION:</div>
+            <code style="color: #00D2B4; font-size: 0.95rem; font-weight: 800;">pip install guardagent   # Python SDK</code><br>
+            <code style="color: #FEF08A; font-size: 0.95rem; font-weight: 800; margin-top: 6px; display: inline-block;">npm install @guardagent/sdk   # Node.js / TypeScript</code>
+          </div>
+
+          <h2>Developer Guides</h2>
+          <p>Explore the specific guide for your implementation requirements:</p>
+
+          <div class="nb-docs-cards-grid">
+            <div class="nb-docs-card">
+              <div>
+                <span class="nb-sticker nb-sticker-yellow" style="font-size: 0.65rem; margin-bottom: 10px;">GET UP AND RUNNING</span>
+                <h3 style="margin-top: 8px;">1-Minute Quickstart</h3>
+                <p style="font-size: 0.875rem; color: #475569; margin-bottom: 18px;">
+                  Learn how to install GuardAgent, configure your first safety rules, and protect an AI agent in under 60 seconds.
+                </p>
+              </div>
+              <a href="/docs/quickstart" class="nb-btn nb-btn-teal nb-btn-sm" style="align-self: flex-start;">
+                Read Quickstart &rarr;
+              </a>
+            </div>
+
+            <div class="nb-docs-card">
+              <div>
+                <span class="nb-sticker nb-sticker-teal" style="font-size: 0.65rem; margin-bottom: 10px;">ENDPOINT REFERENCE</span>
+                <h3 style="margin-top: 8px;">REST API Reference</h3>
+                <p style="font-size: 0.875rem; color: #475569; margin-bottom: 18px;">
+                  Inspect the HTTP REST endpoints for action evaluations, bot registration, policy definitions, and audit logs.
+                </p>
+              </div>
+              <a href="/docs/api-reference" class="nb-btn nb-btn-white nb-btn-sm" style="align-self: flex-start;">
+                View API Endpoints &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Open Source Standard Callout -->
+          <div class="nb-docs-callout teal">
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 900; color: var(--nb-teal); margin-bottom: 6px;">
+              ★ 100% FREE &amp; OPEN SOURCE PROJECT
+            </div>
+            <p style="margin: 0; font-size: 0.95rem; color: var(--nb-navy); font-weight: 600; line-height: 1.6;">
+              GuardAgent is free and open-source software licensed under Apache 2.0. You can run it completely on your own machine or inside your private VPC. Contributions, community rules, and framework adapters are welcomed on <a href="https://github.com/guardagent/guardagent" target="_blank" rel="noopener noreferrer" style="color: var(--nb-navy); font-weight: 900; text-decoration: underline;">GitHub</a>.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       Neo-Brutalist Streamlined Footer
+       ========================================================================= -->
+  <footer class="nb-footer" role="contentinfo">
+    <div class="nb-footer-grid">
+      <div>
+        <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 16px;">
+          <img src="/assets/images/logo-transparent.png" alt="GuardAgent Logo" class="nb-logo-img">
+        </a>
+        <p style="font-size: 0.95rem; font-weight: 600; line-height: 1.6; max-width: 340px; color: var(--nb-navy);">
+          The open-source 0.8ms safety switch and deterministic firewall for autonomous AI agents.
+        </p>
+        <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="nb-sticker nb-sticker-teal" style="font-size: 0.68rem;">APACHE 2.0 OPEN SOURCE</span>
+          <span class="nb-sticker nb-sticker-yellow" style="font-size: 0.68rem;">0.8MS ZERO LAG</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="nb-footer-title">Explore</div>
+        <ul class="nb-footer-links">
+          <li><a href="/#how-it-works" class="nb-footer-link">How GuardAgent Works</a></li>
+          <li><a href="/#threat-lab" class="nb-footer-link">Attack Defense Lab</a></li>
+          <li><a href="/#calculator" class="nb-footer-link">Speed &amp; Token Savings</a></li>
+          <li><a href="/#faq" class="nb-footer-link">Common Questions</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="nb-footer-title">Developers</div>
+        <ul class="nb-footer-links">
+          <li><a href="/docs" class="nb-footer-link">Documentation</a></li>
+          <li><a href="/docs/quickstart" class="nb-footer-link">1-Minute Quickstart</a></li>
+          <li><a href="https://github.com/guardagent/guardagent" target="_blank" rel="noopener noreferrer" class="nb-footer-link">GitHub Repository</a></li>
+          <li><a href="/security" class="nb-footer-link">Security Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="max-width: 1140px; margin: 0 auto; padding-top: 24px; border-top: 2.5px solid var(--nb-navy); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-weight: 700; font-size: 0.85rem;">
+      <div>&copy; 2026 GuardAgent Open Source Project. Licensed under Apache 2.0.</div>
+      <div style="display: flex; gap: 20px;">
+        <a href="/docs" class="nb-footer-link">Documentation</a>
+        <a href="https://github.com/guardagent/guardagent" target="_blank" rel="noopener noreferrer" class="nb-footer-link">GitHub</a>
+        <a href="/security" class="nb-footer-link">Security Notice</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>

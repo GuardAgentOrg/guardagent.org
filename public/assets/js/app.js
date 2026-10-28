@@ -1,6 +1,7 @@
 // GuardAgent Security Operations Console Shell & Helper Primitives
 
 document.addEventListener('DOMContentLoaded', async () => {
+  initThemeToggle();
   initNavigation();
   initMobileDrawer();
   await initSession();
@@ -135,3 +136,63 @@ window.app = {
   renderDecisionBadge,
   renderRiskBadge
 };
+
+/* Theme Management for Console */
+function getPreferredTheme() {
+  const saved = localStorage.getItem('guardagent-theme');
+  if (saved) return saved;
+  return 'dark';
+}
+
+function applyTheme(theme) {
+  const isDark = theme === 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.classList.toggle('dark', isDark);
+  document.documentElement.classList.toggle('dark-theme', isDark);
+
+  if (document.body) {
+    document.body.classList.toggle('dark-theme', isDark);
+  }
+
+  document.querySelectorAll('.theme-toggle-btn, .nb-theme-toggle').forEach(btn => {
+    btn.setAttribute('aria-label', isDark ? 'Switch to Light Theme' : 'Switch to Pitch Dark Theme');
+    btn.setAttribute('title', isDark ? 'Switch to Light Theme' : 'Switch to Pitch Dark Theme');
+  });
+
+  try {
+    window.dispatchEvent(new CustomEvent('guardagent-theme-changed', { detail: { theme } }));
+  } catch(e) {}
+}
+
+function initThemeToggle() {
+  const current = getPreferredTheme();
+  applyTheme(current);
+
+  if (!window._guardThemeDelegatedApp) {
+    window._guardThemeDelegatedApp = true;
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.theme-toggle-btn, .nb-theme-toggle');
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+
+      const active = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = active === 'dark' ? 'light' : 'dark';
+      try {
+        localStorage.setItem('guardagent-theme', next);
+      } catch(err) {}
+      applyTheme(next);
+    });
+  }
+}
+
+// Immediate evaluation
+(function() {
+  try {
+    const saved = localStorage.getItem('guardagent-theme');
+    const t = saved ? saved : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    document.documentElement.classList.toggle('dark', t === 'dark');
+    document.documentElement.classList.toggle('dark-theme', t === 'dark');
+  } catch(e) {}
+})();

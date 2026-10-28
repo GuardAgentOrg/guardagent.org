@@ -37,17 +37,51 @@ app.use(express.static(publicDir));
 // Route Rewriter for Clean URLs without .html extension
 const publicRoutes = ['features', 'how-it-works', 'use-cases', 'security', 'docs', 'quickstart', 'about', 'contributing', 'api-reference', 'login', 'signup'];
 publicRoutes.forEach(route => {
-  app.get(`/${route}`, (req, res) => {
+  app.get([`/${route}`, `/${route}.html`], (req, res) => {
     res.sendFile(path.join(publicDir, `${route}.html`));
   });
 });
 
-app.get('/docs/quickstart', (req, res) => {
+// Authentication Aliases (Sign In / Login)
+const authRoutes = ['/signin', '/sign-in', '/auth/login', '/signin.html'];
+authRoutes.forEach(r => {
+  app.get(r, (req, res) => {
+    res.sendFile(path.join(publicDir, 'login.html'));
+  });
+});
+
+// Documentation Route Aliases
+const docsAliases = ['/documentation', '/documentation.html', '/docs.html'];
+docsAliases.forEach(r => {
+  app.get(r, (req, res) => {
+    res.sendFile(path.join(publicDir, 'docs.html'));
+  });
+});
+
+app.get(['/docs/quickstart', '/documentation/quickstart'], (req, res) => {
   res.sendFile(path.join(publicDir, 'quickstart.html'));
 });
 
-app.get('/docs/api-reference', (req, res) => {
+app.get(['/docs/api-reference', '/documentation/api-reference'], (req, res) => {
   res.sendFile(path.join(publicDir, 'api-reference.html'));
+});
+
+// Security Notice & Security Policy Aliases
+const securityAliases = [
+  '/security-notice',
+  '/security_notice',
+  '/security-notice.html',
+  '/security_notice.html',
+  '/security-policy',
+  '/security/notice',
+  '/notice',
+  '/docs/security',
+  '/documentation/security'
+];
+securityAliases.forEach(r => {
+  app.get(r, (req, res) => {
+    res.sendFile(path.join(publicDir, 'security.html'));
+  });
 });
 
 const appRoutes = ['agents', 'policies', 'risk-analysis', 'approvals', 'audit-logs', 'alerts', 'settings'];
