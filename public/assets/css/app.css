@@ -425,7 +425,17 @@
 }
 
 /* ==========================================================================
-   Mobile Nav Drawer
+   Responsive Tables & Containers
+   ========================================================================== */
+.table-responsive {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ==========================================================================
+   Mobile Nav Drawer & Cross-Device Breakpoints
    ========================================================================== */
 @media (max-width: 860px) {
   .app-sidebar {
@@ -433,8 +443,12 @@
     top: 0;
     bottom: 0;
     left: 0;
+    width: 280px;
+    max-width: 85vw;
+    z-index: 1050;
     transform: translateX(-100%);
-    box-shadow: var(--shadow-lg);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
   }
 
   .app-sidebar.open {
@@ -446,11 +460,90 @@
   }
 
   .app-content {
-    padding: 1.25rem;
+    padding: 1.25rem 1rem;
   }
 
   .app-topbar {
-    padding: 0.75rem 1.25rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-topbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 0.75rem 0.875rem;
+  }
+
+  .topbar-left {
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .topbar-title-group h1 {
+    font-size: 1.15rem;
+    line-height: 1.2;
+  }
+
+  .topbar-title-group p {
+    font-size: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .topbar-right {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+  }
+
+  .toolbar-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .toolbar-search {
+    max-width: 100%;
+  }
+
+  .grid.grid-2 {
+    grid-template-columns: 1fr;
+    gap: 1.25rem !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .app-content {
+    padding: 0.875rem 0.625rem;
+  }
+
+  .metric-val {
+    font-size: 1.5rem;
+  }
+
+  .metric-card {
+    padding: 1rem;
+  }
+
+  .topbar-right .btn {
+    padding: 6px 10px;
+    font-size: 0.75rem;
   }
 }
 

@@ -421,7 +421,7 @@
           <p style="font-size: 0.925rem; line-height: 1.65; color: #334155; font-weight: 500;">
             Add GuardAgent to your Python or JavaScript project in under 1 minute. It wraps your existing tools with zero hassle.
           </p>
-          <div style="font-family: var(--font-mono); font-size: 0.8rem; background: var(--nb-navy); color: #F8FAFC; padding: 12px; border-radius: 6px; margin-top: 14px;">
+          <div class="nb-step-code">
             decision = guard.check(action, amount)
           </div>
         </div>
@@ -432,7 +432,7 @@
           <p style="font-size: 0.925rem; line-height: 1.65; color: #334155; font-weight: 500;">
             Pick your rules in plain English: "Never spend more than $500", "Never delete a database table", and "Never share cloud passwords".
           </p>
-          <div style="font-family: var(--font-mono); font-size: 0.8rem; background: var(--nb-navy); color: #F8FAFC; padding: 12px; border-radius: 6px; margin-top: 14px;">
+          <div class="nb-step-code">
             max_spend: $500 | block: DROP TABLE
           </div>
         </div>
@@ -443,7 +443,7 @@
           <p style="font-size: 0.925rem; line-height: 1.65; color: #334155; font-weight: 500;">
             GuardAgent checks every action in 0.8 milliseconds. Safe actions run instantly. Dangerous actions are stopped on the spot.
           </p>
-          <div style="font-family: var(--font-mono); font-size: 0.8rem; background: var(--nb-green); color: var(--nb-navy); font-weight: 800; padding: 12px; border-radius: 6px; margin-top: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          <div class="nb-step-status-pill">
             ✓ SAFE: INSTANT | ⚠️ HOLD: SLACK APPROVAL
           </div>
         </div>
@@ -706,9 +706,9 @@
       </div>
     </div>
 
-    <div style="max-width: 1140px; margin: 0 auto; padding-top: 24px; border-top: 2.5px solid var(--nb-navy); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-weight: 700; font-size: 0.85rem;">
+    <div class="nb-footer-subbar">
       <div>&copy; 2026 GuardAgent Open Source Project. Licensed under Apache 2.0.</div>
-      <div style="display: flex; gap: 20px;">
+      <div style="display: flex; gap: 20px; flex-wrap: wrap;">
         <a href="/docs" class="nb-footer-link">Documentation</a>
         <a href="https://github.com/guardagent/guardagent" target="_blank" rel="noopener noreferrer" class="nb-footer-link">GitHub</a>
         <a href="/security" class="nb-footer-link">Security Notice</a>
