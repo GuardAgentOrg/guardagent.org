@@ -18,46 +18,94 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   1. Mobile Navigation Drawer
+   1. Mobile Navigation Drawer & Hamburger Close Toggle
    ========================================================================== */
 function initMobileNav() {
-  const toggleBtn = document.getElementById('nbMobileToggle') || document.getElementById('mobileNavToggle');
-  const drawer = document.getElementById('nbMobileDrawer') || document.getElementById('mobileNavDrawer');
+  const toggleBtn = document.getElementById('nbMobileToggle') || 
+                    document.getElementById('mobileNavToggle') || 
+                    document.querySelector('.nb-mobile-toggle, .mobile-toggle');
+  const drawer = document.getElementById('nbMobileDrawer') || 
+                 document.getElementById('mobileNavDrawer') || 
+                 document.querySelector('.nb-mobile-drawer, .mobile-nav-drawer');
   if (!toggleBtn || !drawer) return;
+
+  function updateToggleIcon(isOpen) {
+    // 1. Dual-icon approach: toggle visibility of bars vs close SVGs
+    const barsIcon = toggleBtn.querySelector('.nb-icon-bars, .mobile-icon-bars, .hamburger-icon');
+    const closeIcon = toggleBtn.querySelector('.nb-icon-close, .mobile-icon-close, .close-icon');
+
+    if (barsIcon && closeIcon) {
+      barsIcon.style.display = isOpen ? 'none' : 'block';
+      closeIcon.style.display = isOpen ? 'block' : 'none';
+    } else {
+      // 2. Resilient fallback: swap SVG path directly between 3-bars and X-close
+      const path = toggleBtn.querySelector('svg path');
+      if (path) {
+        if (isOpen) {
+          path.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+        } else {
+          path.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+        }
+      }
+    }
+  }
 
   function setMenuState(isOpen) {
     toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    toggleBtn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    toggleBtn.classList.toggle('is-active', isOpen);
     drawer.classList.toggle('open', isOpen);
+    drawer.style.display = isOpen ? 'flex' : 'none';
+    updateToggleIcon(isOpen);
+
     if (isOpen) {
-      drawer.style.display = 'flex';
+      // Prioritize focusing drawer close button, or the first navigation link
+      const drawerCloseBtn = drawer.querySelector('.nb-drawer-close, .mobile-drawer-close, [data-action="close-menu"]');
       const firstLink = drawer.querySelector('a');
-      if (firstLink) firstLink.focus();
+      if (drawerCloseBtn) {
+        drawerCloseBtn.focus();
+      } else if (firstLink) {
+        firstLink.focus();
+      }
     } else {
-      drawer.style.display = 'none';
       toggleBtn.focus();
     }
   }
 
-  toggleBtn.addEventListener('click', () => {
-    const isCurrentlyOpen = drawer.classList.contains('open');
+  // Hamburger button toggles menu (opens when closed, closes when open)
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isCurrentlyOpen = drawer.classList.contains('open') || drawer.style.display === 'flex';
     setMenuState(!isCurrentlyOpen);
   });
 
-  // Automatically close mobile menu when clicking any anchor link
+  // Explicit close buttons inside the drawer header
+  const drawerCloseButtons = drawer.querySelectorAll('.nb-drawer-close, .mobile-drawer-close, [data-action="close-menu"], .drawer-close-btn');
+  drawerCloseButtons.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setMenuState(false);
+    });
+  });
+
+  // Automatically close mobile menu when clicking any anchor link inside drawer
   drawer.querySelectorAll('a').forEach((navLink) => {
     navLink.addEventListener('click', () => {
       setMenuState(false);
     });
   });
 
+  // Close when pressing the Escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && drawer.classList.contains('open')) {
+    if (e.key === 'Escape' && (drawer.classList.contains('open') || drawer.style.display === 'flex')) {
       setMenuState(false);
     }
   });
 
+  // Close when tapping anywhere outside the drawer and outside the toggle button
   document.addEventListener('click', (e) => {
-    if (drawer.classList.contains('open') && !drawer.contains(e.target) && !toggleBtn.contains(e.target)) {
+    const isCurrentlyOpen = drawer.classList.contains('open') || drawer.style.display === 'flex';
+    if (isCurrentlyOpen && !drawer.contains(e.target) && !toggleBtn.contains(e.target)) {
       setMenuState(false);
     }
   });

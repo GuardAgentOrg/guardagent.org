@@ -23,11 +23,42 @@ function initNavigation() {
 function initMobileDrawer() {
   const toggleBtn = document.getElementById('mobileSidebarToggle');
   const sidebar = document.querySelector('.app-sidebar');
-  if (toggleBtn && sidebar) {
-    toggleBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
-    });
+  if (!toggleBtn || !sidebar) return;
+
+  function setSidebarState(isOpen) {
+    sidebar.classList.toggle('open', isOpen);
+    toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    toggleBtn.setAttribute('aria-label', isOpen ? 'Close sidebar' : 'Open sidebar');
+    toggleBtn.classList.toggle('is-active', isOpen);
+    const path = toggleBtn.querySelector('svg path');
+    if (path) {
+      path.setAttribute('d', isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16');
+    }
   }
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = sidebar.classList.contains('open');
+    setSidebarState(!isOpen);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+      setSidebarState(false);
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (sidebar.classList.contains('open') && !sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
+      setSidebarState(false);
+    }
+  });
+
+  sidebar.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      setSidebarState(false);
+    });
+  });
 }
 
 async function initSession() {
