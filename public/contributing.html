@@ -41,16 +41,16 @@
         <a href="/signin" class="btn btn-outline btn-sm">Sign In</a>
         <a href="/docs/api-reference" class="btn btn-outline btn-sm">REST API</a>
         <a href="/app/" class="btn btn-teal btn-sm">Launch SOC Console &rarr;</a>
-      </div>
 
-      <button class="mobile-toggle" id="mobileNavToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNavDrawer">
-        <svg class="mobile-icon-bars" width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-        <svg class="mobile-icon-close" width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
+        <button class="mobile-toggle" id="mobileNavToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNavDrawer">
+          <svg class="mobile-icon-bars" width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg class="mobile-icon-close" width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
     </div>
 
     <div class="mobile-nav-drawer" id="mobileNavDrawer" role="region" aria-label="Mobile Navigation">
@@ -99,11 +99,11 @@
             GuardAgent is written in modern Node.js with minimal external dependencies. We prioritize clean architecture, predictable evaluation logic, and zero runtime bloat.
           </p>
 
-          <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+          <div class="workflow-steps">
             <!-- Step 1 -->
-            <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
-              <div style="width: 36px; height: 36px; border-radius: 50%; background-color: var(--teal-primary); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
-              <div style="flex: 1;">
+            <div class="workflow-step-item">
+              <div class="step-badge">1</div>
+              <div class="step-content">
                 <h3 style="font-size: 1.25rem; margin-bottom: var(--space-2);">Clone and Install Dependencies</h3>
                 <p style="color: var(--secondary-text); margin-bottom: var(--space-3);">
                   Fork the repository, clone your fork locally, and install dependencies:
@@ -123,9 +123,9 @@ npm install</code></pre>
             </div>
 
             <!-- Step 2 -->
-            <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
-              <div style="width: 36px; height: 36px; border-radius: 50%; background-color: var(--teal-primary); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
-              <div style="flex: 1;">
+            <div class="workflow-step-item">
+              <div class="step-badge">2</div>
+              <div class="step-content">
                 <h3 style="font-size: 1.25rem; margin-bottom: var(--space-2);">Start the Local Gateway</h3>
                 <p style="color: var(--secondary-text); margin-bottom: var(--space-3);">
                   Launch the Express server in local development mode:
@@ -144,9 +144,9 @@ npm install</code></pre>
             </div>
 
             <!-- Step 3 -->
-            <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
-              <div style="width: 36px; height: 36px; border-radius: 50%; background-color: var(--teal-primary); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
-              <div style="flex: 1;">
+            <div class="workflow-step-item">
+              <div class="step-badge">3</div>
+              <div class="step-content">
                 <h3 style="font-size: 1.25rem; margin-bottom: var(--space-2);">Execute Automated Tests</h3>
                 <p style="color: var(--secondary-text); margin-bottom: var(--space-3);">
                   Run the automated verification suite to validate all security rules, evaluation paths, and API endpoints:

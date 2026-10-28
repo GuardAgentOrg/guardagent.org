@@ -5042,16 +5042,50 @@ body.neo-brutalist-theme {
 }
 
 /* ==========================================================================
-   Neo-Brutalist 404 Error Page System (Animated)
+   Neo-Brutalist 404 Error Page System (Animated & Ultra-Aligned)
    ========================================================================== */
-.nb-404-hero {
-  position: relative;
-  text-align: center;
-  padding: 20px 0 44px;
-  overflow: visible;
+.nb-404-page-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(10, 17, 40, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10, 17, 40, 0.04) 1px, transparent 1px);
+  mask-image: radial-gradient(circle at 50% 25%, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at 50% 25%, black 40%, transparent 80%);
+  animation: gridDrift 24s linear infinite;
+  z-index: 0;
 }
 
-/* Floating Ambient Security Badges */
+@keyframes gridDrift {
+  0% { background-position: 0 0; }
+  100% { background-position: 36px 36px; }
+}
+
+.nb-404-container {
+  position: relative;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 36px 20px 80px;
+  z-index: 1;
+}
+
+/* Floating Ambient Security Badges - Positioned Safely in Viewport Margins */
+.nb-floating-badge-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 500px;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 0;
+}
+
 .nb-floating-badge {
   position: absolute;
   font-family: var(--font-mono);
@@ -5061,13 +5095,14 @@ body.neo-brutalist-theme {
   border: 2px solid var(--nb-navy);
   box-shadow: 3px 3px 0px var(--nb-navy);
   border-radius: 4px;
-  z-index: 2;
-  pointer-events: none;
+  pointer-events: auto;
   display: none;
   user-select: none;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1200px) {
   .nb-floating-badge {
     display: inline-flex;
     align-items: center;
@@ -5075,33 +5110,37 @@ body.neo-brutalist-theme {
   }
 }
 
+.nb-floating-badge:hover {
+  transform: scale(1.12) rotate(0deg) !important;
+}
+
 .float-b1 {
-  top: 6%;
-  left: 1%;
+  top: 30px;
+  left: -15px;
   background: var(--nb-yellow);
   color: var(--nb-navy);
   animation: floatDrift1 5s ease-in-out infinite;
 }
 
 .float-b2 {
-  top: 10%;
-  right: 1%;
+  top: 50px;
+  right: -15px;
   background: var(--nb-coral);
   color: var(--nb-navy);
   animation: floatDrift2 6.5s ease-in-out infinite;
 }
 
 .float-b3 {
-  bottom: 24%;
-  left: 1%;
+  top: 240px;
+  left: -20px;
   background: #5EEAD4;
   color: #064E3B;
   animation: floatDrift3 7s ease-in-out infinite;
 }
 
 .float-b4 {
-  bottom: 28%;
-  right: 1%;
+  top: 260px;
+  right: -20px;
   background: #DDD6FE;
   color: #3B0764;
   animation: floatDrift4 5.5s ease-in-out infinite;
@@ -5124,13 +5163,26 @@ body.neo-brutalist-theme {
   50% { transform: translateY(-14px) rotate(-3deg); }
 }
 
+/* Hero Section */
+.nb-404-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 36px;
+  position: relative;
+  z-index: 1;
+}
+
 .nb-404-badges {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 /* Pulsing Radar Dot */
@@ -5159,23 +5211,33 @@ body.neo-brutalist-theme {
   100% { transform: scale(2.2); opacity: 0; }
 }
 
-.nb-404-giant-wrap {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 24px;
+/* Giant 404 Stage */
+.nb-404-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 8px auto 22px;
+  cursor: pointer;
+  user-select: none;
 }
 
 .nb-404-giant-number {
   font-family: var(--font-display);
-  font-size: clamp(5.5rem, 15vw, 10.5rem);
+  font-size: clamp(6.2rem, 16vw, 11.5rem);
   font-weight: 900;
-  line-height: 0.88;
+  line-height: 0.85;
   color: var(--nb-navy);
-  letter-spacing: -0.05em;
+  letter-spacing: -0.045em;
   text-shadow: 6px 6px 0px var(--nb-yellow), 12px 12px 0px var(--nb-coral);
-  user-select: none;
   display: inline-block;
-  animation: nbFloat404 5s ease-in-out infinite, nbShadowGlitch 4.5s steps(2, start) infinite;
+  animation: nbFloat404 4.5s ease-in-out infinite, nbShadowGlitch 4s steps(2, start) infinite;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, text-shadow;
+}
+
+.nb-404-stage:hover .nb-404-giant-number {
+  transform: scale(1.05) rotate(-1deg);
 }
 
 @keyframes nbFloat404 {
@@ -5195,7 +5257,7 @@ body.neo-brutalist-theme {
     text-shadow: 6px 6px 0px var(--nb-yellow), 12px 12px 0px var(--nb-coral);
   }
   25% {
-    text-shadow: -4px 6px 0px var(--nb-coral), 10px -4px 0px #00E5BE;
+    text-shadow: -5px 6px 0px var(--nb-coral), 10px -4px 0px #00E5BE;
   }
   50% {
     text-shadow: 8px -4px 0px var(--nb-yellow), -6px 8px 0px var(--nb-coral);
@@ -5205,23 +5267,30 @@ body.neo-brutalist-theme {
   }
 }
 
-/* Moving Caution Tape Banner */
-.nb-404-tape-banner {
-  display: inline-block;
-  background: var(--nb-yellow);
-  color: var(--nb-navy);
-  font-family: var(--font-mono);
-  font-size: 0.775rem;
-  font-weight: 900;
-  padding: 7px 22px;
-  border: var(--nb-border-base);
-  box-shadow: 3px 3px 0px var(--nb-navy);
+/* Hazard Moving Caution Tape Ribbon */
+.nb-404-tape-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: repeating-linear-gradient(
+    -45deg,
+    #FACC15,
+    #FACC15 12px,
+    #0A1128 12px,
+    #0A1128 24px
+  );
+  background-size: 34px 34px;
+  animation: hazardStripes 2s linear infinite, nbTapeSway 4s ease-in-out infinite;
+  border: 2.5px solid var(--nb-navy);
+  box-shadow: 4px 4px 0px var(--nb-navy);
+  padding: 3px;
+  margin-top: 14px;
   transform: rotate(-1.5deg);
-  margin-top: 10px;
-  letter-spacing: 0.05em;
-  animation: nbTapeSway 4s ease-in-out infinite;
-  overflow: hidden;
-  position: relative;
+}
+
+@keyframes hazardStripes {
+  0% { background-position: 0 0; }
+  100% { background-position: 34px 0; }
 }
 
 @keyframes nbTapeSway {
@@ -5231,6 +5300,20 @@ body.neo-brutalist-theme {
   50% {
     transform: rotate(1.2deg) scale(1.02);
   }
+}
+
+.nb-404-tape-inner {
+  background: #FACC15;
+  color: #000000;
+  font-family: var(--font-mono);
+  font-size: 0.775rem;
+  font-weight: 900;
+  padding: 6px 20px;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .nb-404-title {
@@ -5249,11 +5332,11 @@ body.neo-brutalist-theme {
   line-height: 1.65;
   color: #475569;
   max-width: 680px;
-  margin: 0 auto 36px;
+  margin: 0 auto 34px;
   font-weight: 500;
 }
 
-/* 404 Terminal Log Box with Laser Radar Scanline */
+/* 404 Terminal Log Box with Precise Column Grid */
 .nb-404-terminal {
   position: relative;
   background: var(--nb-navy);
@@ -5261,9 +5344,9 @@ body.neo-brutalist-theme {
   box-shadow: var(--nb-shadow-xl);
   border-radius: 10px;
   max-width: 760px;
-  margin: 0 auto 40px;
-  text-align: left;
+  margin: 0 auto 38px;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .nb-404-terminal::after {
@@ -5273,27 +5356,17 @@ body.neo-brutalist-theme {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(0, 229, 190, 0.9), transparent);
-  box-shadow: 0 0 10px rgba(0, 229, 190, 0.8);
+  background: linear-gradient(90deg, transparent, rgba(0, 229, 190, 0.95), transparent);
+  box-shadow: 0 0 12px rgba(0, 229, 190, 0.85);
   animation: nbScanline 4.5s linear infinite;
   pointer-events: none;
 }
 
 @keyframes nbScanline {
-  0% {
-    top: 0%;
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    top: 100%;
-    opacity: 0;
-  }
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
 }
 
 .nb-404-terminal-header {
@@ -5307,11 +5380,12 @@ body.neo-brutalist-theme {
   font-size: 0.725rem;
   font-weight: 800;
   color: #94A3B8;
+  box-sizing: border-box;
 }
 
 .nb-404-dots {
   display: flex;
-  gap: 6px;
+  gap: 7px;
   align-items: center;
 }
 
@@ -5320,7 +5394,14 @@ body.neo-brutalist-theme {
   height: 10px;
   border-radius: 50%;
   display: inline-block;
+  cursor: pointer;
+  transition: transform 0.15s ease;
 }
+
+.nb-dot:hover {
+  transform: scale(1.3);
+}
+
 .nb-dot.red { background: #EF4444; }
 .nb-dot.yellow { background: #F59E0B; }
 .nb-dot.green { background: #10B981; }
@@ -5349,20 +5430,42 @@ body.neo-brutalist-theme {
   padding: 18px 22px;
   font-family: var(--font-mono);
   font-size: 0.825rem;
-  line-height: 1.75;
+  line-height: 1.7;
   color: #E2E8F0;
-  min-height: 140px;
+  min-height: 135px;
+  box-sizing: border-box;
 }
 
+/* Precision Column Alignment for Terminal Rows */
 .terminal-row {
-  word-break: break-all;
-  transition: opacity 0.2s ease;
+  display: grid;
+  grid-template-columns: 148px 1fr;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 7px;
+  text-align: left;
+}
+
+@media (max-width: 580px) {
+  .terminal-row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+    margin-bottom: 10px;
+  }
 }
 
 .term-key {
   color: #94A3B8;
   font-weight: 800;
-  margin-right: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.term-val {
+  font-family: var(--font-mono);
+  font-size: 0.825rem;
+  word-break: break-all;
 }
 
 .term-val-url {
@@ -5411,6 +5514,7 @@ body.neo-brutalist-theme {
   display: flex;
   gap: 16px;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   margin-bottom: 48px;
 }
@@ -5427,16 +5531,17 @@ body.neo-brutalist-theme {
   transform: translateY(2px) scale(0.97) !important;
 }
 
-/* Quick Search / Finder Box */
+/* Quick Search / Finder Box - Pixel-Perfect Height Alignment */
 .nb-404-search-box {
   background: var(--nb-canvas);
   border: var(--nb-border-base);
   box-shadow: 4px 4px 0px var(--nb-navy);
   border-radius: 8px;
-  padding: 24px;
-  max-width: 720px;
+  padding: 24px 28px;
+  max-width: 760px;
   margin: 0 auto 56px;
-  text-align: left;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .nb-404-search-label {
@@ -5445,20 +5550,24 @@ body.neo-brutalist-theme {
   font-size: 0.725rem;
   font-weight: 900;
   color: var(--nb-navy);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   letter-spacing: 0.04em;
+  text-align: center;
 }
 
 .nb-404-search-form {
   display: flex;
   gap: 12px;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: 620px;
+  margin: 0 auto;
 }
 
 .nb-404-search-input {
   flex: 1;
-  min-width: 240px;
-  padding: 12px 16px;
+  height: 48px;
+  padding: 0 16px;
   font-family: var(--font-mono);
   font-size: 0.9rem;
   font-weight: 600;
@@ -5466,8 +5575,9 @@ body.neo-brutalist-theme {
   border-radius: 6px;
   background: #FFFFFF;
   color: var(--nb-navy);
-  box-shadow: 2.5px 2.5px 0px var(--nb-navy);
+  box-shadow: 3px 3px 0px var(--nb-navy);
   outline: none;
+  box-sizing: border-box;
   transition: all 0.15s ease;
 }
 
@@ -5477,9 +5587,20 @@ body.neo-brutalist-theme {
   transform: translateY(-1px);
 }
 
+.nb-404-search-btn {
+  height: 48px;
+  padding: 0 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
 .nb-404-search-suggestions {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 14px;
@@ -5493,7 +5614,7 @@ body.neo-brutalist-theme {
 }
 
 .sug-pill {
-  padding: 3px 10px;
+  padding: 4px 11px;
   background: #FFFFFF;
   border: 1.5px solid var(--nb-navy);
   border-radius: 4px;
@@ -5508,7 +5629,7 @@ body.neo-brutalist-theme {
   transform: translateY(-2px) scale(1.05);
 }
 
-/* Pathways Grid with Bouncy Spring Hover */
+/* Pathways Grid with Equal-Height Alignment & Bouncy Spring Hover */
 .nb-404-pathways-header {
   text-align: center;
   max-width: 600px;
@@ -5518,20 +5639,22 @@ body.neo-brutalist-theme {
 .nb-404-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-  text-align: left;
+  gap: 22px;
+  align-items: stretch;
 }
 
 .nb-404-card {
   display: flex;
   flex-direction: column;
+  height: 100%;
   background: var(--nb-white);
   border: var(--nb-border-heavy);
   box-shadow: var(--nb-shadow-lg);
   border-radius: 8px;
-  padding: 22px;
+  padding: 24px;
   text-decoration: none;
   color: inherit;
+  box-sizing: border-box;
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
@@ -5545,7 +5668,7 @@ body.neo-brutalist-theme {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .nb-404-arrow {
@@ -5576,6 +5699,7 @@ body.neo-brutalist-theme {
   color: #475569;
   font-weight: 500;
   margin: 0;
+  flex-grow: 1;
 }
 
 /* ==========================================================================
@@ -7640,13 +7764,25 @@ body.dark-theme .nb-floating-badge {
   box-shadow: 3px 3px 0px #000000 !important;
 }
 
-html[data-theme="dark"] .nb-404-tape-banner,
-html.dark-theme .nb-404-tape-banner,
-body.dark-theme .nb-404-tape-banner {
+html[data-theme="dark"] .nb-404-tape-wrap,
+html.dark-theme .nb-404-tape-wrap,
+body.dark-theme .nb-404-tape-wrap {
+  background: repeating-linear-gradient(
+    -45deg,
+    #FACC15,
+    #FACC15 12px,
+    #000000 12px,
+    #000000 24px
+  ) !important;
+  border: 2.5px solid #000000 !important;
+  box-shadow: 4px 4px 0px #000000 !important;
+}
+
+html[data-theme="dark"] .nb-404-tape-inner,
+html.dark-theme .nb-404-tape-inner,
+body.dark-theme .nb-404-tape-inner {
   background: #FACC15 !important;
   color: #000000 !important;
-  border: 2.5px solid #000000 !important;
-  box-shadow: 3px 3px 0px #000000 !important;
 }
 
 html[data-theme="dark"] .nb-404-title,

@@ -79,76 +79,92 @@
   </header>
 
   <!-- =========================================================================
-       Main Content: Neo-Brutalist 404 Experience (Animated)
+       Main Content: Ultra-Aligned Animated Neo-Brutalist 404 Canvas
        ========================================================================= -->
-  <main id="main-content" style="padding: 44px 20px 84px; max-width: 1140px; margin: 0 auto; position: relative;">
+  <main id="main-content" style="position: relative; overflow: hidden; min-height: 80vh;">
     
-    <div class="nb-404-hero">
+    <!-- Animated Cyber Grid Background -->
+    <div class="nb-404-page-bg"></div>
+
+    <div class="nb-404-container">
       
-      <!-- Ambient Floating Security Badges -->
-      <div class="nb-floating-badge float-b1">🛡️ AST: 0.8MS</div>
-      <div class="nb-floating-badge float-b2">⚡ FIREWALL: ACTIVE</div>
-      <div class="nb-floating-badge float-b3">🔒 ZERO DATA LEAK</div>
-      <div class="nb-floating-badge float-b4">🚫 COMMAND DROPPED</div>
-
-      <!-- Status Badges with Live Radar Ping -->
-      <div class="nb-404-badges">
-        <span class="nb-sticker nb-sticker-coral tilt-n1"><span class="nb-radar-dot"></span>SECURITY VERDICT: 404</span>
-        <span class="nb-sticker nb-sticker-yellow tilt-1">UNMAPPED ENDPOINT</span>
-        <span class="nb-sticker nb-sticker-mint">DROPPED IN 0.8MS</span>
+      <!-- Ambient Floating Badges Positioned Safely in Viewport Margins -->
+      <div class="nb-floating-badge-wrap">
+        <div class="nb-floating-badge float-b1" title="Deterministic Security Engine">🛡️ AST: 0.8MS</div>
+        <div class="nb-floating-badge float-b2" title="Zero-Lag Policy Enforcement">⚡ FIREWALL: ACTIVE</div>
+        <div class="nb-floating-badge float-b3" title="Tamper-Proof Audit Logging">🔒 ZERO DATA LEAK</div>
+        <div class="nb-floating-badge float-b4" title="Quarantine Subsystem">🚫 COMMAND DROPPED</div>
       </div>
 
-      <!-- Giant Neo-Brutalist 404 Graphic Block with 3D Levitation & Chromatic Glitch -->
-      <div class="nb-404-giant-wrap" title="GuardAgent 404 - Intercepted & Quarantined">
-        <div class="nb-404-giant-number" aria-hidden="true">404</div>
-        <div class="nb-404-tape-banner">⚠️ ACTION REJECTED &bull; UNMAPPED ROUTE &bull; SAFE DROP ⚠️</div>
+      <!-- Section 1: Hero Block (Centered) -->
+      <div class="nb-404-hero">
+        
+        <!-- Status Badges with Live Radar Ping -->
+        <div class="nb-404-badges">
+          <span class="nb-sticker nb-sticker-coral tilt-n1"><span class="nb-radar-dot"></span>SECURITY VERDICT: 404</span>
+          <span class="nb-sticker nb-sticker-yellow tilt-1">UNMAPPED ENDPOINT</span>
+          <span class="nb-sticker nb-sticker-mint">DROPPED IN 0.8MS</span>
+        </div>
+
+        <!-- Giant Neo-Brutalist 404 Stage with Interactive Decoder Scramble -->
+        <div class="nb-404-stage" id="giantStage">
+          <div class="nb-404-giant-number" id="scrambleNumber" aria-hidden="true" title="Click to trigger security re-scan">404</div>
+          
+          <!-- Hazard Moving Caution Ribbon -->
+          <div class="nb-404-tape-wrap">
+            <div class="nb-404-tape-inner">
+              <span>⚠️ ACTION REJECTED &bull; UNMAPPED ROUTE &bull; SAFE 0.8MS DROP ⚠️</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Heading & Core Message -->
+        <h1 class="nb-404-title">
+          Even Our Autonomous AI Agent Couldn't Find This Endpoint.
+        </h1>
+
+        <p class="nb-404-subtitle">
+          The requested path was evaluated and dropped by GuardAgent's deterministic security switch. The route does not exist, was quarantined by policy, or was relocated to prevent unintended tool execution.
+        </p>
       </div>
 
-      <!-- Heading & Core Message -->
-      <h1 class="nb-404-title">
-        Even Our Autonomous AI Agent Couldn't Find This Endpoint.
-      </h1>
-
-      <p class="nb-404-subtitle">
-        The requested path was evaluated and dropped by GuardAgent's deterministic security switch. The route does not exist, was quarantined by policy, or was relocated to prevent unintended tool execution.
-      </p>
-
-      <!-- Live AST Route Interception Terminal Log with Laser Scanline & Typewriter -->
-      <div class="nb-404-terminal">
+      <!-- Section 2: Terminal Box (Precision Grid Alignment) -->
+      <div class="nb-404-terminal" id="terminalBox">
         <div class="nb-404-terminal-header">
-          <div class="nb-404-dots">
-            <span class="nb-dot red"></span>
-            <span class="nb-dot yellow"></span>
-            <span class="nb-dot green"></span>
+          <div class="nb-404-dots" id="terminalDots">
+            <span class="nb-dot red" title="Trigger Firewall Alarm" id="dotRed"></span>
+            <span class="nb-dot yellow" title="Pause Interception Stream" id="dotYellow"></span>
+            <span class="nb-dot green" title="Re-evaluate Gateway Path" id="dotGreen"></span>
           </div>
           <span class="nb-404-terminal-title">GATEWAY INTERCEPTION LOG &bull; AST PIPELINE</span>
           <span class="nb-404-latency">EVAL: 0.8ms</span>
         </div>
         <div class="nb-404-terminal-body" id="terminalBodyContainer">
-          <div class="terminal-row"><span class="term-key">REQUEST_URI:</span> <span class="term-val-url" id="interceptedUri">/unknown-route</span></div>
-          <div class="terminal-row"><span class="term-key">INTERCEPTOR:</span> <span class="term-val-teal">GuardAgent AST Gateway v1.0.0-beta</span></div>
-          <div class="terminal-row"><span class="term-key">FIREWALL_RULE:</span> <span class="term-val-yellow">POL-0404-UNVERIFIED-ROUTING-PREVENTION</span></div>
-          <div class="terminal-row"><span class="term-key">DECISION:</span> <span class="term-val-coral">BLOCK_SAFELY (Zero Execution Damage)</span></div>
-          <div class="terminal-row"><span class="term-key">SAFE_PATHWAY:</span> <span class="term-val-mint">Operator forwarded to authenticated landing zones &darr;</span></div>
+          <!-- Populated by high-speed typewriter script with strict 2-column grid -->
+          <div class="terminal-row"><span class="term-key">REQUEST_URI:</span><span class="term-val term-val-url" id="interceptedUri">/unknown-route</span></div>
+          <div class="terminal-row"><span class="term-key">INTERCEPTOR:</span><span class="term-val term-val-teal">GuardAgent AST Gateway v1.0.0-beta</span></div>
+          <div class="terminal-row"><span class="term-key">FIREWALL_RULE:</span><span class="term-val term-val-yellow">POL-0404-UNVERIFIED-ROUTING-PREVENTION</span></div>
+          <div class="terminal-row"><span class="term-key">DECISION:</span><span class="term-val term-val-coral">BLOCK_SAFELY (Zero Execution Damage)</span></div>
+          <div class="terminal-row"><span class="term-key">SAFE_PATHWAY:</span><span class="term-val term-val-mint">Operator forwarded to authenticated landing zones &darr;</span></div>
           <span class="terminal-cursor"></span>
         </div>
       </div>
 
-      <!-- Primary Action Buttons -->
+      <!-- Section 3: Primary Action Buttons -->
       <div class="nb-404-actions">
         <a href="/" class="nb-btn nb-btn-lg nb-btn-teal">&larr; RETURN TO HOMEPAGE</a>
         <a href="/app/" class="nb-btn nb-btn-lg nb-btn-yellow">TRY LIVE SOC CONSOLE &rarr;</a>
         <a href="/docs" class="nb-btn nb-btn-lg nb-btn-white">BROWSE DOCUMENTATION</a>
       </div>
 
-      <!-- Quick Finder Search Box -->
+      <!-- Section 4: Quick Finder (Pixel-Perfect Form Alignment) -->
       <div class="nb-404-search-box">
         <label for="routeFinderInput" class="nb-404-search-label">
           LOOKING FOR A SPECIFIC DOCUMENT OR CAPABILITY?
         </label>
         <form class="nb-404-search-form" id="quickFinderForm" onsubmit="event.preventDefault(); handleRouteFinder();">
           <input type="text" id="routeFinderInput" class="nb-404-search-input" placeholder="Type e.g. quickstart, policies, langchain, api, live demo..." autocomplete="off">
-          <button type="submit" class="nb-btn nb-btn-teal">FIND ROUTE &rarr;</button>
+          <button type="submit" class="nb-btn nb-btn-teal nb-404-search-btn">FIND ROUTE &rarr;</button>
         </form>
         <div class="nb-404-search-suggestions">
           <span class="sug-label">Popular:</span>
@@ -161,11 +177,15 @@
         </div>
       </div>
 
-      <!-- 4 Safe Destinations Grid -->
+      <!-- Section 5: Pathways Grid (Equal-Height Stretch Alignment) -->
       <div class="nb-404-pathways-header">
         <span class="nb-sticker nb-sticker-yellow tilt-1">VERIFIED DESTINATIONS</span>
-        <h2>Safe Pathways In GuardAgent</h2>
-        <p>Choose one of these verified production zones to continue:</p>
+        <h2 style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; color: var(--nb-navy); margin: 12px 0 6px;">
+          Safe Pathways In GuardAgent
+        </h2>
+        <p style="font-size: 0.95rem; color: #64748B; font-weight: 600; margin: 0;">
+          Choose one of these verified production zones to continue:
+        </p>
       </div>
 
       <div class="nb-404-grid">
@@ -256,7 +276,7 @@
       </div>
     </div>
 
-    <div class="nb-footer-subbar">
+    <div style="max-width: 1140px; margin: 0 auto; padding-top: 24px; border-top: 2.5px solid var(--nb-navy); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-weight: 700; font-size: 0.85rem;">
       <div>&copy; 2026 GuardAgent Open Source Project. Licensed under Apache 2.0.</div>
       <div style="display: flex; gap: 20px;">
         <a href="/docs" class="nb-footer-link">Documentation</a>
@@ -269,7 +289,7 @@
   <!-- Scripts -->
   <script src="/assets/js/site.js"></script>
   <script>
-    // Live Terminal Typewriter & Intercepted Path Detection
+    // 1. Live Terminal Typewriter & Intercepted Path Detection
     (function() {
       try {
         var p = window.location.pathname;
@@ -300,10 +320,10 @@
           var item = rows[rowIndex];
           var rowDiv = document.createElement('div');
           rowDiv.className = 'terminal-row';
-          rowDiv.innerHTML = '<span class="term-key">' + item.key + '</span> <span class="' + item.cls + '"></span>';
+          rowDiv.innerHTML = '<span class="term-key">' + item.key + '</span><span class="term-val ' + item.cls + '"></span>';
           container.appendChild(rowDiv);
           
-          var valSpan = rowDiv.querySelector('.' + item.cls);
+          var valSpan = rowDiv.querySelector('.term-val');
           var text = item.val;
           var charIndex = 0;
           
@@ -311,40 +331,102 @@
             if (charIndex < text.length) {
               valSpan.textContent += text.charAt(charIndex);
               charIndex++;
-              setTimeout(typeChar, 10);
+              setTimeout(typeChar, 8);
             } else {
               rowIndex++;
-              setTimeout(typeNextRow, 70);
+              setTimeout(typeNextRow, 50);
             }
           }
           typeChar();
         }
-        setTimeout(typeNextRow, 220);
+        setTimeout(typeNextRow, 160);
       } catch (err) {}
     })();
 
-    // Interactive 3D Parallax Tilt for 404 Block
+    // 2. Interactive Scramble Decoder on 404
     (function() {
-      var wrap = document.querySelector('.nb-404-giant-wrap');
-      if (!wrap) return;
-      wrap.addEventListener('mousemove', function(e) {
-        var rect = wrap.getBoundingClientRect();
+      var numEl = document.getElementById('scrambleNumber');
+      if (!numEl) return;
+      var chars = '0123456789!@#$%^&*<>/?';
+      var isScrambling = false;
+
+      function scramble() {
+        if (isScrambling) return;
+        isScrambling = true;
+        var iterations = 0;
+        var original = '404';
+        var interval = setInterval(function() {
+          numEl.textContent = original.split('').map(function(letter, index) {
+            if (index < iterations) {
+              return original[index];
+            }
+            return chars[Math.floor(Math.random() * chars.length)];
+          }).join('');
+          
+          if (iterations >= original.length) {
+            clearInterval(interval);
+            numEl.textContent = '404';
+            isScrambling = false;
+          }
+          iterations += 1 / 4;
+        }, 40);
+      }
+
+      numEl.addEventListener('click', scramble);
+      numEl.addEventListener('mouseenter', scramble);
+    })();
+
+    // 3. Interactive Terminal Dots (Alarm & Radar Wave)
+    (function() {
+      var dotRed = document.getElementById('dotRed');
+      var dotGreen = document.getElementById('dotGreen');
+      var terminal = document.getElementById('terminalBox');
+      if (dotRed && terminal) {
+        dotRed.addEventListener('click', function() {
+          terminal.style.animation = 'none';
+          terminal.offsetHeight; /* trigger reflow */
+          terminal.style.boxShadow = '0 0 30px #EF4444';
+          terminal.style.borderColor = '#EF4444';
+          setTimeout(function() {
+            terminal.style.boxShadow = '';
+            terminal.style.borderColor = '';
+          }, 800);
+        });
+      }
+      if (dotGreen && terminal) {
+        dotGreen.addEventListener('click', function() {
+          terminal.style.boxShadow = '0 0 30px #10B981';
+          terminal.style.borderColor = '#10B981';
+          setTimeout(function() {
+            terminal.style.boxShadow = '';
+            terminal.style.borderColor = '';
+          }, 800);
+        });
+      }
+    })();
+
+    // 4. Interactive 3D Parallax Tilt for 404 Block
+    (function() {
+      var stage = document.getElementById('giantStage');
+      if (!stage) return;
+      stage.addEventListener('mousemove', function(e) {
+        var rect = stage.getBoundingClientRect();
         var x = e.clientX - rect.left - rect.width / 2;
         var y = e.clientY - rect.top - rect.height / 2;
-        var num = wrap.querySelector('.nb-404-giant-number');
+        var num = stage.querySelector('.nb-404-giant-number');
         if (num) {
-          num.style.transform = 'perspective(600px) rotateY(' + (x / 18) + 'deg) rotateX(' + (-y / 18) + 'deg) translateY(-4px)';
+          num.style.transform = 'perspective(500px) rotateY(' + (x / 14) + 'deg) rotateX(' + (-y / 14) + 'deg) translateY(-4px)';
         }
       });
-      wrap.addEventListener('mouseleave', function() {
-        var num = wrap.querySelector('.nb-404-giant-number');
+      stage.addEventListener('mouseleave', function() {
+        var num = stage.querySelector('.nb-404-giant-number');
         if (num) {
           num.style.transform = '';
         }
       });
     })();
 
-    // Smart Quick Finder Routing
+    // 5. Smart Quick Finder Routing
     function handleRouteFinder() {
       var input = document.getElementById('routeFinderInput');
       if (!input) return;
