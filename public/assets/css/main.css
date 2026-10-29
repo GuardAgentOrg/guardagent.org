@@ -3558,6 +3558,65 @@ body.neo-brutalist-theme {
   color: var(--nb-navy) !important;
 }
 
+/* ==========================================================================
+   Neo-Brutalist Live Dual-Segment GitHub Star Button
+   ========================================================================== */
+.nb-github-star-btn {
+  display: inline-flex;
+  align-items: stretch;
+  text-decoration: none !important;
+  border: 2px solid var(--nb-navy, #0B132B);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 2px 2px 0px var(--nb-navy, #0B132B);
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  line-height: 1;
+  user-select: none;
+  vertical-align: middle;
+  background: var(--nb-white, #FFFFFF);
+}
+
+.nb-github-star-btn:hover {
+  transform: translate(-1.5px, -1.5px);
+  box-shadow: 3.5px 3.5px 0px var(--nb-navy, #0B132B);
+}
+
+.nb-github-star-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px var(--nb-navy, #0B132B);
+}
+
+.nb-gh-star-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--nb-yellow, #FACC15);
+  color: #000000;
+  font-weight: 800;
+  padding: 5px 9px;
+  letter-spacing: 0.02em;
+}
+
+.nb-gh-star-label svg {
+  display: inline-block;
+  vertical-align: middle;
+  color: #000000;
+}
+
+.nb-gh-star-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  color: var(--nb-navy, #0B132B);
+  font-weight: 800;
+  padding: 5px 8px;
+  border-left: 2px solid var(--nb-navy, #0B132B);
+  min-width: 24px;
+}
+
 
 /* Tilts */
 .tilt-1 { transform: rotate(-1.5deg); }
@@ -8487,4 +8546,42 @@ html.dark-theme .footer-col-title,
 body.dark-theme .footer-col-title {
   color: #FFFFFF !important;
 }
+
+/* Dark Theme Overrides for Dual-Segment GitHub Star Button */
+html[data-theme="dark"] .nb-github-star-btn,
+html.dark-theme .nb-github-star-btn,
+body.dark-theme .nb-github-star-btn {
+  border-color: #3F3F46 !important;
+  box-shadow: 2px 2px 0px #000000 !important;
+  background: #18181B !important;
+}
+
+html[data-theme="dark"] .nb-github-star-btn:hover,
+html.dark-theme .nb-github-star-btn:hover,
+body.dark-theme .nb-github-star-btn:hover {
+  border-color: #00E5BE !important;
+  box-shadow: 3.5px 3.5px 0px #00E5BE !important;
+}
+
+html[data-theme="dark"] .nb-gh-star-label,
+html.dark-theme .nb-gh-star-label,
+body.dark-theme .nb-gh-star-label {
+  background: #FACC15 !important;
+  color: #000000 !important;
+}
+
+html[data-theme="dark"] .nb-gh-star-label svg,
+html.dark-theme .nb-gh-star-label svg,
+body.dark-theme .nb-gh-star-label svg {
+  color: #000000 !important;
+}
+
+html[data-theme="dark"] .nb-gh-star-count,
+html.dark-theme .nb-gh-star-count,
+body.dark-theme .nb-gh-star-count {
+  background: #18181B !important;
+  color: #00E5BE !important;
+  border-left: 2px solid #3F3F46 !important;
+}
+
 

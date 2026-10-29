@@ -1246,14 +1246,33 @@ function initThemeToggle() {
    12. Live GitHub Repository Star Syncer
    ========================================================================== */
 function initGitHubStars() {
-  const starEls = document.querySelectorAll('.gh-star-label');
-  if (!starEls.length) return;
+  const countEls = document.querySelectorAll('.nb-gh-star-count, .gh-star-count');
+  if (!countEls.length) return;
+
+  // 1. Check cached star count in localStorage (valid for 5 minutes)
+  try {
+    const cached = localStorage.getItem('guardagent_gh_stars');
+    const cachedTime = localStorage.getItem('guardagent_gh_stars_time');
+    const now = Date.now();
+    if (cached !== null && cachedTime && (now - parseInt(cachedTime, 10)) < 300000) {
+      countEls.forEach(el => el.textContent = cached);
+      return;
+    }
+  } catch(e) {}
+
+  // 2. Fetch live stargazers count from GitHub REST API
   fetch('https://api.github.com/repos/GuardAgentOrg/guardagent.org')
     .then(r => r.ok ? r.json() : null)
     .then(d => {
-      if (d && typeof d.stargazers_count === 'number' && d.stargazers_count > 0) {
-        const text = d.stargazers_count >= 1000 ? (d.stargazers_count / 1000).toFixed(1) + 'K' : String(d.stargazers_count);
-        starEls.forEach(el => el.textContent = text);
+      if (d && typeof d.stargazers_count === 'number') {
+        const count = d.stargazers_count >= 1000 
+          ? (d.stargazers_count / 1000).toFixed(1) + 'K' 
+          : String(d.stargazers_count);
+        countEls.forEach(el => el.textContent = count);
+        try {
+          localStorage.setItem('guardagent_gh_stars', count);
+          localStorage.setItem('guardagent_gh_stars_time', String(Date.now()));
+        } catch(e) {}
       }
     })
     .catch(() => {});
