@@ -3609,12 +3609,18 @@ body.neo-brutalist-theme {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 4px;
   background: #FFFFFF;
   color: var(--nb-navy, #0B132B);
   font-weight: 800;
-  padding: 5px 8px;
+  padding: 5px 9px;
   border-left: 2px solid var(--nb-navy, #0B132B);
-  min-width: 24px;
+  min-width: 34px;
+}
+
+.nb-gh-star-count .star-glyph {
+  color: #EAB308;
+  font-size: 0.85rem;
 }
 
 
@@ -8582,6 +8588,12 @@ body.dark-theme .nb-gh-star-count {
   background: #18181B !important;
   color: #00E5BE !important;
   border-left: 2px solid #3F3F46 !important;
+}
+
+html[data-theme="dark"] .nb-gh-star-count .star-glyph,
+html.dark-theme .nb-gh-star-count .star-glyph,
+body.dark-theme .nb-gh-star-count .star-glyph {
+  color: #FACC15 !important;
 }
 
 

@@ -1246,8 +1246,12 @@ function initThemeToggle() {
    12. Live GitHub Repository Star Syncer
    ========================================================================== */
 function initGitHubStars() {
-  const countEls = document.querySelectorAll('.nb-gh-star-count, .gh-star-count');
-  if (!countEls.length) return;
+  const numEls = document.querySelectorAll('.gh-star-num');
+  if (!numEls.length) return;
+
+  function applyCount(count) {
+    numEls.forEach(el => el.textContent = count);
+  }
 
   // 1. Check cached star count in localStorage (valid for 5 minutes)
   try {
@@ -1255,7 +1259,7 @@ function initGitHubStars() {
     const cachedTime = localStorage.getItem('guardagent_gh_stars_time');
     const now = Date.now();
     if (cached !== null && cachedTime && (now - parseInt(cachedTime, 10)) < 300000) {
-      countEls.forEach(el => el.textContent = cached);
+      applyCount(cached);
       return;
     }
   } catch(e) {}
@@ -1268,7 +1272,7 @@ function initGitHubStars() {
         const count = d.stargazers_count >= 1000 
           ? (d.stargazers_count / 1000).toFixed(1) + 'K' 
           : String(d.stargazers_count);
-        countEls.forEach(el => el.textContent = count);
+        applyCount(count);
         try {
           localStorage.setItem('guardagent_gh_stars', count);
           localStorage.setItem('guardagent_gh_stars_time', String(Date.now()));
