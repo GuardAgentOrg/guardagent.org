@@ -6787,11 +6787,13 @@ pre code {
   .header-inner {
     padding: 8px 12px;
     gap: 8px;
+    flex-wrap: nowrap;
   }
   .nb-logo-img,
   .brand-logo {
     height: 28px;
-    max-width: 130px;
+    max-width: 125px;
+    flex-shrink: 1;
   }
   /* Hide badges & extra buttons in compact topbar so logo & toggles stay roomy */
   .nb-header-actions .nb-sticker,
@@ -6800,6 +6802,22 @@ pre code {
   }
   .nb-header-actions .nb-btn-sm {
     display: none !important;
+  }
+  .nb-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .nb-github-star-btn {
+    font-size: 0.72rem;
+  }
+  .nb-gh-star-label {
+    padding: 4px 6px;
+  }
+  .nb-gh-star-count {
+    padding: 4px 6px;
+    min-width: 28px;
   }
   .nb-mobile-toggle,
   .mobile-toggle {
@@ -6850,14 +6868,30 @@ pre code {
   .nb-stat-card {
     padding: 16px 12px;
   }
+  .nb-docs-wrapper {
+    padding: 18px 12px 50px;
+  }
   .nb-docs-article {
-    padding: 18px 12px;
+    padding: 20px 14px;
   }
   .nb-docs-article h1 {
     font-size: 1.55rem;
   }
   .nb-docs-article h2 {
     font-size: 1.25rem;
+  }
+  .nb-docs-article table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nb-docs-callout {
+    padding: 16px 14px;
+    margin: 20px 0;
+  }
+  .nb-docs-card {
+    padding: 18px 14px;
   }
   .nb-docs-nav-list {
     grid-template-columns: 1fr;
@@ -6869,11 +6903,42 @@ pre code {
   .nb-header-inner,
   .header-inner {
     padding: 6px 8px;
+    gap: 6px;
+    flex-wrap: nowrap;
   }
   .nb-logo-img,
   .brand-logo {
     height: 24px;
-    max-width: 100px;
+    max-width: 95px;
+  }
+  .nb-header-actions {
+    gap: 4px;
+  }
+  .nb-github-star-btn {
+    font-size: 0.65rem;
+  }
+  .nb-gh-star-label {
+    padding: 3px 5px;
+  }
+  .nb-gh-star-label svg {
+    width: 13px;
+    height: 13px;
+  }
+  .nb-gh-star-count {
+    padding: 3px 5px;
+    min-width: 22px;
+  }
+  .nb-theme-toggle {
+    width: 28px;
+    height: 28px;
+  }
+  .nb-theme-toggle svg {
+    width: 14px;
+    height: 14px;
+  }
+  .nb-mobile-toggle {
+    padding: 5px 8px;
+    font-size: 0.68rem;
   }
   .nb-hero-h1 {
     font-size: 1.4rem;
@@ -6888,6 +6953,32 @@ pre code {
   }
   .nb-auth-card {
     padding: 16px 10px;
+  }
+  .nb-docs-wrapper {
+    padding: 12px 6px 36px;
+  }
+  .nb-docs-article {
+    padding: 14px 10px;
+  }
+  .nb-docs-article h1 {
+    font-size: 1.35rem;
+  }
+  .nb-docs-article h2 {
+    font-size: 1.15rem;
+  }
+  .nb-docs-callout {
+    padding: 12px 10px;
+    font-size: 0.88rem;
+  }
+  .nb-docs-card {
+    padding: 14px 10px;
+  }
+  .nb-footer {
+    padding: 32px 12px 20px;
+  }
+  .nb-footer-subbar {
+    font-size: 0.78rem;
+    gap: 10px;
   }
   /* Scale down heavy shadows on ultra-narrow displays to eliminate viewport clipping */
   .nb-btn,
@@ -8061,9 +8152,11 @@ html[data-theme="dark"] .table,
 html[data-theme="dark"] .data-table,
 html[data-theme="dark"] .nb-table-container,
 html[data-theme="dark"] .nb-table,
+html[data-theme="dark"] .nb-docs-article table,
 html.dark-theme .table-wrap,
 html.dark-theme .table-container,
-html.dark-theme .data-table {
+html.dark-theme .data-table,
+html.dark-theme .nb-docs-article table {
   background-color: #050505 !important;
   background: #050505 !important;
   border-color: #27272A !important;
@@ -8072,21 +8165,28 @@ html.dark-theme .data-table {
 html[data-theme="dark"] .table th,
 html[data-theme="dark"] .data-table th,
 html[data-theme="dark"] .nb-table th,
+html[data-theme="dark"] .nb-docs-article th,
 html.dark-theme .table th,
-html.dark-theme .data-table th {
+html.dark-theme .data-table th,
+html.dark-theme .nb-docs-article th {
   background-color: #0C0C0C !important;
   background: #0C0C0C !important;
   color: #FFFFFF !important;
+  border-color: #27272A !important;
   border-bottom: 2px solid #27272A !important;
 }
 
 html[data-theme="dark"] .table td,
 html[data-theme="dark"] .data-table td,
 html[data-theme="dark"] .nb-table td,
+html[data-theme="dark"] .nb-docs-article td,
 html.dark-theme .table td,
-html.dark-theme .data-table td {
+html.dark-theme .data-table td,
+html.dark-theme .nb-docs-article td {
+  border-color: #1C1C1E !important;
   border-bottom: 1px solid #1C1C1E !important;
   color: #D4D4D8 !important;
+  background-color: #050505 !important;
 }
 
 html[data-theme="dark"] .table tr:hover td,

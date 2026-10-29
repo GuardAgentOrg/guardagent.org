@@ -73,6 +73,7 @@ const securityAliases = [
   '/security-notice.html',
   '/security_notice.html',
   '/security-policy',
+  '/security-policy.html',
   '/security/notice',
   '/notice',
   '/docs/security',

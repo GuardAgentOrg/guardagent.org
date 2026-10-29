@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Security Architecture &amp; Boundaries — GuardAgent</title>
-  <meta name="description" content="Detailed security architecture, defense-in-depth design, threat model, boundaries, and explicit limitations of the GuardAgent AI security platform.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <title>Security Policy &amp; Architectural Boundaries — GuardAgent</title>
+  <meta name="description" content="Official security policy, vulnerability disclosure procedures, response SLA, threat model, AST boundary enforcement, and safe harbor commitment for GuardAgent.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:wght@600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/main.css">
@@ -88,12 +88,12 @@
        ========================================================================= -->
   <div class="nb-tape-strip" aria-hidden="true">
     <div class="nb-tape-content">
-      <span>🛡️ DEFENSE-IN-DEPTH ARCHITECTURE</span>
-      <span>🔒 100% DETERMINISTIC COMPILED RULES</span>
-      <span>⚡ ZERO TOKEN HALLUCINATIONS</span>
-      <span>🛑 DENY-BY-DEFAULT GATEWAY</span>
-      <span>🛡️ DEFENSE-IN-DEPTH ARCHITECTURE</span>
-      <span>🔒 100% DETERMINISTIC COMPILED RULES</span>
+      <span>🛡️ OFFICIAL SECURITY POLICY</span>
+      <span>🔒 RESPONSIBLE DISCLOSURE SLA</span>
+      <span>⚡ 0.8MS AST SAFETY SWITCH</span>
+      <span>🛑 SAFE HARBOR FOR RESEARCHERS</span>
+      <span>🛡️ OFFICIAL SECURITY POLICY</span>
+      <span>🔒 RESPONSIBLE DISCLOSURE SLA</span>
     </div>
   </div>
 
@@ -105,7 +105,7 @@
       <div class="nb-docs-grid">
         
         <!-- Sticky Sidebar Navigation -->
-        <aside class="nb-docs-sidebar" role="complementary" aria-label="Security Navigation">
+        <aside class="nb-docs-sidebar" role="complementary" aria-label="Security Policy Navigation">
           <div class="nb-docs-group">
             <div class="nb-docs-group-title">
               <span>GETTING STARTED</span>
@@ -119,13 +119,26 @@
 
           <div class="nb-docs-group">
             <div class="nb-docs-group-title">
+              <span>SECURITY POLICY</span>
+            </div>
+            <ul class="nb-docs-nav-list">
+              <li><a href="#scope" class="nb-docs-nav-item">📋 Scope &amp; Commitment</a></li>
+              <li><a href="#supported-versions" class="nb-docs-nav-item">🏷️ Supported Versions</a></li>
+              <li><a href="#reporting" class="nb-docs-nav-item">🛡️ Reporting &amp; Disclosure</a></li>
+              <li><a href="#sla" class="nb-docs-nav-item">⏱️ Response SLA &amp; Timeline</a></li>
+              <li><a href="#safe-harbor" class="nb-docs-nav-item">⚖️ Safe Harbor Policy</a></li>
+            </ul>
+          </div>
+
+          <div class="nb-docs-group">
+            <div class="nb-docs-group-title">
               <span>ARCHITECTURE</span>
             </div>
             <ul class="nb-docs-nav-list">
               <li><a href="#principles" class="nb-docs-nav-item">🏛️ 4 Core Principles</a></li>
+              <li><a href="#guarantees" class="nb-docs-nav-item">🔒 AST Policy Guarantees</a></li>
               <li><a href="#limitations" class="nb-docs-nav-item">⚠️ Explicit Boundaries</a></li>
-              <li><a href="#security-notice" class="nb-docs-nav-item">🛡️ Security Notice &amp; Disclosure</a></li>
-              <li><a href="/#how-it-works" class="nb-docs-nav-item">🔄 Request Lifecycle</a></li>
+              <li><a href="#hardening" class="nb-docs-nav-item">⚙️ Hardening Best Practices</a></li>
             </ul>
           </div>
 
@@ -143,20 +156,181 @@
         <!-- Documentation Content Article -->
         <article class="nb-docs-article">
           <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
-            <span class="nb-sticker nb-sticker-yellow tilt-1">THREAT MODEL</span>
-            <span class="nb-sticker nb-sticker-teal">DEFENSE-IN-DEPTH</span>
-            <span class="nb-sticker nb-sticker-mint">DENY-BY-DEFAULT</span>
+            <span class="nb-sticker nb-sticker-yellow tilt-1">OFFICIAL POLICY</span>
+            <span class="nb-sticker nb-sticker-teal">RESPONSIBLE DISCLOSURE</span>
+            <span class="nb-sticker nb-sticker-mint">SAFE HARBOR</span>
+            <span class="nb-sticker nb-sticker-coral">DENY-BY-DEFAULT</span>
           </div>
 
-          <h1>Security Architecture &amp; Boundaries</h1>
+          <h1>Security Policy &amp; Architectural Boundaries</h1>
           
           <p style="font-size: 1.15rem; color: #334155; line-height: 1.7; font-weight: 600; margin-bottom: 28px;">
-            A transparent overview of GuardAgent's security model, defense layers, architectural boundaries, and explicit limitations.
+            A transparent, comprehensive guide to GuardAgent's official security policy, responsible vulnerability disclosure process, response SLA, AST safety guarantees, and threat model boundaries.
           </p>
 
-          <!-- Core Security Pillars -->
+          <!-- Section 1: Scope & Security Commitment -->
+          <div id="scope" style="margin-bottom: 36px;">
+            <h2>1. Policy Scope &amp; Security Commitment</h2>
+            <p>
+              GuardAgent is an open-source, deterministic security firewall and circuit breaker engineered for autonomous AI agents. Because GuardAgent sits directly between non-deterministic LLMs and mission-critical production infrastructure, maintaining strict software security, rapid patch response, and transparent disclosure is our highest organizational priority.
+            </p>
+            <p>
+              This policy governs all officially maintained GuardAgent repositories, including:
+            </p>
+            <ul style="font-size: 0.95rem; line-height: 1.8; color: #475569; margin-bottom: 16px;">
+              <li><strong>GuardAgent Gateway Core:</strong> The compiled 0.8ms reverse proxy and policy enforcement daemon.</li>
+              <li><strong>AST Policy Compiler:</strong> The declarative parser validating SQL, CIDR networks, command bounds, and JSON schemas.</li>
+              <li><strong>Official SDKs:</strong> Python SDK (<code>guardagent-py</code>) and JavaScript/TypeScript SDK (<code>guardagent-js</code>).</li>
+              <li><strong>Ledger &amp; Dashboard:</strong> Tamper-evident audit logging and SOC 2 / HIPAA compliance telemetry.</li>
+            </ul>
+          </div>
+
+          <!-- Section 2: Supported Versions Table -->
+          <div id="supported-versions" style="margin-bottom: 36px;">
+            <h2>2. Supported Versions &amp; Patch Lifecycle</h2>
+            <p>
+              Security fixes and CVE errata are actively released for the following software branches:
+            </p>
+
+            <div class="table-responsive" style="margin: 20px 0;">
+              <table style="width: 100%; border-collapse: collapse; border: 2.5px solid var(--nb-navy); background: #FFFFFF; font-family: var(--font-mono); font-size: 0.85rem;">
+                <thead>
+                  <tr style="background: var(--nb-yellow); border-bottom: 2.5px solid var(--nb-navy); color: var(--nb-navy); font-weight: 900; text-align: left;">
+                    <th style="padding: 12px 14px; border-right: 2px solid var(--nb-navy);">Version</th>
+                    <th style="padding: 12px 14px; border-right: 2px solid var(--nb-navy);">Release Status</th>
+                    <th style="padding: 12px 14px; border-right: 2px solid var(--nb-navy);">Security Support</th>
+                    <th style="padding: 12px 14px;">Patch SLA (Critical)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1.5px solid #E2E8F0;">
+                    <td style="padding: 12px 14px; border-right: 2px solid var(--nb-navy); font-weight: 800;">v1.x (Current)</td>
+                    <td style="padding: 12px 14px; border-right: 2px solid var(--nb-navy);"><span class="nb-sticker nb-sticker-teal" style="font-size: 0.7rem; padding: 2px 6px;">ACTIVE</span></td>
+                    <td style="padding: 12px 14px; border-right: 2px solid var(--nb-navy); color: #059669; font-weight: 700;">Full Security &amp; Bugfix Maintenance</td>
+                    <td style="padding: 12px 14px; font-weight: 700;">&lt; 48 hours</td>
+                  </tr>
+                  <tr style="border-bottom: 1.5px solid #E2E8F0;">
+                    <td style="padding: 12px 14px; border-right: 2px solid var(--nb-navy); font-weight: 800;">v0.9.x</td>
+                    <td style="padding: 12px 14px; border-right: 2px solid var(--nb-navy);"><span class="nb-sticker nb-sticker-yellow" style="font-size: 0.7rem; padding: 2px 6px;">MAINTENANCE</span></td>
+                    <td style="padding: 12px 14px; border-right: 2px solid var(--nb-navy); color: #D97706; font-weight: 700;">Critical Security Fixes Only</td>
+                    <td style="padding: 12px 14px; font-weight: 700;">&lt; 7 days</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 12px 14px; border-right: 2px solid var(--nb-navy); font-weight: 800;">&lt; v0.9.0</td>
+                    <td style="padding: 12px 14px; border-right: 2px solid var(--nb-navy);"><span class="nb-sticker nb-sticker-coral" style="font-size: 0.7rem; padding: 2px 6px;">END OF LIFE</span></td>
+                    <td style="padding: 12px 14px; border-right: 2px solid var(--nb-navy); color: #DC2626; font-weight: 700;">Unsupported — Upgrade Recommended</td>
+                    <td style="padding: 12px 14px; font-weight: 700;">N/A</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section 3: Vulnerability Reporting & Disclosure -->
+          <div id="reporting" style="margin-bottom: 36px;">
+            <h2>3. Vulnerability Reporting &amp; Disclosure Procedure</h2>
+            <p style="font-size: 0.95rem; color: #475569; line-height: 1.6;">
+              If you identify a security vulnerability, privilege escalation vector, sandbox escape, or policy bypass mechanism in GuardAgent, please notify the core security engineering team immediately:
+            </p>
+
+            <div class="nb-docs-card" style="border-left: 6px solid var(--nb-teal); margin-top: 16px;">
+              <h3 style="margin-top: 0; font-size: 1.15rem;">Direct Security Contacts</h3>
+              <ul style="font-size: 0.9rem; color: #475569; line-height: 1.9; margin-bottom: 12px;">
+                <li><strong>Primary Security Email:</strong> <a href="mailto:security@guardagent.org" style="color: var(--nb-teal); font-weight: 800;">security@guardagent.org</a></li>
+                <li><strong>PGP Key Fingerprint:</strong> <code>4A9F 821E C03B 9801 D712 5590 1A3E 76C4 FB82 0019</code></li>
+                <li><strong>Alternate Contact:</strong> <a href="mailto:security@guardagent.ai" style="color: var(--nb-teal); font-weight: 800;">security@guardagent.ai</a></li>
+              </ul>
+              
+              <h4 style="margin: 14px 0 6px; font-size: 0.95rem; color: var(--nb-navy);">Recommended Report Checklist:</h4>
+              <ol style="font-size: 0.88rem; color: #475569; line-height: 1.7; padding-left: 20px; margin-bottom: 12px;">
+                <li>Step-by-step reproduction instructions or a minimal reproducible curl / SDK test script.</li>
+                <li>The GuardAgent version, deployment environment (Docker, Kubernetes, Bare Metal), and configuration snippet.</li>
+                <li>An assessment of potential attack impact (e.g., unauthorized data exfiltration, rule bypass, privilege elevation).</li>
+                <li>Any proposed remediation or patch diff (optional but appreciated).</li>
+              </ol>
+
+              <div style="background: rgba(220, 38, 38, 0.08); border-left: 4px solid #DC2626; padding: 10px 14px; border-radius: 4px; font-size: 0.85rem; color: #991B1B; font-weight: 700;">
+                🛑 Please DO NOT create public GitHub issues or forum posts for undisclosed zero-day vulnerabilities.
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Response SLA & Timeline -->
+          <div id="sla" style="margin-bottom: 36px;">
+            <h2>4. Response SLA &amp; Disclosure Timeline</h2>
+            <p>
+              GuardAgent enforces a predictable, coordinated responsible disclosure lifecycle designed to protect all downstream users:
+            </p>
+
+            <div class="nb-docs-cards-grid">
+              <div class="nb-docs-card" style="border-top: 5px solid var(--nb-teal);">
+                <div>
+                  <span class="nb-sticker nb-sticker-teal" style="font-size: 0.65rem; margin-bottom: 8px;">STAGE 1: 0 – 24 HOURS</span>
+                  <h3 style="margin-top: 6px;">Initial Triage &amp; Acknowledgment</h3>
+                  <p style="font-size: 0.88rem; color: #475569; line-height: 1.6;">
+                    The security team acknowledges report receipt within 24 hours, assigns a dedicated security engineer, and initiates reproduction in an isolated test harness.
+                  </p>
+                </div>
+              </div>
+
+              <div class="nb-docs-card" style="border-top: 5px solid var(--nb-yellow);">
+                <div>
+                  <span class="nb-sticker nb-sticker-yellow" style="font-size: 0.65rem; margin-bottom: 8px;">STAGE 2: 24 – 48 HOURS</span>
+                  <h3 style="margin-top: 6px;">Severity &amp; CVSS Classification</h3>
+                  <p style="font-size: 0.88rem; color: #475569; line-height: 1.6;">
+                    Vulnerability severity is scored using CVSS v3.1. The reporter receives confirmation of reproduction, classification level, and an estimated fix milestone.
+                  </p>
+                </div>
+              </div>
+
+              <div class="nb-docs-card" style="border-top: 5px solid var(--nb-coral);">
+                <div>
+                  <span class="nb-sticker nb-sticker-coral" style="font-size: 0.65rem; margin-bottom: 8px;">STAGE 3: 3 – 14 DAYS</span>
+                  <h3 style="margin-top: 6px;">Remediation &amp; Validation</h3>
+                  <p style="font-size: 0.88rem; color: #475569; line-height: 1.6;">
+                    A hardened fix is developed and verified against our automated AST test suite. Pre-release binaries are shared with the reporter for independent validation.
+                  </p>
+                </div>
+              </div>
+
+              <div class="nb-docs-card" style="border-top: 5px solid var(--nb-mint);">
+                <div>
+                  <span class="nb-sticker nb-sticker-mint" style="font-size: 0.65rem; margin-bottom: 8px;">STAGE 4: 30-DAY EMBARGO</span>
+                  <h3 style="margin-top: 6px;">Coordinated Public Disclosure</h3>
+                  <p style="font-size: 0.88rem; color: #475569; line-height: 1.6;">
+                    Patches are deployed to the latest supported releases. After a 30-day embargo window allowing enterprise users to upgrade, a coordinated CVE advisory is published with full credit to the researcher.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 5: Safe Harbor Policy -->
+          <div id="safe-harbor" style="margin-bottom: 36px;">
+            <h2>5. Safe Harbor Policy for Security Researchers</h2>
+            <p>
+              GuardAgent strongly supports and values ethical security research. We believe in working collaboratively with researchers who help keep AI agents and open-source systems safe.
+            </p>
+            <div class="nb-docs-card" style="border-left: 6px solid var(--nb-yellow); background: var(--nb-canvas);">
+              <h3 style="margin-top: 0; font-size: 1.15rem;">Safe Harbor Commitment</h3>
+              <p style="font-size: 0.9rem; color: #475569; line-height: 1.65;">
+                We consider security research conducted under this policy to be:
+              </p>
+              <ul style="font-size: 0.9rem; color: #475569; line-height: 1.8; margin-bottom: 12px;">
+                <li><strong>Authorized:</strong> Conducted with permission under applicable computer misuse legislation (including CFAA and DMCA anti-circumvention provisions).</li>
+                <li><strong>Exempt from Legal Action:</strong> GuardAgent will not pursue civil litigation or initiate law enforcement complaints against researchers who abide by responsible disclosure guidelines.</li>
+                <li><strong>Good-Faith Engagement:</strong> We will collaborate with you to understand and rapidly address any valid vulnerability.</li>
+              </ul>
+              <h4 style="margin: 14px 0 6px; font-size: 0.95rem; color: var(--nb-navy);">Rules of Engagement:</h4>
+              <p style="font-size: 0.88rem; color: #64748B; line-height: 1.6; margin-bottom: 0;">
+                Researchers must only conduct testing on their own local installations or explicitly designated test sandboxes. Do not execute denial of service (DoS/DDoS) attacks, destroy or alter third-party data, or compromise production enterprise instances.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 6: Core Security Principles -->
           <div id="principles" style="margin-bottom: 36px;">
-            <h2>Core Security Architecture Principles</h2>
+            <h2>6. Core Security Architecture Principles</h2>
             <p>GuardAgent is engineered around four fundamental tenets of infrastructure security:</p>
 
             <div class="nb-docs-cards-grid">
@@ -175,7 +349,7 @@
                   <span class="nb-sticker nb-sticker-yellow" style="font-size: 0.65rem; margin-bottom: 8px;">PRINCIPLE 02</span>
                   <h3 style="margin-top: 6px;">Deterministic Rule Evaluation</h3>
                   <p style="font-size: 0.9rem; color: #475569; line-height: 1.6;">
-                    GuardAgent rejects using an LLM to police another LLM. GuardAgent relies strictly on declarative compiled AST rules, CIDR network calculations, and numeric boundary checks that execute in 0.8ms.
+                    GuardAgent rejects using an LLM to police another LLM. GuardAgent relies strictly on declarative compiled AST rules, CIDR network calculations, and numeric boundary checks that execute in 0.8ms without hallucinations.
                   </p>
                 </div>
               </div>
@@ -202,17 +376,54 @@
             </div>
           </div>
 
-          <!-- Explicit Security Boundaries & Limitations -->
+          <!-- Section 7: AST Safety Guarantees -->
+          <div id="guarantees" style="margin-bottom: 36px;">
+            <h2>7. AST Policy Guarantees &amp; Boundary Enforcement</h2>
+            <p>
+              GuardAgent deterministically enforces the following safety controls directly at the gateway network boundary:
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 18px;">
+              <div class="nb-docs-card" style="border-left: 6px solid var(--nb-teal);">
+                <h3 style="margin-top: 0; font-size: 1.15rem;">🌐 Network Egress &amp; SSRF Prevention</h3>
+                <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">
+                  Blocks private subnet lookups, RFC 1918 addresses (<code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, <code>192.168.0.0/16</code>), link-local metadata endpoints (<code>169.254.169.254</code> AWS/GCP instance metadata), and loopback targets (<code>127.0.0.1</code>). Agents can only egress to explicitly approved domain whitelists.
+                </p>
+              </div>
+
+              <div class="nb-docs-card" style="border-left: 6px solid var(--nb-coral);">
+                <h3 style="margin-top: 0; font-size: 1.15rem;">💾 Database AST Mutation &amp; SQL Injection Guard</h3>
+                <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">
+                  Parses SQL queries into an Abstract Syntax Tree before transmission. Intercepts and blocks destructive DDL/DML mutations (<code>DROP TABLE</code>, <code>TRUNCATE</code>, <code>ALTER</code>), unconstrained updates/deletes lacking a strict <code>WHERE</code> clause, and SQL injection syntax tricks.
+                </p>
+              </div>
+
+              <div class="nb-docs-card" style="border-left: 6px solid var(--nb-yellow);">
+                <h3 style="margin-top: 0; font-size: 1.15rem;">💰 Financial Transaction Caps &amp; Rolling Velocity</h3>
+                <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">
+                  Evaluates parameter values with sub-millisecond precision. Automatically halts or flags requests exceeding configured single-transaction maximums (e.g. <code>amount &gt; $500.00</code>) or cumulative rolling hourly/daily budget thresholds.
+                </p>
+              </div>
+
+              <div class="nb-docs-card" style="border-left: 6px solid var(--nb-mint);">
+                <h3 style="margin-top: 0; font-size: 1.15rem;">📦 Sandboxed Command Containment</h3>
+                <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">
+                  Enforces strict POSIX/PowerShell execution whitelists. Rejects pipe-chaining tricks (<code>; rm -rf</code>, <code>| bash</code>), directory traversal attempts (<code>../../etc/shadow</code>), and unauthorized subprocess spawning.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 8: Explicit Security Boundaries & Limitations -->
           <div id="limitations" style="margin-bottom: 36px;">
-            <h2>Explicit Security Boundaries &amp; Limitations</h2>
+            <h2>8. Explicit Security Boundaries &amp; Limitations</h2>
             <p>Understanding what GuardAgent does and does not do is essential for effective security engineering:</p>
 
-            <div style="display: flex; flex-direction: column; gap: 18px; margin-top: 20px;">
-              
+            <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 18px;">
               <div class="nb-docs-card" style="border-left: 6px solid var(--nb-yellow);">
                 <h3 style="margin-top: 0; font-size: 1.15rem;">1. ALLOW Decision Scope</h3>
                 <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">
-                  An <code>ALLOW</code> decision from GuardAgent means that the proposed action complied with all configured GuardAgent safety policies at the moment of evaluation. It does not guarantee that the downstream API service will execute without error.
+                  An <code>ALLOW</code> decision from GuardAgent means that the proposed action complied with all configured GuardAgent safety policies at the moment of evaluation. It does not guarantee that the downstream third-party API service will execute without upstream errors.
                 </p>
               </div>
 
@@ -229,41 +440,28 @@
                   The gateway strictly enforces the rules defined by your engineering team. If a sensitive tool is registered without restrictive policy bounds, GuardAgent will permit execution in accordance with the configured policy.
                 </p>
               </div>
-
             </div>
           </div>
 
-          <!-- Official Security Notice & Vulnerability Reporting -->
-          <div id="security-notice" style="margin-bottom: 36px;">
-            <h2>Official Security Notice &amp; Vulnerability Disclosure</h2>
-            <p style="font-size: 0.95rem; color: #475569; line-height: 1.6;">
-              GuardAgent treats security vulnerabilities in the gateway runtime, policy AST parser, and SDK with top priority. As a compiled safety switch deployed in mission-critical environments, we enforce strict responsible disclosure procedures.
-            </p>
-
-            <div class="nb-docs-card" style="border-left: 6px solid var(--nb-teal); margin-top: 16px;">
-              <h3 style="margin-top: 0; font-size: 1.15rem;">Reporting Security Vulnerabilities</h3>
-              <p style="font-size: 0.9rem; color: #475569; line-height: 1.6;">
-                If you discover a security vulnerability, sandbox escape, or bypass vector within GuardAgent, please notify the core security team directly:
-              </p>
-              <ul style="font-size: 0.9rem; color: #475569; line-height: 1.8; margin-bottom: 12px;">
-                <li><strong>Security Contact:</strong> <a href="mailto:security@guardagent.ai" style="color: var(--nb-teal); font-weight: 700;">security@guardagent.ai</a></li>
-                <li><strong>PGP Fingerprint:</strong> <code>4A9F 821E C03B 9801 D712 5590 1A3E 76C4 FB82 0019</code></li>
-                <li><strong>Initial Response SLA:</strong> Under 24 hours acknowledging receipt and severity classification.</li>
-                <li><strong>Public Disclosure Policy:</strong> Coordinated disclosure after fix release (30-day embargo window).</li>
-              </ul>
-              <p style="font-size: 0.85rem; color: #64748B; margin-bottom: 0;">
-                Please do not open public GitHub issues for undisclosed security exploits.
-              </p>
-            </div>
+          <!-- Section 9: Security Hardening Best Practices -->
+          <div id="hardening" style="margin-bottom: 36px;">
+            <h2>9. Production Hardening Best Practices</h2>
+            <p>For high-assurance enterprise deployments, we recommend following these hardening guidelines:</p>
+            <ul style="font-size: 0.95rem; color: #475569; line-height: 1.8; margin-bottom: 20px;">
+              <li><strong>Rotate API Tokens Regularly:</strong> Utilize short-lived agent authentication tokens with least-privilege scoping.</li>
+              <li><strong>Deploy with Mutual TLS (mTLS):</strong> Terminate TLS at the gateway and mandate mutual certificate verification between agents and GuardAgent.</li>
+              <li><strong>Read-Only Audit Ledger Replication:</strong> Stream audit event logs to an immutable write-once read-many (WORM) storage bucket (such as AWS S3 Object Lock) for forensic non-repudiation.</li>
+              <li><strong>Enable Strict Deny-by-Default:</strong> Ensure all unmapped agent IDs and undefined tool methods default to immediate verdict <code>BLOCK</code>.</li>
+            </ul>
           </div>
 
-          <!-- Callout -->
+          <!-- Compliance Callout -->
           <div class="nb-docs-callout teal">
             <div style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 900; color: var(--nb-teal); margin-bottom: 6px;">
-              ★ OPEN SOURCE COMPLIANCE
+              ★ COMPLIANCE &amp; CERTIFICATION READINESS
             </div>
             <p style="margin: 0; font-size: 0.95rem; color: var(--nb-navy); font-weight: 600; line-height: 1.6;">
-              GuardAgent is designed to support SOC 2 Trust Services Criteria, HIPAA audit logging, and CIS benchmarks through its structured event ledger and RBAC controls. Learn more in our <a href="/docs/quickstart" style="color: var(--nb-navy); font-weight: 900; text-decoration: underline;">Quickstart Guide</a>.
+              GuardAgent is designed to accelerate SOC 2 Type II (Trust Services Criteria CC6.1, CC6.6, CC7.2), HIPAA §164.312 Technical Safeguards, and CIS Benchmarks through tamper-evident audit streaming and deterministic RBAC. Explore our <a href="/docs/quickstart" style="color: var(--nb-navy); font-weight: 900; text-decoration: underline;">1-Minute Quickstart</a>.
             </p>
           </div>
 
@@ -313,10 +511,10 @@
 
     <div class="nb-footer-subbar">
       <div>&copy; 2026 GuardAgent Open Source Project. Licensed under Apache 2.0.</div>
-      <div style="display: flex; gap: 20px;">
+      <div style="display: flex; gap: 20px; flex-wrap: wrap;">
         <a href="/docs" class="nb-footer-link">Documentation</a>
         <a href="https://github.com/GuardAgentOrg/guardagent.org" target="_blank" rel="noopener noreferrer" class="nb-footer-link">GitHub</a>
-        <a href="/security" class="nb-footer-link">Security Notice</a>
+        <a href="/security" class="nb-footer-link">Security Policy</a>
       </div>
     </div>
   </footer>
