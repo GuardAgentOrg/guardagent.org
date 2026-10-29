@@ -150,12 +150,12 @@
 
           <h1>Security Architecture &amp; Boundaries</h1>
           
-          <p style="font-size: 1.15rem; color: #334155; line-height: 1.7; font-weight: 600; margin-bottom: 28px;">
+          <p class="nb-docs-lead">
             A transparent overview of GuardAgent's security model, defense layers, architectural boundaries, and explicit limitations.
           </p>
 
           <!-- Core Security Pillars -->
-          <div id="principles" style="margin-bottom: 36px;">
+          <div id="principles" class="nb-docs-section">
             <h2>Core Security Architecture Principles</h2>
             <p>GuardAgent is engineered around four fundamental tenets of infrastructure security:</p>
 
@@ -164,7 +164,7 @@
                 <div>
                   <span class="nb-sticker nb-sticker-teal" style="font-size: 0.65rem; margin-bottom: 8px;">PRINCIPLE 01</span>
                   <h3 style="margin-top: 6px;">Decoupled Execution Boundaries</h3>
-                  <p style="font-size: 0.9rem; color: #475569; line-height: 1.6;">
+                  <p>
                     AI agents should never maintain direct network access to production databases or internal APIs. GuardAgent acts as an authoritative reverse proxy: the agent only possesses credentials to request an action from GuardAgent.
                   </p>
                 </div>
@@ -174,7 +174,7 @@
                 <div>
                   <span class="nb-sticker nb-sticker-yellow" style="font-size: 0.65rem; margin-bottom: 8px;">PRINCIPLE 02</span>
                   <h3 style="margin-top: 6px;">Deterministic Rule Evaluation</h3>
-                  <p style="font-size: 0.9rem; color: #475569; line-height: 1.6;">
+                  <p>
                     GuardAgent rejects using an LLM to police another LLM. GuardAgent relies strictly on declarative compiled AST rules, CIDR network calculations, and numeric boundary checks that execute in 0.8ms.
                   </p>
                 </div>
@@ -184,7 +184,7 @@
                 <div>
                   <span class="nb-sticker nb-sticker-coral" style="font-size: 0.65rem; margin-bottom: 8px;">PRINCIPLE 03</span>
                   <h3 style="margin-top: 6px;">Deny-by-Default Security Model</h3>
-                  <p style="font-size: 0.9rem; color: #475569; line-height: 1.6;">
+                  <p>
                     Any request missing an authenticated agent ID, referencing an unapproved tool, or containing unrecognized parameters is rejected immediately. Access is granted only when an explicit rule permits it.
                   </p>
                 </div>
@@ -194,7 +194,7 @@
                 <div>
                   <span class="nb-sticker nb-sticker-mint" style="font-size: 0.65rem; margin-bottom: 8px;">PRINCIPLE 04</span>
                   <h3 style="margin-top: 6px;">Immutable Auditability</h3>
-                  <p style="font-size: 0.9rem; color: #475569; line-height: 1.6;">
+                  <p>
                     Every decision includes a correlation ID, evaluation timestamp, diagnostic rationale, and SHA-256 integrity hash for forensic review and SOC 2 / HIPAA compliance verification.
                   </p>
                 </div>
@@ -203,29 +203,29 @@
           </div>
 
           <!-- Explicit Security Boundaries & Limitations -->
-          <div id="limitations" style="margin-bottom: 36px;">
+          <div id="limitations" class="nb-docs-section">
             <h2>Explicit Security Boundaries &amp; Limitations</h2>
             <p>Understanding what GuardAgent does and does not do is essential for effective security engineering:</p>
 
-            <div style="display: flex; flex-direction: column; gap: 18px; margin-top: 20px;">
+            <div class="nb-docs-stacked-cards">
               
-              <div class="nb-docs-card" style="border-left: 6px solid var(--nb-yellow);">
-                <h3 style="margin-top: 0; font-size: 1.15rem;">1. ALLOW Decision Scope</h3>
-                <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">
+              <div class="nb-docs-card border-yellow">
+                <h3>1. ALLOW Decision Scope</h3>
+                <p>
                   An <code>ALLOW</code> decision from GuardAgent means that the proposed action complied with all configured GuardAgent safety policies at the moment of evaluation. It does not guarantee that the downstream API service will execute without error.
                 </p>
               </div>
 
-              <div class="nb-docs-card" style="border-left: 6px solid var(--nb-teal);">
-                <h3 style="margin-top: 0; font-size: 1.15rem;">2. Model Weight &amp; Reasoning Independence</h3>
-                <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">
+              <div class="nb-docs-card border-teal">
+                <h3>2. Model Weight &amp; Reasoning Independence</h3>
+                <p>
                   GuardAgent operates strictly at the network gateway boundary. It intercepts structured tool calls (JSON payloads). GuardAgent does not inspect or modify LLM internal neural weights or hidden layer activations during text generation.
                 </p>
               </div>
 
-              <div class="nb-docs-card" style="border-left: 6px solid var(--nb-coral);">
-                <h3 style="margin-top: 0; font-size: 1.15rem;">3. Policy Completeness Dependency</h3>
-                <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">
+              <div class="nb-docs-card border-coral">
+                <h3>3. Policy Completeness Dependency</h3>
+                <p>
                   The gateway strictly enforces the rules defined by your engineering team. If a sensitive tool is registered without restrictive policy bounds, GuardAgent will permit execution in accordance with the configured policy.
                 </p>
               </div>
@@ -234,20 +234,20 @@
           </div>
 
           <!-- Official Security Notice & Vulnerability Reporting -->
-          <div id="security-notice" style="margin-bottom: 36px;">
+          <div id="security-notice" class="nb-docs-section">
             <h2>Official Security Notice &amp; Vulnerability Disclosure</h2>
-            <p style="font-size: 0.95rem; color: #475569; line-height: 1.6;">
+            <p>
               GuardAgent treats security vulnerabilities in the gateway runtime, policy AST parser, and SDK with top priority. As a compiled safety switch deployed in mission-critical environments, we enforce strict responsible disclosure procedures.
             </p>
 
-            <div class="nb-docs-card" style="border-left: 6px solid var(--nb-teal); margin-top: 16px;">
-              <h3 style="margin-top: 0; font-size: 1.15rem;">Reporting Security Vulnerabilities</h3>
-              <p style="font-size: 0.9rem; color: #475569; line-height: 1.6;">
+            <div class="nb-docs-card border-teal" style="margin-top: 16px;">
+              <h3>Reporting Security Vulnerabilities</h3>
+              <p style="margin-bottom: 10px;">
                 If you discover a security vulnerability, sandbox escape, or bypass vector within GuardAgent, please notify the core security team directly:
               </p>
-              <ul style="font-size: 0.9rem; color: #475569; line-height: 1.8; margin-bottom: 12px;">
-                <li><strong>Security Contact:</strong> <a href="mailto:security@guardagent.ai" style="color: var(--nb-teal); font-weight: 700;">security@guardagent.ai</a></li>
-                <li><strong>PGP Fingerprint:</strong> <code>4A9F 821E C03B 9801 D712 5590 1A3E 76C4 FB82 0019</code></li>
+              <ul class="nb-docs-list">
+                <li><strong>Security Contact:</strong> <a href="mailto:security@guardagent.ai" class="nb-teal-link">security@guardagent.ai</a></li>
+                <li><strong>PGP Fingerprint:</strong> <code class="nb-code-fingerprint">4A9F 821E C03B 9801 D712 5590 1A3E 76C4 FB82 0019</code></li>
                 <li><strong>Initial Response SLA:</strong> Under 24 hours acknowledging receipt and severity classification.</li>
                 <li><strong>Public Disclosure Policy:</strong> Coordinated disclosure after fix release (30-day embargo window).</li>
               </ul>
@@ -259,11 +259,11 @@
 
           <!-- Callout -->
           <div class="nb-docs-callout teal">
-            <div style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 900; color: var(--nb-teal); margin-bottom: 6px;">
+            <div class="nb-callout-badge">
               ★ OPEN SOURCE COMPLIANCE
             </div>
-            <p style="margin: 0; font-size: 0.95rem; color: var(--nb-navy); font-weight: 600; line-height: 1.6;">
-              GuardAgent is designed to support SOC 2 Trust Services Criteria, HIPAA audit logging, and CIS benchmarks through its structured event ledger and RBAC controls. Learn more in our <a href="/docs/quickstart" style="color: var(--nb-navy); font-weight: 900; text-decoration: underline;">Quickstart Guide</a>.
+            <p>
+              GuardAgent is designed to support SOC 2 Trust Services Criteria, HIPAA audit logging, and CIS benchmarks through its structured event ledger and RBAC controls. Learn more in our <a href="/docs/quickstart">Quickstart Guide</a>.
             </p>
           </div>
 
@@ -313,7 +313,7 @@
 
     <div class="nb-footer-subbar">
       <div>&copy; 2026 GuardAgent Open Source Project. Licensed under Apache 2.0.</div>
-      <div style="display: flex; gap: 20px;">
+      <div class="nb-footer-subbar-links">
         <a href="/docs" class="nb-footer-link">Documentation</a>
         <a href="https://github.com/GuardAgentOrg/guardagent.org" target="_blank" rel="noopener noreferrer" class="nb-footer-link">GitHub</a>
         <a href="/security" class="nb-footer-link">Security Notice</a>
