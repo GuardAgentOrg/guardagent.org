@@ -67,8 +67,8 @@ GuardAgent/
 ### 2. Installation
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/guardagent.git
-cd GuardAgent
+git clone https://github.com/GuardAgentOrg/guardagent.org.git
+cd guardagent.org
 
 # Install dependencies
 npm install

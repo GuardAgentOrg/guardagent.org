@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSocCommandCenter();
   initAttackVectorLab();
   initRoiCalculator();
+  initGitHubStars();
 });
 
 /* ==========================================================================
@@ -1239,6 +1240,23 @@ function initThemeToggle() {
       }
     });
   }
+}
+
+/* ==========================================================================
+   12. Live GitHub Repository Star Syncer
+   ========================================================================== */
+function initGitHubStars() {
+  const starEls = document.querySelectorAll('.gh-star-label');
+  if (!starEls.length) return;
+  fetch('https://api.github.com/repos/GuardAgentOrg/guardagent.org')
+    .then(r => r.ok ? r.json() : null)
+    .then(d => {
+      if (d && typeof d.stargazers_count === 'number' && d.stargazers_count > 0) {
+        const text = d.stargazers_count >= 1000 ? (d.stargazers_count / 1000).toFixed(1) + 'K' : String(d.stargazers_count);
+        starEls.forEach(el => el.textContent = text);
+      }
+    })
+    .catch(() => {});
 }
 
 // Immediate synchronous evaluation to prevent flash of unstyled theme

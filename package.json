@@ -17,6 +17,14 @@
   ],
   "author": "GuardAgent Team",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GuardAgentOrg/guardagent.org.git"
+  },
+  "homepage": "https://github.com/GuardAgentOrg/guardagent.org#readme",
+  "bugs": {
+    "url": "https://github.com/GuardAgentOrg/guardagent.org/issues"
+  },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.1",
     "cors": "^2.8.5",
