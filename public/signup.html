@@ -1,153 +1,458 @@
-<!DOCTYPE html>
+2<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Free Account — GuardAgent Gateway</title>
-  <meta name="description" content="Sign up for the GuardAgent AI Agent Security Platform SOC console.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <title>404 — Endpoint Not Found | GuardAgent</title>
+  <meta name="description" content="404: Unmapped Agent Action or Route. The requested endpoint was dropped safely by the GuardAgent security firewall.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:wght@600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="icon" type="image/png" href="/assets/images/logo-transparent.png">
   <script>(function(){try{var t=localStorage.getItem('guardagent-theme')||'dark';document.documentElement.setAttribute('data-theme',t);document.documentElement.classList.add(t==='dark'?'dark':'light');if(t==='dark')document.documentElement.classList.add('dark-theme');}catch(e){}})();</script>
-  <style>
-    .btn-loading {
-      opacity: 0.7;
-      pointer-events: none;
-    }
-  </style>
 </head>
 <body class="neo-brutalist-theme">
-  <div class="nb-auth-wrapper">
-    <div class="nb-auth-bg-pattern"></div>
 
-    <!-- Top Navigation Bar -->
-    <div class="nb-auth-nav wide" style="width: 100%; max-width: 520px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1;">
-      <a href="/" class="nb-btn nb-btn-sm nb-btn-white" style="font-size: 0.75rem; padding: 6px 12px;">
-        &larr; BACK TO HOME
+  <!-- =========================================================================
+       Neo-Brutalist Navigation Header (Consistent with Landing Page)
+       ========================================================================= -->
+  <header class="nb-header" role="banner">
+    <div class="nb-header-inner">
+      <a href="/" class="nb-brand-wrap" aria-label="GuardAgent Home">
+        <img src="/assets/images/logo-transparent.png" alt="GuardAgent Logo" class="nb-logo-img" id="brandLogoImg">
       </a>
-      <div style="display: flex; align-items: center; gap: 8px;">
+
+      <nav role="navigation" aria-label="Main Navigation">
+        <ul class="nb-nav-list" id="desktopNav">
+          <li><a href="/#arcade-soc" class="nb-nav-item">LIVE DEMO</a></li>
+          <li><a href="/#comparison" class="nb-nav-item">BEFORE &amp; AFTER</a></li>
+          <li><a href="/#nightmares" class="nb-nav-item">3 DISASTERS</a></li>
+          <li><a href="/#how-it-works" class="nb-nav-item">HOW IT WORKS</a></li>
+          <li><a href="/#threat-lab" class="nb-nav-item">ATTACK LAB</a></li>
+          <li><a href="/#calculator" class="nb-nav-item">SPEED &amp; SAVINGS</a></li>
+          <li><a href="/docs" class="nb-nav-item">DOCS</a></li>
+        </ul>
+      </nav>
+
+      <div class="nb-header-actions">
         <button class="nb-theme-toggle" aria-label="Toggle Dark Theme" title="Toggle theme (Dark / Light)">
           <svg class="sun-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
           <svg class="moon-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
         </button>
-        <span class="nb-sticker nb-sticker-yellow tilt-1" style="font-size: 0.65rem;">100% FREE &bull; APACHE 2.0</span>
+        <a href="https://github.com/GuardAgentOrg/guardagent.org" target="_blank" rel="noopener noreferrer" class="nb-github-star-btn" title="GuardAgent on GitHub" aria-label="GuardAgent on GitHub">
+          <span class="nb-gh-star-label">
+            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
+          </span>
+          <span class="nb-gh-star-count" title="GitHub Stars"><span class="star-glyph">★</span> <span class="gh-star-num">0</span></span>
+        </a>
+        <a href="/signin" class="nb-btn nb-btn-sm nb-btn-teal">Sign In</a>
+        
+        <button class="nb-mobile-toggle" id="nbMobileToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nbMobileDrawer">
+          <svg class="nb-icon-bars" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          <svg class="nb-icon-close" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
       </div>
     </div>
 
-    <!-- Main Neo-Brutalist Signup Card -->
-    <div class="nb-auth-card wide">
-      <div class="nb-auth-header">
-        <a href="/" style="display: inline-block; margin-bottom: 8px;" aria-label="GuardAgent Home">
-          <img src="/assets/images/logo-transparent.png" alt="GuardAgent Logo" class="nb-logo-img" style="height: 44px; width: auto;">
-        </a>
-        <div>
-          <span class="nb-sticker nb-sticker-mint tilt-2" style="font-size: 0.65rem; margin-top: 4px;">FREE OPERATOR WORKSPACE</span>
+    <!-- Mobile Navigation Drawer -->
+    <div class="nb-mobile-drawer" id="nbMobileDrawer" role="region" aria-label="Mobile Navigation Menu">
+      <div class="nb-drawer-top">
+        <span class="nb-drawer-heading">NAVIGATION</span>
+        <button type="button" class="nb-drawer-close" aria-label="Close navigation menu">
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+          <span>CLOSE</span>
+        </button>
+      </div>
+      <a href="/#arcade-soc" class="nb-nav-item">LIVE DEMO</a>
+      <a href="/#comparison" class="nb-nav-item">BEFORE &amp; AFTER</a>
+      <a href="/#nightmares" class="nb-nav-item">THE 3 DISASTERS</a>
+      <a href="/#how-it-works" class="nb-nav-item">HOW IT WORKS</a>
+      <a href="/#threat-lab" class="nb-nav-item">ATTACK LAB</a>
+      <a href="/#calculator" class="nb-nav-item">SPEED &amp; SAVINGS</a>
+      <a href="/docs" class="nb-nav-item">DOCS</a>
+      <div style="margin-top: 16px; padding-top: 16px; border-top: 2px solid var(--nb-navy); display: flex; flex-direction: column; gap: 10px;">
+        <a href="/app/" class="nb-btn nb-btn-teal" style="width: 100%;">LAUNCH SOC CONSOLE &rarr;</a>
+        <a href="/docs/api-reference" class="nb-btn nb-btn-white" style="width: 100%;">REST API REFERENCE</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       Main Content: Ultra-Aligned Animated Neo-Brutalist 404 Canvas
+       ========================================================================= -->
+  <main id="main-content" style="position: relative; overflow: hidden; min-height: 80vh;">
+    
+    <!-- Animated Cyber Grid Background -->
+    <div class="nb-404-page-bg"></div>
+
+    <div class="nb-404-container">
+      
+      <!-- Ambient Floating Badges Positioned Safely in Viewport Margins -->
+      <div class="nb-floating-badge-wrap">
+        <div class="nb-floating-badge float-b1" title="Deterministic Security Engine">🛡️ AST: 0.8MS</div>
+        <div class="nb-floating-badge float-b2" title="Zero-Lag Policy Enforcement">⚡ FIREWALL: ACTIVE</div>
+        <div class="nb-floating-badge float-b3" title="Tamper-Proof Audit Logging">🔒 ZERO DATA LEAK</div>
+        <div class="nb-floating-badge float-b4" title="Quarantine Subsystem">🚫 COMMAND DROPPED</div>
+      </div>
+
+      <!-- Section 1: Hero Block (Centered) -->
+      <div class="nb-404-hero">
+        
+        <!-- Status Badges with Live Radar Ping -->
+        <div class="nb-404-badges">
+          <span class="nb-sticker nb-sticker-coral tilt-n1"><span class="nb-radar-dot"></span>SECURITY VERDICT: 404</span>
+          <span class="nb-sticker nb-sticker-yellow tilt-1">UNMAPPED ENDPOINT</span>
+          <span class="nb-sticker nb-sticker-mint">DROPPED IN 0.8MS</span>
         </div>
-        <h1 class="nb-auth-title">Create Your Workspace</h1>
-        <p class="nb-auth-subtitle">
-          Add a 0.8ms deterministic firewall between your AI agents and real APIs.
+
+        <!-- Giant Neo-Brutalist 404 Stage with Interactive Decoder Scramble -->
+        <div class="nb-404-stage" id="giantStage">
+          <div class="nb-404-giant-number" id="scrambleNumber" aria-hidden="true" title="Click to trigger security re-scan">404</div>
+          
+          <!-- Hazard Moving Caution Ribbon -->
+          <div class="nb-404-tape-wrap">
+            <div class="nb-404-tape-inner">
+              <span>⚠️ ACTION REJECTED &bull; UNMAPPED ROUTE &bull; SAFE 0.8MS DROP ⚠️</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Heading & Core Message -->
+        <h1 class="nb-404-title">
+          Even Our Autonomous AI Agent Couldn't Find This Endpoint.
+        </h1>
+
+        <p class="nb-404-subtitle">
+          The requested path was evaluated and dropped by GuardAgent's deterministic security switch. The route does not exist, was quarantined by policy, or was relocated to prevent unintended tool execution.
         </p>
       </div>
 
-      <!-- Alert / Status Notice Banner -->
-      <div id="signupAlert" class="nb-auth-alert"></div>
-
-      <form id="signupForm" class="nb-auth-form">
-        <div class="nb-form-group">
-          <label class="nb-form-label" for="fullName">Lead Operator Name</label>
-          <input type="text" id="fullName" class="nb-form-input" placeholder="Sarah Chen" required autocomplete="name">
-        </div>
-
-        <div class="nb-form-group">
-          <label class="nb-form-label" for="organization">Organization / Team Identity</label>
-          <input type="text" id="organization" class="nb-form-input" placeholder="Acme AI Engineering" required autocomplete="organization">
-        </div>
-
-        <div class="nb-form-group">
-          <label class="nb-form-label" for="email">Work Email</label>
-          <input type="email" id="email" class="nb-form-input" placeholder="s.chen@acme-corp.com" required autocomplete="email">
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-          <div class="nb-form-group">
-            <label class="nb-form-label" for="password">Password</label>
-            <input type="password" id="password" class="nb-form-input" placeholder="Min. 8 chars" minlength="8" required autocomplete="new-password">
+      <!-- Section 2: Terminal Box (Precision Grid Alignment) -->
+      <div class="nb-404-terminal" id="terminalBox">
+        <div class="nb-404-terminal-header">
+          <div class="nb-404-dots" id="terminalDots">
+            <span class="nb-dot red" title="Trigger Firewall Alarm" id="dotRed"></span>
+            <span class="nb-dot yellow" title="Pause Interception Stream" id="dotYellow"></span>
+            <span class="nb-dot green" title="Re-evaluate Gateway Path" id="dotGreen"></span>
           </div>
-
-          <div class="nb-form-group">
-            <label class="nb-form-label" for="confirmPassword">Confirm</label>
-            <input type="password" id="confirmPassword" class="nb-form-input" placeholder="Repeat password" minlength="8" required autocomplete="new-password">
-          </div>
+          <span class="nb-404-terminal-title">GATEWAY INTERCEPTION LOG &bull; AST PIPELINE</span>
+          <span class="nb-404-latency">EVAL: 0.8ms</span>
         </div>
+        <div class="nb-404-terminal-body" id="terminalBodyContainer">
+          <!-- Populated by high-speed typewriter script with strict 2-column grid -->
+          <div class="terminal-row"><span class="term-key">REQUEST_URI:</span><span class="term-val term-val-url" id="interceptedUri">/unknown-route</span></div>
+          <div class="terminal-row"><span class="term-key">INTERCEPTOR:</span><span class="term-val term-val-teal">GuardAgent AST Gateway v1.0.0-beta</span></div>
+          <div class="terminal-row"><span class="term-key">FIREWALL_RULE:</span><span class="term-val term-val-yellow">POL-0404-UNVERIFIED-ROUTING-PREVENTION</span></div>
+          <div class="terminal-row"><span class="term-key">DECISION:</span><span class="term-val term-val-coral">BLOCK_SAFELY (Zero Execution Damage)</span></div>
+          <div class="terminal-row"><span class="term-key">SAFE_PATHWAY:</span><span class="term-val term-val-mint">Operator forwarded to authenticated landing zones &darr;</span></div>
+          <span class="terminal-cursor"></span>
+        </div>
+      </div>
 
-        <button type="submit" id="submitBtn" class="nb-btn nb-btn-teal" style="width: 100%; padding: 13px; margin-top: 8px; font-size: 0.95rem;">
-          🚀 Initialize Workspace &amp; Launch &rarr;
-        </button>
-      </form>
+      <!-- Section 3: Primary Action Buttons -->
+      <div class="nb-404-actions">
+        <a href="/" class="nb-btn nb-btn-lg nb-btn-teal">&larr; RETURN TO HOMEPAGE</a>
+        <a href="/app/" class="nb-btn nb-btn-lg nb-btn-yellow">TRY LIVE SOC CONSOLE &rarr;</a>
+        <a href="/docs" class="nb-btn nb-btn-lg nb-btn-white">BROWSE DOCUMENTATION</a>
+      </div>
 
-      <div class="nb-auth-footer">
-        <span>Already have an account?</span>
-        <a href="/signin">Sign In here &rarr;</a>
+      <!-- Section 4: Quick Finder (Pixel-Perfect Form Alignment) -->
+      <div class="nb-404-search-box">
+        <label for="routeFinderInput" class="nb-404-search-label">
+          LOOKING FOR A SPECIFIC DOCUMENT OR CAPABILITY?
+        </label>
+        <form class="nb-404-search-form" id="quickFinderForm" onsubmit="event.preventDefault(); handleRouteFinder();">
+          <input type="text" id="routeFinderInput" class="nb-404-search-input" placeholder="Type e.g. quickstart, policies, langchain, api, live demo..." autocomplete="off">
+          <button type="submit" class="nb-btn nb-btn-teal nb-404-search-btn">FIND ROUTE &rarr;</button>
+        </form>
+        <div class="nb-404-search-suggestions">
+          <span class="sug-label">Popular:</span>
+          <a href="/docs/quickstart" class="sug-pill">Quickstart</a>
+          <a href="/docs" class="sug-pill">Architecture</a>
+          <a href="/docs/api-reference" class="sug-pill">API Reference</a>
+          <a href="/#threat-lab" class="sug-pill">Attack Lab</a>
+          <a href="/security" class="sug-pill">Security Policy</a>
+          <a href="/signin" class="sug-pill">Sign In</a>
+        </div>
+      </div>
+
+      <!-- Section 5: Pathways Grid (Equal-Height Stretch Alignment) -->
+      <div class="nb-404-pathways-header">
+        <span class="nb-sticker nb-sticker-yellow tilt-1">VERIFIED DESTINATIONS</span>
+        <h2 style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; color: var(--nb-navy); margin: 12px 0 6px;">
+          Safe Pathways In GuardAgent
+        </h2>
+        <p style="font-size: 0.95rem; color: #64748B; font-weight: 600; margin: 0;">
+          Choose one of these verified production zones to continue:
+        </p>
+      </div>
+
+      <div class="nb-404-grid">
+        <a href="/#threat-lab" class="nb-404-card">
+          <div class="nb-404-card-top">
+            <span class="nb-sticker nb-sticker-coral" style="font-size: 0.65rem;">ATTACK DEFENSE LAB</span>
+            <span class="nb-404-arrow" aria-hidden="true">&rarr;</span>
+          </div>
+          <h3 class="nb-404-card-title">Test Prompt Injection Defense</h3>
+          <p class="nb-404-card-desc">
+            Simulate real hacker tricks, SQL drop attempts, rogue bash commands, and runaway spending stops in 0.7ms.
+          </p>
+        </a>
+
+        <a href="/docs/quickstart" class="nb-404-card">
+          <div class="nb-404-card-top">
+            <span class="nb-sticker nb-sticker-teal" style="font-size: 0.65rem;">1-MIN SETUP</span>
+            <span class="nb-404-arrow" aria-hidden="true">&rarr;</span>
+          </div>
+          <h3 class="nb-404-card-title">Developer Quickstart Guide</h3>
+          <p class="nb-404-card-desc">
+            Install and run GuardAgent in 60 seconds with simple Python &amp; Node.js security gateway wrappers.
+          </p>
+        </a>
+
+        <a href="/docs" class="nb-404-card">
+          <div class="nb-404-card-top">
+            <span class="nb-sticker nb-sticker-yellow" style="font-size: 0.65rem;">DOCUMENTATION</span>
+            <span class="nb-404-arrow" aria-hidden="true">&rarr;</span>
+          </div>
+          <h3 class="nb-404-card-title">Security &amp; Policy Specs</h3>
+          <p class="nb-404-card-desc">
+            Learn how deterministic AST policies, spending limits, human-in-the-loop webhooks, and tamper-proof audit trails work.
+          </p>
+        </a>
+
+        <a href="/docs/api-reference" class="nb-404-card">
+          <div class="nb-404-card-top">
+            <span class="nb-sticker nb-sticker-purple" style="font-size: 0.65rem;">REST API</span>
+            <span class="nb-404-arrow" aria-hidden="true">&rarr;</span>
+          </div>
+          <h3 class="nb-404-card-title">REST API Reference</h3>
+          <p class="nb-404-card-desc">
+            Browse endpoints for evaluating agent actions, querying audit trails, registering agents, and triggering approvals.
+          </p>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       Neo-Brutalist Footer (Consistent with Landing Page)
+       ========================================================================= -->
+  <footer class="nb-footer" role="contentinfo">
+    <div class="nb-footer-grid">
+      <div>
+        <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 16px;">
+          <img src="/assets/images/logo-transparent.png" alt="GuardAgent Logo" class="nb-logo-img">
+        </a>
+        <p style="font-size: 0.95rem; font-weight: 600; line-height: 1.6; max-width: 340px; color: var(--nb-navy);">
+          The open-source 0.8ms safety switch and deterministic firewall for autonomous AI agents.
+        </p>
+        <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="nb-sticker nb-sticker-teal" style="font-size: 0.68rem;">APACHE 2.0 OPEN SOURCE</span>
+          <span class="nb-sticker nb-sticker-yellow" style="font-size: 0.68rem;">0.8MS ZERO LAG</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="nb-footer-title">Explore</div>
+        <ul class="nb-footer-links">
+          <li><a href="/#how-it-works" class="nb-footer-link">How GuardAgent Works</a></li>
+          <li><a href="/#threat-lab" class="nb-footer-link">Attack Defense Lab</a></li>
+          <li><a href="/#calculator" class="nb-footer-link">Speed &amp; Token Savings</a></li>
+          <li><a href="/#faq" class="nb-footer-link">Common Questions</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="nb-footer-title">Developers</div>
+        <ul class="nb-footer-links">
+          <li><a href="/docs" class="nb-footer-link">Documentation</a></li>
+          <li><a href="/docs/quickstart" class="nb-footer-link">1-Minute Quickstart</a></li>
+          <li><a href="https://github.com/GuardAgentOrg/guardagent.org" target="_blank" rel="noopener noreferrer" class="nb-footer-link">GitHub Repository</a></li>
+          <li><a href="/security" class="nb-footer-link">Security Policy</a></li>
+        </ul>
       </div>
     </div>
 
-    <!-- Bottom Footer Note -->
-    <div style="position: relative; z-index: 1; margin-top: 14px; font-size: 0.75rem; font-weight: 700; color: #64748B; font-family: var(--font-mono); text-align: center;">
-      Runs locally on your computer or private cloud &bull; Zero external data sharing
+    <div style="max-width: 1140px; margin: 0 auto; padding-top: 24px; border-top: 2.5px solid var(--nb-navy); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-weight: 700; font-size: 0.85rem;">
+      <div>&copy; 2026 GuardAgent Open Source Project. Licensed under Apache 2.0.</div>
+      <div style="display: flex; gap: 20px;">
+        <a href="/docs" class="nb-footer-link">Documentation</a>
+        <a href="https://github.com/GuardAgentOrg/guardagent.org" target="_blank" rel="noopener noreferrer" class="nb-footer-link">GitHub</a>
+        <a href="/security" class="nb-footer-link">Security Notice</a>
+      </div>
     </div>
-  </div>
+  </footer>
 
-  <script src="/assets/js/api.js"></script>
+  <!-- Scripts -->
   <script src="/assets/js/site.js"></script>
   <script>
-    const alertBox = document.getElementById('signupAlert');
-    const submitBtn = document.getElementById('submitBtn');
-
-    function showAlert(message, type) {
-      alertBox.textContent = message;
-      alertBox.className = 'nb-auth-alert ' + (type === 'error' ? 'error' : 'success');
-      alertBox.style.display = 'block';
-    }
-
-    document.getElementById('signupForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const fullName = document.getElementById('fullName').value.trim();
-      const organization = document.getElementById('organization').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value;
-      const confirmPassword = document.getElementById('confirmPassword').value;
-
-      if (password !== confirmPassword) {
-        showAlert("Passwords do not match. Please verify and retry.", "error");
-        return;
-      }
-
-      submitBtn.disabled = true;
-      submitBtn.classList.add('btn-loading');
-      submitBtn.textContent = 'Enrolling workspace...';
-      alertBox.style.display = 'none';
-
+    // 1. Live Terminal Typewriter & Intercepted Path Detection
+    (function() {
       try {
-        const res = await window.api.signup({
-          full_name: fullName,
-          organization: organization,
-          email: email,
-          password: password
-        });
+        var p = window.location.pathname;
+        if (!p || p === '/' || p === '/404.html') {
+          p = window.location.href.split('?')[0].split('#')[0].replace(/^https?:\/\/[^\/]+/, '') || '/unmapped-endpoint';
+        }
+        
+        var rows = [
+          { key: "REQUEST_URI:", val: p, cls: "term-val-url" },
+          { key: "INTERCEPTOR:", val: "GuardAgent AST Gateway v1.0.0-beta", cls: "term-val-teal" },
+          { key: "FIREWALL_RULE:", val: "POL-0404-UNVERIFIED-ROUTING-PREVENTION", cls: "term-val-yellow" },
+          { key: "DECISION:", val: "BLOCK_SAFELY (Zero Execution Damage)", cls: "term-val-coral" },
+          { key: "SAFE_PATHWAY:", val: "Operator forwarded to authenticated landing zones ↓", cls: "term-val-mint" }
+        ];
 
-        showAlert(res.message || "Account initialized! Loading SOC workspace...", "success");
-        setTimeout(() => {
-          window.location.href = '/app/';
-        }, 600);
-      } catch (err) {
-        submitBtn.disabled = false;
-        submitBtn.classList.remove('btn-loading');
-        submitBtn.textContent = 'Initialize Workspace & Launch →';
-        showAlert(err.message || "Enrollment failed. Please check inputs and retry.", "error");
+        var container = document.getElementById('terminalBodyContainer');
+        if (!container) return;
+        container.innerHTML = '';
+
+        var rowIndex = 0;
+        function typeNextRow() {
+          if (rowIndex >= rows.length) {
+            var cursor = document.createElement('span');
+            cursor.className = 'terminal-cursor';
+            container.appendChild(cursor);
+            return;
+          }
+          var item = rows[rowIndex];
+          var rowDiv = document.createElement('div');
+          rowDiv.className = 'terminal-row';
+          rowDiv.innerHTML = '<span class="term-key">' + item.key + '</span><span class="term-val ' + item.cls + '"></span>';
+          container.appendChild(rowDiv);
+          
+          var valSpan = rowDiv.querySelector('.term-val');
+          var text = item.val;
+          var charIndex = 0;
+          
+          function typeChar() {
+            if (charIndex < text.length) {
+              valSpan.textContent += text.charAt(charIndex);
+              charIndex++;
+              setTimeout(typeChar, 8);
+            } else {
+              rowIndex++;
+              setTimeout(typeNextRow, 50);
+            }
+          }
+          typeChar();
+        }
+        setTimeout(typeNextRow, 160);
+      } catch (err) {}
+    })();
+
+    // 2. Interactive Scramble Decoder on 404
+    (function() {
+      var numEl = document.getElementById('scrambleNumber');
+      if (!numEl) return;
+      var chars = '0123456789!@#$%^&*<>/?';
+      var isScrambling = false;
+
+      function scramble() {
+        if (isScrambling) return;
+        isScrambling = true;
+        var iterations = 0;
+        var original = '404';
+        var interval = setInterval(function() {
+          numEl.textContent = original.split('').map(function(letter, index) {
+            if (index < iterations) {
+              return original[index];
+            }
+            return chars[Math.floor(Math.random() * chars.length)];
+          }).join('');
+          
+          if (iterations >= original.length) {
+            clearInterval(interval);
+            numEl.textContent = '404';
+            isScrambling = false;
+          }
+          iterations += 1 / 4;
+        }, 40);
       }
-    });
+
+      numEl.addEventListener('click', scramble);
+      numEl.addEventListener('mouseenter', scramble);
+    })();
+
+    // 3. Interactive Terminal Dots (Alarm & Radar Wave)
+    (function() {
+      var dotRed = document.getElementById('dotRed');
+      var dotGreen = document.getElementById('dotGreen');
+      var terminal = document.getElementById('terminalBox');
+      if (dotRed && terminal) {
+        dotRed.addEventListener('click', function() {
+          terminal.style.animation = 'none';
+          terminal.offsetHeight; /* trigger reflow */
+          terminal.style.boxShadow = '0 0 30px #EF4444';
+          terminal.style.borderColor = '#EF4444';
+          setTimeout(function() {
+            terminal.style.boxShadow = '';
+            terminal.style.borderColor = '';
+          }, 800);
+        });
+      }
+      if (dotGreen && terminal) {
+        dotGreen.addEventListener('click', function() {
+          terminal.style.boxShadow = '0 0 30px #10B981';
+          terminal.style.borderColor = '#10B981';
+          setTimeout(function() {
+            terminal.style.boxShadow = '';
+            terminal.style.borderColor = '';
+          }, 800);
+        });
+      }
+    })();
+
+    // 4. Interactive 3D Parallax Tilt for 404 Block
+    (function() {
+      var stage = document.getElementById('giantStage');
+      if (!stage) return;
+      stage.addEventListener('mousemove', function(e) {
+        var rect = stage.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        var num = stage.querySelector('.nb-404-giant-number');
+        if (num) {
+          num.style.transform = 'perspective(500px) rotateY(' + (x / 14) + 'deg) rotateX(' + (-y / 14) + 'deg) translateY(-4px)';
+        }
+      });
+      stage.addEventListener('mouseleave', function() {
+        var num = stage.querySelector('.nb-404-giant-number');
+        if (num) {
+          num.style.transform = '';
+        }
+      });
+    })();
+
+    // 5. Smart Quick Finder Routing
+    function handleRouteFinder() {
+      var input = document.getElementById('routeFinderInput');
+      if (!input) return;
+      var query = (input.value || '').trim().toLowerCase();
+      if (!query) return;
+
+      if (query.indexOf('quick') !== -1 || query.indexOf('start') !== -1 || query.indexOf('install') !== -1 || query.indexOf('setup') !== -1) {
+        window.location.href = '/docs/quickstart';
+      } else if (query.indexOf('api') !== -1 || query.indexOf('rest') !== -1 || query.indexOf('endpoint') !== -1) {
+        window.location.href = '/docs/api-reference';
+      } else if (query.indexOf('doc') !== -1 || query.indexOf('guide') !== -1 || query.indexOf('manual') !== -1) {
+        window.location.href = '/docs';
+      } else if (query.indexOf('attack') !== -1 || query.indexOf('hack') !== -1 || query.indexOf('threat') !== -1 || query.indexOf('lab') !== -1 || query.indexOf('inject') !== -1) {
+        window.location.href = '/#threat-lab';
+      } else if (query.indexOf('demo') !== -1 || query.indexOf('arcade') !== -1 || query.indexOf('live') !== -1) {
+        window.location.href = '/#arcade-soc';
+      } else if (query.indexOf('app') !== -1 || query.indexOf('console') !== -1 || query.indexOf('soc') !== -1) {
+        window.location.href = '/app/';
+      } else if (query.indexOf('sign') !== -1 || query.indexOf('log') !== -1 || query.indexOf('auth') !== -1) {
+        window.location.href = '/signin';
+      } else if (query.indexOf('sec') !== -1 || query.indexOf('policy') !== -1 || query.indexOf('rule') !== -1) {
+        window.location.href = '/security';
+      } else {
+        window.location.href = '/docs?q=' + encodeURIComponent(query);
+      }
+    }
   </script>
 </body>
 </html>

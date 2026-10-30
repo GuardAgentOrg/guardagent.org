@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+2<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Security Architecture &amp; Boundaries — GuardAgent</title>
-  <meta name="description" content="Detailed security architecture, defense-in-depth design, threat model, boundaries, and explicit limitations of the GuardAgent AI security platform.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <title>404 — Endpoint Not Found | GuardAgent</title>
+  <meta name="description" content="404: Unmapped Agent Action or Route. The requested endpoint was dropped safely by the GuardAgent security firewall.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:wght@600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/main.css">
@@ -15,7 +15,7 @@
 <body class="neo-brutalist-theme">
 
   <!-- =========================================================================
-       Neo-Brutalist Sticky Header
+       Neo-Brutalist Navigation Header (Consistent with Landing Page)
        ========================================================================= -->
   <header class="nb-header" role="banner">
     <div class="nb-header-inner">
@@ -31,7 +31,7 @@
           <li><a href="/#how-it-works" class="nb-nav-item">HOW IT WORKS</a></li>
           <li><a href="/#threat-lab" class="nb-nav-item">ATTACK LAB</a></li>
           <li><a href="/#calculator" class="nb-nav-item">SPEED &amp; SAVINGS</a></li>
-          <li><a href="/docs" class="nb-nav-item" style="background: var(--nb-yellow); border: 2px solid var(--nb-navy); box-shadow: 2.5px 2.5px 0px var(--nb-navy); font-weight: 900;">DOCS</a></li>
+          <li><a href="/docs" class="nb-nav-item">DOCS</a></li>
         </ul>
       </nav>
 
@@ -55,7 +55,7 @@
       </div>
     </div>
 
-    <!-- Mobile Drawer -->
+    <!-- Mobile Navigation Drawer -->
     <div class="nb-mobile-drawer" id="nbMobileDrawer" role="region" aria-label="Mobile Navigation Menu">
       <div class="nb-drawer-top">
         <span class="nb-drawer-heading">NAVIGATION</span>
@@ -70,210 +70,175 @@
       <a href="/#how-it-works" class="nb-nav-item">HOW IT WORKS</a>
       <a href="/#threat-lab" class="nb-nav-item">ATTACK LAB</a>
       <a href="/#calculator" class="nb-nav-item">SPEED &amp; SAVINGS</a>
-      <a href="/docs" class="nb-nav-item">DOCUMENTATION</a>
-      <div style="display: flex; gap: 8px; margin-top: 6px; padding-top: 10px; border-top: 2px dashed var(--nb-navy);">
-        <a href="https://github.com/GuardAgentOrg/guardagent.org" target="_blank" rel="noopener noreferrer" class="nb-github-star-btn" title="GuardAgent on GitHub" aria-label="GuardAgent on GitHub">
-          <span class="nb-gh-star-label">
-            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
-          </span>
-          <span class="nb-gh-star-count" title="GitHub Stars"><span class="star-glyph">★</span> <span class="gh-star-num">0</span></span>
-        </a>
-        <a href="/signin" class="nb-btn nb-btn-sm nb-btn-teal" style="flex: 1; text-align: center; justify-content: center;">SIGN IN &rarr;</a>
+      <a href="/docs" class="nb-nav-item">DOCS</a>
+      <div style="margin-top: 16px; padding-top: 16px; border-top: 2px solid var(--nb-navy); display: flex; flex-direction: column; gap: 10px;">
+        <a href="/app/" class="nb-btn nb-btn-teal" style="width: 100%;">LAUNCH SOC CONSOLE &rarr;</a>
+        <a href="/docs/api-reference" class="nb-btn nb-btn-white" style="width: 100%;">REST API REFERENCE</a>
       </div>
     </div>
   </header>
 
   <!-- =========================================================================
-       Neo-Brutalist Marquee Tape Ribbon
+       Main Content: Ultra-Aligned Animated Neo-Brutalist 404 Canvas
        ========================================================================= -->
-  <div class="nb-tape-strip" aria-hidden="true">
-    <div class="nb-tape-content">
-      <span>🛡️ DEFENSE-IN-DEPTH ARCHITECTURE</span>
-      <span>🔒 100% DETERMINISTIC COMPILED RULES</span>
-      <span>⚡ ZERO TOKEN HALLUCINATIONS</span>
-      <span>🛑 DENY-BY-DEFAULT GATEWAY</span>
-      <span>🛡️ DEFENSE-IN-DEPTH ARCHITECTURE</span>
-      <span>🔒 100% DETERMINISTIC COMPILED RULES</span>
-    </div>
-  </div>
+  <main id="main-content" style="position: relative; overflow: hidden; min-height: 80vh;">
+    
+    <!-- Animated Cyber Grid Background -->
+    <div class="nb-404-page-bg"></div>
 
-  <!-- =========================================================================
-       Main Content Section
-       ========================================================================= -->
-  <main id="main-content">
-    <div class="nb-docs-wrapper">
-      <div class="nb-docs-grid">
-        
-        <!-- Sticky Sidebar Navigation -->
-        <aside class="nb-docs-sidebar" role="complementary" aria-label="Security Navigation">
-          <div class="nb-docs-group">
-            <div class="nb-docs-group-title">
-              <span>GETTING STARTED</span>
-            </div>
-            <ul class="nb-docs-nav-list">
-              <li><a href="/docs" class="nb-docs-nav-item">📚 Documentation Index</a></li>
-              <li><a href="/docs/quickstart" class="nb-docs-nav-item">🚀 1-Minute Quickstart</a></li>
-              <li><a href="/docs/api-reference" class="nb-docs-nav-item">⚡ REST API Reference</a></li>
-            </ul>
-          </div>
-
-          <div class="nb-docs-group">
-            <div class="nb-docs-group-title">
-              <span>ARCHITECTURE</span>
-            </div>
-            <ul class="nb-docs-nav-list">
-              <li><a href="#principles" class="nb-docs-nav-item">🏛️ 4 Core Principles</a></li>
-              <li><a href="#limitations" class="nb-docs-nav-item">⚠️ Explicit Boundaries</a></li>
-              <li><a href="#security-notice" class="nb-docs-nav-item">🛡️ Security Notice &amp; Disclosure</a></li>
-              <li><a href="/#how-it-works" class="nb-docs-nav-item">🔄 Request Lifecycle</a></li>
-            </ul>
-          </div>
-
-          <div class="nb-docs-group">
-            <div class="nb-docs-group-title">
-              <span>COMMUNITY</span>
-            </div>
-            <ul class="nb-docs-nav-list">
-              <li><a href="https://github.com/GuardAgentOrg/guardagent.org" target="_blank" rel="noopener noreferrer" class="nb-docs-nav-item">⭐ Star on GitHub</a></li>
-              <li><a href="/contributing" class="nb-docs-nav-item">🤝 Contributing Guide</a></li>
-            </ul>
-          </div>
-        </aside>
-
-        <!-- Documentation Content Article -->
-        <article class="nb-docs-article">
-          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
-            <span class="nb-sticker nb-sticker-yellow tilt-1">THREAT MODEL</span>
-            <span class="nb-sticker nb-sticker-teal">DEFENSE-IN-DEPTH</span>
-            <span class="nb-sticker nb-sticker-mint">DENY-BY-DEFAULT</span>
-          </div>
-
-          <h1>Security Architecture &amp; Boundaries</h1>
-          
-          <p class="nb-docs-lead">
-            A transparent overview of GuardAgent's security model, defense layers, architectural boundaries, and explicit limitations.
-          </p>
-
-          <!-- Core Security Pillars -->
-          <div id="principles" class="nb-docs-section">
-            <h2>Core Security Architecture Principles</h2>
-            <p>GuardAgent is engineered around four fundamental tenets of infrastructure security:</p>
-
-            <div class="nb-docs-cards-grid">
-              <div class="nb-docs-card">
-                <div>
-                  <span class="nb-sticker nb-sticker-teal" style="font-size: 0.65rem; margin-bottom: 8px;">PRINCIPLE 01</span>
-                  <h3 style="margin-top: 6px;">Decoupled Execution Boundaries</h3>
-                  <p>
-                    AI agents should never maintain direct network access to production databases or internal APIs. GuardAgent acts as an authoritative reverse proxy: the agent only possesses credentials to request an action from GuardAgent.
-                  </p>
-                </div>
-              </div>
-
-              <div class="nb-docs-card">
-                <div>
-                  <span class="nb-sticker nb-sticker-yellow" style="font-size: 0.65rem; margin-bottom: 8px;">PRINCIPLE 02</span>
-                  <h3 style="margin-top: 6px;">Deterministic Rule Evaluation</h3>
-                  <p>
-                    GuardAgent rejects using an LLM to police another LLM. GuardAgent relies strictly on declarative compiled AST rules, CIDR network calculations, and numeric boundary checks that execute in 0.8ms.
-                  </p>
-                </div>
-              </div>
-
-              <div class="nb-docs-card">
-                <div>
-                  <span class="nb-sticker nb-sticker-coral" style="font-size: 0.65rem; margin-bottom: 8px;">PRINCIPLE 03</span>
-                  <h3 style="margin-top: 6px;">Deny-by-Default Security Model</h3>
-                  <p>
-                    Any request missing an authenticated agent ID, referencing an unapproved tool, or containing unrecognized parameters is rejected immediately. Access is granted only when an explicit rule permits it.
-                  </p>
-                </div>
-              </div>
-
-              <div class="nb-docs-card">
-                <div>
-                  <span class="nb-sticker nb-sticker-mint" style="font-size: 0.65rem; margin-bottom: 8px;">PRINCIPLE 04</span>
-                  <h3 style="margin-top: 6px;">Immutable Auditability</h3>
-                  <p>
-                    Every decision includes a correlation ID, evaluation timestamp, diagnostic rationale, and SHA-256 integrity hash for forensic review and SOC 2 / HIPAA compliance verification.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Explicit Security Boundaries & Limitations -->
-          <div id="limitations" class="nb-docs-section">
-            <h2>Explicit Security Boundaries &amp; Limitations</h2>
-            <p>Understanding what GuardAgent does and does not do is essential for effective security engineering:</p>
-
-            <div class="nb-docs-stacked-cards">
-              
-              <div class="nb-docs-card border-yellow">
-                <h3>1. ALLOW Decision Scope</h3>
-                <p>
-                  An <code>ALLOW</code> decision from GuardAgent means that the proposed action complied with all configured GuardAgent safety policies at the moment of evaluation. It does not guarantee that the downstream API service will execute without error.
-                </p>
-              </div>
-
-              <div class="nb-docs-card border-teal">
-                <h3>2. Model Weight &amp; Reasoning Independence</h3>
-                <p>
-                  GuardAgent operates strictly at the network gateway boundary. It intercepts structured tool calls (JSON payloads). GuardAgent does not inspect or modify LLM internal neural weights or hidden layer activations during text generation.
-                </p>
-              </div>
-
-              <div class="nb-docs-card border-coral">
-                <h3>3. Policy Completeness Dependency</h3>
-                <p>
-                  The gateway strictly enforces the rules defined by your engineering team. If a sensitive tool is registered without restrictive policy bounds, GuardAgent will permit execution in accordance with the configured policy.
-                </p>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Official Security Notice & Vulnerability Reporting -->
-          <div id="security-notice" class="nb-docs-section">
-            <h2>Official Security Notice &amp; Vulnerability Disclosure</h2>
-            <p>
-              GuardAgent treats security vulnerabilities in the gateway runtime, policy AST parser, and SDK with top priority. As a compiled safety switch deployed in mission-critical environments, we enforce strict responsible disclosure procedures.
-            </p>
-
-            <div class="nb-docs-card border-teal" style="margin-top: 16px;">
-              <h3>Reporting Security Vulnerabilities</h3>
-              <p style="margin-bottom: 10px;">
-                If you discover a security vulnerability, sandbox escape, or bypass vector within GuardAgent, please notify the core security team directly:
-              </p>
-              <ul class="nb-docs-list">
-                <li><strong>Security Contact:</strong> <a href="mailto:security@guardagent.ai" class="nb-teal-link">security@guardagent.ai</a></li>
-                <li><strong>PGP Fingerprint:</strong> <code class="nb-code-fingerprint">4A9F 821E C03B 9801 D712 5590 1A3E 76C4 FB82 0019</code></li>
-                <li><strong>Initial Response SLA:</strong> Under 24 hours acknowledging receipt and severity classification.</li>
-                <li><strong>Public Disclosure Policy:</strong> Coordinated disclosure after fix release (30-day embargo window).</li>
-              </ul>
-              <p style="font-size: 0.85rem; color: #64748B; margin-bottom: 0;">
-                Please do not open public GitHub issues for undisclosed security exploits.
-              </p>
-            </div>
-          </div>
-
-          <!-- Callout -->
-          <div class="nb-docs-callout teal">
-            <div class="nb-callout-badge">
-              ★ OPEN SOURCE COMPLIANCE
-            </div>
-            <p>
-              GuardAgent is designed to support SOC 2 Trust Services Criteria, HIPAA audit logging, and CIS benchmarks through its structured event ledger and RBAC controls. Learn more in our <a href="/docs/quickstart">Quickstart Guide</a>.
-            </p>
-          </div>
-
-        </article>
+    <div class="nb-404-container">
+      
+      <!-- Ambient Floating Badges Positioned Safely in Viewport Margins -->
+      <div class="nb-floating-badge-wrap">
+        <div class="nb-floating-badge float-b1" title="Deterministic Security Engine">🛡️ AST: 0.8MS</div>
+        <div class="nb-floating-badge float-b2" title="Zero-Lag Policy Enforcement">⚡ FIREWALL: ACTIVE</div>
+        <div class="nb-floating-badge float-b3" title="Tamper-Proof Audit Logging">🔒 ZERO DATA LEAK</div>
+        <div class="nb-floating-badge float-b4" title="Quarantine Subsystem">🚫 COMMAND DROPPED</div>
       </div>
+
+      <!-- Section 1: Hero Block (Centered) -->
+      <div class="nb-404-hero">
+        
+        <!-- Status Badges with Live Radar Ping -->
+        <div class="nb-404-badges">
+          <span class="nb-sticker nb-sticker-coral tilt-n1"><span class="nb-radar-dot"></span>SECURITY VERDICT: 404</span>
+          <span class="nb-sticker nb-sticker-yellow tilt-1">UNMAPPED ENDPOINT</span>
+          <span class="nb-sticker nb-sticker-mint">DROPPED IN 0.8MS</span>
+        </div>
+
+        <!-- Giant Neo-Brutalist 404 Stage with Interactive Decoder Scramble -->
+        <div class="nb-404-stage" id="giantStage">
+          <div class="nb-404-giant-number" id="scrambleNumber" aria-hidden="true" title="Click to trigger security re-scan">404</div>
+          
+          <!-- Hazard Moving Caution Ribbon -->
+          <div class="nb-404-tape-wrap">
+            <div class="nb-404-tape-inner">
+              <span>⚠️ ACTION REJECTED &bull; UNMAPPED ROUTE &bull; SAFE 0.8MS DROP ⚠️</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Heading & Core Message -->
+        <h1 class="nb-404-title">
+          Even Our Autonomous AI Agent Couldn't Find This Endpoint.
+        </h1>
+
+        <p class="nb-404-subtitle">
+          The requested path was evaluated and dropped by GuardAgent's deterministic security switch. The route does not exist, was quarantined by policy, or was relocated to prevent unintended tool execution.
+        </p>
+      </div>
+
+      <!-- Section 2: Terminal Box (Precision Grid Alignment) -->
+      <div class="nb-404-terminal" id="terminalBox">
+        <div class="nb-404-terminal-header">
+          <div class="nb-404-dots" id="terminalDots">
+            <span class="nb-dot red" title="Trigger Firewall Alarm" id="dotRed"></span>
+            <span class="nb-dot yellow" title="Pause Interception Stream" id="dotYellow"></span>
+            <span class="nb-dot green" title="Re-evaluate Gateway Path" id="dotGreen"></span>
+          </div>
+          <span class="nb-404-terminal-title">GATEWAY INTERCEPTION LOG &bull; AST PIPELINE</span>
+          <span class="nb-404-latency">EVAL: 0.8ms</span>
+        </div>
+        <div class="nb-404-terminal-body" id="terminalBodyContainer">
+          <!-- Populated by high-speed typewriter script with strict 2-column grid -->
+          <div class="terminal-row"><span class="term-key">REQUEST_URI:</span><span class="term-val term-val-url" id="interceptedUri">/unknown-route</span></div>
+          <div class="terminal-row"><span class="term-key">INTERCEPTOR:</span><span class="term-val term-val-teal">GuardAgent AST Gateway v1.0.0-beta</span></div>
+          <div class="terminal-row"><span class="term-key">FIREWALL_RULE:</span><span class="term-val term-val-yellow">POL-0404-UNVERIFIED-ROUTING-PREVENTION</span></div>
+          <div class="terminal-row"><span class="term-key">DECISION:</span><span class="term-val term-val-coral">BLOCK_SAFELY (Zero Execution Damage)</span></div>
+          <div class="terminal-row"><span class="term-key">SAFE_PATHWAY:</span><span class="term-val term-val-mint">Operator forwarded to authenticated landing zones &darr;</span></div>
+          <span class="terminal-cursor"></span>
+        </div>
+      </div>
+
+      <!-- Section 3: Primary Action Buttons -->
+      <div class="nb-404-actions">
+        <a href="/" class="nb-btn nb-btn-lg nb-btn-teal">&larr; RETURN TO HOMEPAGE</a>
+        <a href="/app/" class="nb-btn nb-btn-lg nb-btn-yellow">TRY LIVE SOC CONSOLE &rarr;</a>
+        <a href="/docs" class="nb-btn nb-btn-lg nb-btn-white">BROWSE DOCUMENTATION</a>
+      </div>
+
+      <!-- Section 4: Quick Finder (Pixel-Perfect Form Alignment) -->
+      <div class="nb-404-search-box">
+        <label for="routeFinderInput" class="nb-404-search-label">
+          LOOKING FOR A SPECIFIC DOCUMENT OR CAPABILITY?
+        </label>
+        <form class="nb-404-search-form" id="quickFinderForm" onsubmit="event.preventDefault(); handleRouteFinder();">
+          <input type="text" id="routeFinderInput" class="nb-404-search-input" placeholder="Type e.g. quickstart, policies, langchain, api, live demo..." autocomplete="off">
+          <button type="submit" class="nb-btn nb-btn-teal nb-404-search-btn">FIND ROUTE &rarr;</button>
+        </form>
+        <div class="nb-404-search-suggestions">
+          <span class="sug-label">Popular:</span>
+          <a href="/docs/quickstart" class="sug-pill">Quickstart</a>
+          <a href="/docs" class="sug-pill">Architecture</a>
+          <a href="/docs/api-reference" class="sug-pill">API Reference</a>
+          <a href="/#threat-lab" class="sug-pill">Attack Lab</a>
+          <a href="/security" class="sug-pill">Security Policy</a>
+          <a href="/signin" class="sug-pill">Sign In</a>
+        </div>
+      </div>
+
+      <!-- Section 5: Pathways Grid (Equal-Height Stretch Alignment) -->
+      <div class="nb-404-pathways-header">
+        <span class="nb-sticker nb-sticker-yellow tilt-1">VERIFIED DESTINATIONS</span>
+        <h2 style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; color: var(--nb-navy); margin: 12px 0 6px;">
+          Safe Pathways In GuardAgent
+        </h2>
+        <p style="font-size: 0.95rem; color: #64748B; font-weight: 600; margin: 0;">
+          Choose one of these verified production zones to continue:
+        </p>
+      </div>
+
+      <div class="nb-404-grid">
+        <a href="/#threat-lab" class="nb-404-card">
+          <div class="nb-404-card-top">
+            <span class="nb-sticker nb-sticker-coral" style="font-size: 0.65rem;">ATTACK DEFENSE LAB</span>
+            <span class="nb-404-arrow" aria-hidden="true">&rarr;</span>
+          </div>
+          <h3 class="nb-404-card-title">Test Prompt Injection Defense</h3>
+          <p class="nb-404-card-desc">
+            Simulate real hacker tricks, SQL drop attempts, rogue bash commands, and runaway spending stops in 0.7ms.
+          </p>
+        </a>
+
+        <a href="/docs/quickstart" class="nb-404-card">
+          <div class="nb-404-card-top">
+            <span class="nb-sticker nb-sticker-teal" style="font-size: 0.65rem;">1-MIN SETUP</span>
+            <span class="nb-404-arrow" aria-hidden="true">&rarr;</span>
+          </div>
+          <h3 class="nb-404-card-title">Developer Quickstart Guide</h3>
+          <p class="nb-404-card-desc">
+            Install and run GuardAgent in 60 seconds with simple Python &amp; Node.js security gateway wrappers.
+          </p>
+        </a>
+
+        <a href="/docs" class="nb-404-card">
+          <div class="nb-404-card-top">
+            <span class="nb-sticker nb-sticker-yellow" style="font-size: 0.65rem;">DOCUMENTATION</span>
+            <span class="nb-404-arrow" aria-hidden="true">&rarr;</span>
+          </div>
+          <h3 class="nb-404-card-title">Security &amp; Policy Specs</h3>
+          <p class="nb-404-card-desc">
+            Learn how deterministic AST policies, spending limits, human-in-the-loop webhooks, and tamper-proof audit trails work.
+          </p>
+        </a>
+
+        <a href="/docs/api-reference" class="nb-404-card">
+          <div class="nb-404-card-top">
+            <span class="nb-sticker nb-sticker-purple" style="font-size: 0.65rem;">REST API</span>
+            <span class="nb-404-arrow" aria-hidden="true">&rarr;</span>
+          </div>
+          <h3 class="nb-404-card-title">REST API Reference</h3>
+          <p class="nb-404-card-desc">
+            Browse endpoints for evaluating agent actions, querying audit trails, registering agents, and triggering approvals.
+          </p>
+        </a>
+      </div>
+
     </div>
   </main>
 
   <!-- =========================================================================
-       Neo-Brutalist Streamlined Footer
+       Neo-Brutalist Footer (Consistent with Landing Page)
        ========================================================================= -->
   <footer class="nb-footer" role="contentinfo">
     <div class="nb-footer-grid">
@@ -311,9 +276,9 @@
       </div>
     </div>
 
-    <div class="nb-footer-subbar">
+    <div style="max-width: 1140px; margin: 0 auto; padding-top: 24px; border-top: 2.5px solid var(--nb-navy); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-weight: 700; font-size: 0.85rem;">
       <div>&copy; 2026 GuardAgent Open Source Project. Licensed under Apache 2.0.</div>
-      <div class="nb-footer-subbar-links">
+      <div style="display: flex; gap: 20px;">
         <a href="/docs" class="nb-footer-link">Documentation</a>
         <a href="https://github.com/GuardAgentOrg/guardagent.org" target="_blank" rel="noopener noreferrer" class="nb-footer-link">GitHub</a>
         <a href="/security" class="nb-footer-link">Security Notice</a>
@@ -321,6 +286,173 @@
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script src="/assets/js/site.js"></script>
+  <script>
+    // 1. Live Terminal Typewriter & Intercepted Path Detection
+    (function() {
+      try {
+        var p = window.location.pathname;
+        if (!p || p === '/' || p === '/404.html') {
+          p = window.location.href.split('?')[0].split('#')[0].replace(/^https?:\/\/[^\/]+/, '') || '/unmapped-endpoint';
+        }
+        
+        var rows = [
+          { key: "REQUEST_URI:", val: p, cls: "term-val-url" },
+          { key: "INTERCEPTOR:", val: "GuardAgent AST Gateway v1.0.0-beta", cls: "term-val-teal" },
+          { key: "FIREWALL_RULE:", val: "POL-0404-UNVERIFIED-ROUTING-PREVENTION", cls: "term-val-yellow" },
+          { key: "DECISION:", val: "BLOCK_SAFELY (Zero Execution Damage)", cls: "term-val-coral" },
+          { key: "SAFE_PATHWAY:", val: "Operator forwarded to authenticated landing zones ↓", cls: "term-val-mint" }
+        ];
+
+        var container = document.getElementById('terminalBodyContainer');
+        if (!container) return;
+        container.innerHTML = '';
+
+        var rowIndex = 0;
+        function typeNextRow() {
+          if (rowIndex >= rows.length) {
+            var cursor = document.createElement('span');
+            cursor.className = 'terminal-cursor';
+            container.appendChild(cursor);
+            return;
+          }
+          var item = rows[rowIndex];
+          var rowDiv = document.createElement('div');
+          rowDiv.className = 'terminal-row';
+          rowDiv.innerHTML = '<span class="term-key">' + item.key + '</span><span class="term-val ' + item.cls + '"></span>';
+          container.appendChild(rowDiv);
+          
+          var valSpan = rowDiv.querySelector('.term-val');
+          var text = item.val;
+          var charIndex = 0;
+          
+          function typeChar() {
+            if (charIndex < text.length) {
+              valSpan.textContent += text.charAt(charIndex);
+              charIndex++;
+              setTimeout(typeChar, 8);
+            } else {
+              rowIndex++;
+              setTimeout(typeNextRow, 50);
+            }
+          }
+          typeChar();
+        }
+        setTimeout(typeNextRow, 160);
+      } catch (err) {}
+    })();
+
+    // 2. Interactive Scramble Decoder on 404
+    (function() {
+      var numEl = document.getElementById('scrambleNumber');
+      if (!numEl) return;
+      var chars = '0123456789!@#$%^&*<>/?';
+      var isScrambling = false;
+
+      function scramble() {
+        if (isScrambling) return;
+        isScrambling = true;
+        var iterations = 0;
+        var original = '404';
+        var interval = setInterval(function() {
+          numEl.textContent = original.split('').map(function(letter, index) {
+            if (index < iterations) {
+              return original[index];
+            }
+            return chars[Math.floor(Math.random() * chars.length)];
+          }).join('');
+          
+          if (iterations >= original.length) {
+            clearInterval(interval);
+            numEl.textContent = '404';
+            isScrambling = false;
+          }
+          iterations += 1 / 4;
+        }, 40);
+      }
+
+      numEl.addEventListener('click', scramble);
+      numEl.addEventListener('mouseenter', scramble);
+    })();
+
+    // 3. Interactive Terminal Dots (Alarm & Radar Wave)
+    (function() {
+      var dotRed = document.getElementById('dotRed');
+      var dotGreen = document.getElementById('dotGreen');
+      var terminal = document.getElementById('terminalBox');
+      if (dotRed && terminal) {
+        dotRed.addEventListener('click', function() {
+          terminal.style.animation = 'none';
+          terminal.offsetHeight; /* trigger reflow */
+          terminal.style.boxShadow = '0 0 30px #EF4444';
+          terminal.style.borderColor = '#EF4444';
+          setTimeout(function() {
+            terminal.style.boxShadow = '';
+            terminal.style.borderColor = '';
+          }, 800);
+        });
+      }
+      if (dotGreen && terminal) {
+        dotGreen.addEventListener('click', function() {
+          terminal.style.boxShadow = '0 0 30px #10B981';
+          terminal.style.borderColor = '#10B981';
+          setTimeout(function() {
+            terminal.style.boxShadow = '';
+            terminal.style.borderColor = '';
+          }, 800);
+        });
+      }
+    })();
+
+    // 4. Interactive 3D Parallax Tilt for 404 Block
+    (function() {
+      var stage = document.getElementById('giantStage');
+      if (!stage) return;
+      stage.addEventListener('mousemove', function(e) {
+        var rect = stage.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        var num = stage.querySelector('.nb-404-giant-number');
+        if (num) {
+          num.style.transform = 'perspective(500px) rotateY(' + (x / 14) + 'deg) rotateX(' + (-y / 14) + 'deg) translateY(-4px)';
+        }
+      });
+      stage.addEventListener('mouseleave', function() {
+        var num = stage.querySelector('.nb-404-giant-number');
+        if (num) {
+          num.style.transform = '';
+        }
+      });
+    })();
+
+    // 5. Smart Quick Finder Routing
+    function handleRouteFinder() {
+      var input = document.getElementById('routeFinderInput');
+      if (!input) return;
+      var query = (input.value || '').trim().toLowerCase();
+      if (!query) return;
+
+      if (query.indexOf('quick') !== -1 || query.indexOf('start') !== -1 || query.indexOf('install') !== -1 || query.indexOf('setup') !== -1) {
+        window.location.href = '/docs/quickstart';
+      } else if (query.indexOf('api') !== -1 || query.indexOf('rest') !== -1 || query.indexOf('endpoint') !== -1) {
+        window.location.href = '/docs/api-reference';
+      } else if (query.indexOf('doc') !== -1 || query.indexOf('guide') !== -1 || query.indexOf('manual') !== -1) {
+        window.location.href = '/docs';
+      } else if (query.indexOf('attack') !== -1 || query.indexOf('hack') !== -1 || query.indexOf('threat') !== -1 || query.indexOf('lab') !== -1 || query.indexOf('inject') !== -1) {
+        window.location.href = '/#threat-lab';
+      } else if (query.indexOf('demo') !== -1 || query.indexOf('arcade') !== -1 || query.indexOf('live') !== -1) {
+        window.location.href = '/#arcade-soc';
+      } else if (query.indexOf('app') !== -1 || query.indexOf('console') !== -1 || query.indexOf('soc') !== -1) {
+        window.location.href = '/app/';
+      } else if (query.indexOf('sign') !== -1 || query.indexOf('log') !== -1 || query.indexOf('auth') !== -1) {
+        window.location.href = '/signin';
+      } else if (query.indexOf('sec') !== -1 || query.indexOf('policy') !== -1 || query.indexOf('rule') !== -1) {
+        window.location.href = '/security';
+      } else {
+        window.location.href = '/docs?q=' + encodeURIComponent(query);
+      }
+    }
+  </script>
 </body>
 </html>
